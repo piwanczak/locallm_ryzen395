@@ -1,0 +1,65 @@
+{
+    "created":  "2026-06-21T20:51:16.8600643+02:00",
+    "benchmarkRoot":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark",
+    "workspaceRoot":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public",
+    "wsl":  {
+                "status":  {
+                               "command":  "wsl.exe --status",
+                               "exitCode":  0,
+                               "timedOut":  false,
+                               "elapsedMs":  52.6,
+                               "stdout":  "Default Version: 2\r\nWSL1 is not supported with your current machine configuration.\r\nPlease enable the \"Windows Subsystem for Linux\" optional component to use WSL1.\r\n",
+                               "stderr":  ""
+                           },
+                "distributions":  {
+                                      "command":  "wsl.exe -l -v",
+                                      "exitCode":  -1,
+                                      "timedOut":  false,
+                                      "elapsedMs":  42.6,
+                                      "stdout":  "Windows Subsystem for Linux has no installed distributions.\r\nYou can resolve this by installing a distribution with the instructions below:\r\n\r\nUse \u0027wsl.exe --list --online\u0027 to list available distributions\r\nand \u0027wsl.exe --install \u003cDistro\u003e\u0027 to install.\r\n",
+                                      "stderr":  ""
+                                  }
+            },
+    "windowsGpu":  [
+                       {
+                           "Name":  "AMD Radeon(TM) 8060S Graphics",
+                           "DriverVersion":  "32.0.31019.2002",
+                           "DriverDate":  "\/Date(1780012800000)\/",
+                           "AdapterRAM":  4293918720,
+                           "PNPDeviceID":  "PCI\\VEN_1002\u0026DEV_1586\u0026SUBSYS_17141043\u0026REV_C1\\4\u002635FE04F8\u00260\u00260041"
+                       }
+                   ],
+    "baselineReports":  [
+                            {
+                                "path":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\reports\\2026-06-19_optimization-summary-11-b9728-hip-rocm-retest.md",
+                                "exists":  true,
+                                "sha256":  "298C6DE122F858054D335C0F93D9633A056B334AC1F18443691A1654C8723A9F"
+                            },
+                            {
+                                "path":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\reports\\2026-06-19_optimization-summary-12-vulkan-223-experts.md",
+                                "exists":  true,
+                                "sha256":  "590AF974EE3969DF8CD6A1731CF5530DB8E08980C4DC0F2C966CA1AF86BC5FCF"
+                            },
+                            {
+                                "path":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\reports\\2026-06-20_optimization-summary-28-long-context-final-report.md",
+                                "exists":  true,
+                                "sha256":  "73DBF2BA435A677E553C0153A493E2605E433527A4B3D114A41F1FFC3B7159C9"
+                            },
+                            {
+                                "path":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\reports\\2026-06-20_optimization-summary-29-opencode-agent-benchmark-final.md",
+                                "exists":  true,
+                                "sha256":  "A80B03D184BF6B1DE52C06B3B48900BFB94AD5CA36794E55A7C6F4F56520BE57"
+                            },
+                            {
+                                "path":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\reports\\2026-06-20_optimization-summary-30-opencode-ttft-practical-profile.md",
+                                "exists":  true,
+                                "sha256":  "DFBDD65E67ECEFE4CE4CFBB475D0D20E7CA43A88C0588CBB40B82D80C1F644F0"
+                            },
+                            {
+                                "path":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\reports\\2026-06-20_optimization-summary-31-opencode-thin-prompt-ttft-sweep.md",
+                                "exists":  true,
+                                "sha256":  "4F059D9B1DD7CC73B5E700F3BEA24525C971864892DD7DD9105506609929AA54"
+                            }
+                        ],
+    "interpretation":  "If distributions.exitCode is nonzero with \u0027no installed distributions\u0027, WSL2 execution is blocked until a distro is installed with explicit approval."
+}

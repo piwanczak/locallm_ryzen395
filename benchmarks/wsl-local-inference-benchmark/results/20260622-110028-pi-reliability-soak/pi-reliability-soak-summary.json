@@ -1,0 +1,100 @@
+{
+    "createdAt":  "2026-06-22T11:00:29.0084246+02:00",
+    "completedAt":  "2026-06-22T11:02:07.5842820+02:00",
+    "dryRun":  false,
+    "distro":  "Ubuntu-24.04",
+    "port":  8091,
+    "contextSize":  8192,
+    "modelAlias":  "qwen/qwen3-coder-30b-q4",
+    "modelPath":  "%USERPROFILE%\\.lmstudio\\models\\lmstudio-community\\Qwen3-Coder-30B-A3B-Instruct-GGUF\\Qwen3-Coder-30B-A3B-Instruct-Q4_K_M.gguf",
+    "iterationsRequested":  2,
+    "tasks":  [
+                  "file-create",
+                  "js-edit",
+                  "browser-style"
+              ],
+    "useExistingServer":  true,
+    "keepServer":  false,
+    "runRoot":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-110028-pi-reliability-soak",
+    "logRoot":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\logs\\20260622-110028-pi-reliability-soak",
+    "workflowScript":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\scripts\\run-pi-jinja-q4-toolcall-workflow.ps1",
+    "serverStart":  null,
+    "serverStop":  null,
+    "iterations":  [
+                       {
+                           "iteration":  1,
+                           "startedAt":  "2026-06-22T11:00:29.0332664+02:00",
+                           "completedAt":  "2026-06-22T11:01:16.8849086+02:00",
+                           "durationSeconds":  47.852,
+                           "exitCode":  0,
+                           "passed":  true,
+                           "failureClass":  "none",
+                           "workflowOutputPath":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-110028-pi-reliability-soak\\iteration-001\\workflow.out.txt",
+                           "workflowExitPath":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-110028-pi-reliability-soak\\iteration-001\\workflow.exitcode.txt",
+                           "workflowSummaryPath":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-110029-pi-jinja-q4-toolcall-workflow\\pi-jinja-q4-toolcall-workflow-summary.json",
+                           "workflowRunRoot":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-110029-pi-jinja-q4-toolcall-workflow",
+                           "taskStatus":  [
+                                              {
+                                                  "task":  "file-create",
+                                                  "passed":  true,
+                                                  "piExitCode":  0,
+                                                  "sessionLog":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-110029-pi-jinja-q4-toolcall-workflow\\file-create\\pi-session.jsonl",
+                                                  "sessionLogExists":  true
+                                              },
+                                              {
+                                                  "task":  "js-edit",
+                                                  "passed":  true,
+                                                  "piExitCode":  0,
+                                                  "sessionLog":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-110029-pi-jinja-q4-toolcall-workflow\\js-edit\\pi-session.jsonl",
+                                                  "sessionLogExists":  true
+                                              },
+                                              {
+                                                  "task":  "browser-style",
+                                                  "passed":  true,
+                                                  "piExitCode":  0,
+                                                  "sessionLog":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-110029-pi-jinja-q4-toolcall-workflow\\browser-style\\pi-session.jsonl",
+                                                  "sessionLogExists":  true
+                                              }
+                                          ]
+                       },
+                       {
+                           "iteration":  2,
+                           "startedAt":  "2026-06-22T11:01:16.9810898+02:00",
+                           "completedAt":  "2026-06-22T11:02:07.5630578+02:00",
+                           "durationSeconds":  50.582,
+                           "exitCode":  0,
+                           "passed":  true,
+                           "failureClass":  "none",
+                           "workflowOutputPath":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-110028-pi-reliability-soak\\iteration-002\\workflow.out.txt",
+                           "workflowExitPath":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-110028-pi-reliability-soak\\iteration-002\\workflow.exitcode.txt",
+                           "workflowSummaryPath":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-110117-pi-jinja-q4-toolcall-workflow\\pi-jinja-q4-toolcall-workflow-summary.json",
+                           "workflowRunRoot":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-110117-pi-jinja-q4-toolcall-workflow",
+                           "taskStatus":  [
+                                              {
+                                                  "task":  "file-create",
+                                                  "passed":  true,
+                                                  "piExitCode":  0,
+                                                  "sessionLog":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-110117-pi-jinja-q4-toolcall-workflow\\file-create\\pi-session.jsonl",
+                                                  "sessionLogExists":  true
+                                              },
+                                              {
+                                                  "task":  "js-edit",
+                                                  "passed":  true,
+                                                  "piExitCode":  0,
+                                                  "sessionLog":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-110117-pi-jinja-q4-toolcall-workflow\\js-edit\\pi-session.jsonl",
+                                                  "sessionLogExists":  true
+                                              },
+                                              {
+                                                  "task":  "browser-style",
+                                                  "passed":  true,
+                                                  "piExitCode":  0,
+                                                  "sessionLog":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-110117-pi-jinja-q4-toolcall-workflow\\browser-style\\pi-session.jsonl",
+                                                  "sessionLogExists":  true
+                                              }
+                                          ]
+                       }
+                   ],
+    "passedIterations":  2,
+    "failedIterations":  0,
+    "passed":  true
+}

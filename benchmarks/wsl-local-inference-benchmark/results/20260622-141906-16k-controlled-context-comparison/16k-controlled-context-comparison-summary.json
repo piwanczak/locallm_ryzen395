@@ -1,0 +1,108 @@
+{
+    "createdAt":  "2026-06-22T14:19:06.2749093+02:00",
+    "completedAt":  "2026-06-22T14:20:03.4531767+02:00",
+    "dryRun":  false,
+    "distro":  "Ubuntu-24.04",
+    "port":  8105,
+    "contexts":  [
+                     "16384"
+                 ],
+    "models":  [
+                   "qwen25-coder-15b-q4",
+                   "qwen25-coder-15b-q8"
+               ],
+    "tasks":  [
+                  "js-window",
+                  "browser-style"
+              ],
+    "calibrationMaxTokens":  128,
+    "agentMaxTokens":  2048,
+    "agentMaxAttempts":  2,
+    "runRoot":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-141906-16k-controlled-context-comparison",
+    "rows":  [
+                 {
+                     "contextSize":  16384,
+                     "modelKey":  "qwen25-coder-15b-q4",
+                     "modelAlias":  "qwen/qwen2.5-coder-1.5b-q4",
+                     "startedAt":  "2026-06-22T14:19:06.2809100+02:00",
+                     "completedAt":  "2026-06-22T14:20:03.2716336+02:00",
+                     "durationSeconds":  56.991,
+                     "matrixExitCode":  0,
+                     "matrixSummaryPath":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-141906-model-matrix\\model-matrix-summary.json",
+                     "calibrationPath":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-141906-model-matrix\\qwen25-coder-15b-q4-calibration-single.json",
+                     "calibrationOk":  true,
+                     "calibrationFirstByteMsMin":  123.1,
+                     "calibrationFirstContentMsMin":  123.3,
+                     "calibrationDecodeTokPerSecAggregateEstimate":  113.8,
+                     "taskStatus":  [
+                                        {
+                                            "task":  "js-window",
+                                            "resultPath":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-141906-model-matrix\\qwen25-coder-15b-q4-js-window\\js-window-result.json",
+                                            "passed":  false,
+                                            "firstByteMs":  222.4,
+                                            "firstContentMs":  222.5,
+                                            "wallMs":  1243.1,
+                                            "verifierElapsedMs":  51,
+                                            "verifierExitCode":  1,
+                                            "failureClass":  "task-failed"
+                                        },
+                                        {
+                                            "task":  "browser-style",
+                                            "resultPath":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-141906-model-matrix\\qwen25-coder-15b-q4-browser-style\\browser-style-result.json",
+                                            "passed":  false,
+                                            "firstByteMs":  291.3,
+                                            "firstContentMs":  291.4,
+                                            "wallMs":  1160.8,
+                                            "verifierElapsedMs":  50,
+                                            "verifierExitCode":  1,
+                                            "failureClass":  "task-failed"
+                                        }
+                                    ],
+                     "passed":  false,
+                     "error":  null
+                 },
+                 {
+                     "contextSize":  16384,
+                     "modelKey":  "qwen25-coder-15b-q8",
+                     "modelAlias":  "qwen/qwen2.5-coder-1.5b-q8",
+                     "startedAt":  "2026-06-22T14:19:06.2809100+02:00",
+                     "completedAt":  "2026-06-22T14:20:03.2716336+02:00",
+                     "durationSeconds":  56.991,
+                     "matrixExitCode":  0,
+                     "matrixSummaryPath":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-141906-model-matrix\\model-matrix-summary.json",
+                     "calibrationPath":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-141906-model-matrix\\qwen25-coder-15b-q8-calibration-single.json",
+                     "calibrationOk":  true,
+                     "calibrationFirstByteMsMin":  114.7,
+                     "calibrationFirstContentMsMin":  114.8,
+                     "calibrationDecodeTokPerSecAggregateEstimate":  85.8,
+                     "taskStatus":  [
+                                        {
+                                            "task":  "js-window",
+                                            "resultPath":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-141906-model-matrix\\qwen25-coder-15b-q8-js-window\\js-window-result.json",
+                                            "passed":  false,
+                                            "firstByteMs":  226.5,
+                                            "firstContentMs":  226.6,
+                                            "wallMs":  1537.7,
+                                            "verifierElapsedMs":  50,
+                                            "verifierExitCode":  1,
+                                            "failureClass":  "task-failed"
+                                        },
+                                        {
+                                            "task":  "browser-style",
+                                            "resultPath":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-141906-model-matrix\\qwen25-coder-15b-q8-browser-style\\browser-style-result.json",
+                                            "passed":  false,
+                                            "firstByteMs":  288.8,
+                                            "firstContentMs":  288.9,
+                                            "wallMs":  1388.7,
+                                            "verifierElapsedMs":  51,
+                                            "verifierExitCode":  1,
+                                            "failureClass":  "task-failed"
+                                        }
+                                    ],
+                     "passed":  false,
+                     "error":  null
+                 }
+             ],
+    "passed":  false,
+    "recommendation":  "At least one selected controlled context row failed; inspect task status and model-specific errors before promotion."
+}

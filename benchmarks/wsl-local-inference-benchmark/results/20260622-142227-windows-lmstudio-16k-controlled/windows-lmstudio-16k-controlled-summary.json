@@ -1,0 +1,27 @@
+{
+    "createdAt":  "2026-06-22T14:22:27.1252026+02:00",
+    "completedAt":  null,
+    "dryRun":  true,
+    "baseUrl":  "http://127.0.0.1:1234",
+    "model":  "qwen/qwen3-coder-30b",
+    "contextSize":  16384,
+    "evalBatchSize":  2048,
+    "physicalBatchSize":  512,
+    "parallel":  1,
+    "numExperts":  4,
+    "tasks":  [
+                  "js-window",
+                  "browser-style"
+              ],
+    "runRoot":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-142227-windows-lmstudio-16k-controlled",
+    "serverStatusBefore":  null,
+    "lmsPsBefore":  null,
+    "load":  null,
+    "calibration":  null,
+    "taskStatus":  [
+
+                   ],
+    "unload":  null,
+    "lmsPsAfter":  null,
+    "passed":  false
+}

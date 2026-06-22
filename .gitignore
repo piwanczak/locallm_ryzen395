@@ -1,0 +1,52 @@
+# OS/editor noise
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Local scratch space
+.tmp/
+tmp/
+.env
+models.local.json
+
+# Local-only generated artifacts
+logs/
+downloads/
+build/
+bvk/
+*.log
+*.out.log
+*.err.log
+reports/*.html
+tools/*.exe
+
+# Benchmark local state and raw outputs
+benchmarks/**/logs/
+benchmarks/**/prompts/
+benchmarks/**/results/
+benchmarks/**/runtimes/
+benchmarks/**/.tmp/
+benchmarks/**/.runtime/
+benchmarks/**/.pi-home/
+benchmarks/**/workspace/
+benchmarks/**/fixtures/work/
+benchmarks/**/.opencode-empty/
+benchmarks/**/.xdg-cache/
+benchmarks/**/.xdg-config/
+benchmarks/**/.xdg-data/
+benchmarks/**/.xdg-state/
+benchmarks/**/node_modules/
+benchmarks/**/reports/*.html
+
+# Selected public WSL evidence artifacts
+!benchmarks/wsl-local-inference-benchmark/results/
+!benchmarks/wsl-local-inference-benchmark/results/**/
+!benchmarks/wsl-local-inference-benchmark/results/**/*.json
+!benchmarks/wsl-local-inference-benchmark/results/**/*.jsonl
+!benchmarks/wsl-local-inference-benchmark/results/**/*.md
+
+# Language/tool caches
+__pycache__/
+*.pyc
+*.obj
+*.o

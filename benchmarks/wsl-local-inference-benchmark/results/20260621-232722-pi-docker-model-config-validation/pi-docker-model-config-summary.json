@@ -1,0 +1,7 @@
+{
+    "createdAt":  "2026-06-21T23:27:24.2913738+02:00",
+    "startedAt":  "2026-06-21T23:27:22.9116307+02:00",
+    "exitCode":  0,
+    "validation":  "docker compose run --rm pi --offline --list-models local after BOM-free patch",
+    "outputPath":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260621-232722-pi-docker-model-config-validation\\pi-list-models.out.txt"
+}

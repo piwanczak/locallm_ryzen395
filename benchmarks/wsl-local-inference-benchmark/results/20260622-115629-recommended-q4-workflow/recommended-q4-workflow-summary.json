@@ -1,0 +1,18 @@
+{
+    "createdAt":  "2026-06-22T11:59:42.7698155+02:00",
+    "dryRun":  false,
+    "model":  "qwen3-coder-30b-q4",
+    "distro":  "Ubuntu-24.04",
+    "agentContextSize":  8192,
+    "throughputContextSize":  4096,
+    "throughputParallel":  4,
+    "throughputConcurrency":  4,
+    "agentMatrixSummary":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-115630-model-matrix\\model-matrix-summary.json",
+    "throughputMatrixSummary":  null,
+    "agentStdout":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-115629-recommended-q4-workflow\\agent-matrix.stdout.txt",
+    "throughputStdout":  null,
+    "agentCalibration":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-115630-model-matrix\\qwen3-coder-30b-q4-calibration-single.json",
+    "jsWindowResult":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-115630-model-matrix\\qwen3-coder-30b-q4-js-window\\js-window-result.json",
+    "browserStyleResult":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-115630-model-matrix\\qwen3-coder-30b-q4-browser-style\\browser-style-result.json",
+    "throughputCalibration":  null
+}

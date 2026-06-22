@@ -1,0 +1,90 @@
+{
+  "created": "2026-06-21T19:25:03.281Z",
+  "baseUrl": "http://127.0.0.1:8080/v1",
+  "model": "qwen/qwen3-coder-30b",
+  "promptChars": 79,
+  "promptTokenEstimate": 22,
+  "maxTokens": 128,
+  "temperature": 0,
+  "concurrency": 4,
+  "ok": true,
+  "successful": 4,
+  "failed": 0,
+  "firstByteMsMin": 416.8,
+  "firstContentMsMin": 416.9,
+  "decodeTokPerSecAggregateEstimate": 84.65,
+  "results": [
+    {
+      "index": 1,
+      "ok": true,
+      "firstByteMs": 439.4,
+      "firstContentMs": 439.4,
+      "wallMs": 6488.5,
+      "outputChars": 499,
+      "outputTokenEstimate": 128,
+      "decodeTokPerSecEstimate": 21.16,
+      "usage": {
+        "completion_tokens": 128,
+        "prompt_tokens": 39,
+        "total_tokens": 167
+      },
+      "rawChunks": 128,
+      "events": 131,
+      "outputPreview": "```javascript\nfunction countSlidingWindow(arr, windowSize) {\n    if (arr.length < windowSize) return [];\n    \n    const result = [];\n    for (let i = 0; i <= arr.length - windowSize; i++) {\n        const window = arr.slice(i, i + windowSize);\n        result.push(window.length);\n    }\n    return result;\n}\n```\nThis function takes an array and a window size, then returns an array of counts for each sliding window of that size. For example, with array `[1,2,3,4]` and window size `2`, it returns `[2"
+    },
+    {
+      "index": 2,
+      "ok": true,
+      "firstByteMs": 419,
+      "firstContentMs": 419,
+      "wallMs": 6467.9,
+      "outputChars": 499,
+      "outputTokenEstimate": 128,
+      "decodeTokPerSecEstimate": 21.16,
+      "usage": {
+        "completion_tokens": 128,
+        "prompt_tokens": 39,
+        "total_tokens": 167
+      },
+      "rawChunks": 128,
+      "events": 131,
+      "outputPreview": "```javascript\nfunction countSlidingWindow(arr, windowSize) {\n    if (arr.length < windowSize) return [];\n    \n    const result = [];\n    for (let i = 0; i <= arr.length - windowSize; i++) {\n        const window = arr.slice(i, i + windowSize);\n        result.push(window.length);\n    }\n    return result;\n}\n```\nThis function takes an array and a window size, then returns an array of counts for each sliding window of that size. For example, with array `[1,2,3,4]` and window size `2`, it returns `[2"
+    },
+    {
+      "index": 3,
+      "ok": true,
+      "firstByteMs": 416.8,
+      "firstContentMs": 416.9,
+      "wallMs": 6463.3,
+      "outputChars": 499,
+      "outputTokenEstimate": 128,
+      "decodeTokPerSecEstimate": 21.17,
+      "usage": {
+        "completion_tokens": 128,
+        "prompt_tokens": 39,
+        "total_tokens": 167
+      },
+      "rawChunks": 129,
+      "events": 131,
+      "outputPreview": "```javascript\nfunction countSlidingWindow(arr, windowSize) {\n    if (arr.length < windowSize) return [];\n    \n    const result = [];\n    for (let i = 0; i <= arr.length - windowSize; i++) {\n        const window = arr.slice(i, i + windowSize);\n        result.push(window.length);\n    }\n    return result;\n}\n```\nThis function takes an array and a window size, then returns an array of counts for each sliding window of that size. For example, with array `[1,2,3,4]` and window size `2`, it returns `[2"
+    },
+    {
+      "index": 4,
+      "ok": true,
+      "firstByteMs": 417.7,
+      "firstContentMs": 417.7,
+      "wallMs": 6466.6,
+      "outputChars": 481,
+      "outputTokenEstimate": 128,
+      "decodeTokPerSecEstimate": 21.16,
+      "usage": {
+        "completion_tokens": 128,
+        "prompt_tokens": 39,
+        "total_tokens": 167
+      },
+      "rawChunks": 128,
+      "events": 131,
+      "outputPreview": "```javascript\nfunction countSlidingWindow(arr, windowSize) {\n    if (arr.length < windowSize) return [];\n    \n    const result = [];\n    for (let i = 0; i <= arr.length - windowSize; i++) {\n        result.push(arr.slice(i, i + windowSize).length);\n    }\n    return result;\n}\n```\nThis function takes an array and a window size, then returns an array of counts for each sliding window of the specified size. For example, with array `[1,2,3,4]` and window size `2`, it returns `[2,2,2"
+    }
+  ]
+}

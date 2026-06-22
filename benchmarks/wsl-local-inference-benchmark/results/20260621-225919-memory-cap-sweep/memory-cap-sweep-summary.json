@@ -1,0 +1,36 @@
+{
+    "createdAt":  "2026-06-21T22:59:19.8123615+02:00",
+    "distro":  "Ubuntu-24.04",
+    "model":  "qwen3-coder-30b-q4",
+    "apply":  false,
+    "wslConfigPath":  "%USERPROFILE%\\.wslconfig",
+    "backupPath":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260621-225919-memory-cap-sweep\\wslconfig-before.txt",
+    "memoryCaps":  [
+                       "65GB",
+                       "48GB",
+                       "32GB"
+                   ],
+    "rows":  [
+                 {
+                     "memoryCap":  "65GB",
+                     "status":  "planned",
+                     "agentRun":  null,
+                     "throughputRun":  null,
+                     "error":  null
+                 },
+                 {
+                     "memoryCap":  "48GB",
+                     "status":  "planned",
+                     "agentRun":  null,
+                     "throughputRun":  null,
+                     "error":  null
+                 },
+                 {
+                     "memoryCap":  "32GB",
+                     "status":  "planned",
+                     "agentRun":  null,
+                     "throughputRun":  null,
+                     "error":  null
+                 }
+             ]
+}

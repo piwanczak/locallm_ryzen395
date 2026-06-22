@@ -1,0 +1,107 @@
+{
+  "created": "2026-06-21T20:48:05.036Z",
+  "url": "http://127.0.0.1:8767/",
+  "fixture": "%USERPROFILE%/Documents/locallm_ryzen395-public/benchmarks/opencode-agent-benchmark/fixtures/work/controlled-20260621-224242-qwen3-coder-30b-q4-browser-style/browser-style",
+  "model": "qwen/qwen3-coder-30b-q4",
+  "resultDir": "%USERPROFILE%/Documents/locallm_ryzen395-public/benchmarks/wsl-local-inference-benchmark/results/20260621-224242-model-matrix/qwen3-coder-30b-q4-browser-style",
+  "passed": true,
+  "checks": [
+    {
+      "name": "filter input is unique",
+      "passed": true
+    },
+    {
+      "name": "CORE matches owner case-insensitively",
+      "passed": true
+    },
+    {
+      "name": "gemma matches visible text case-insensitively",
+      "passed": true
+    },
+    {
+      "name": "missing hides all runs and shows empty state",
+      "passed": true
+    }
+  ],
+  "states": {
+    "initial": {
+      "emptyHidden": true,
+      "visibleRuns": [
+        {
+          "owner": "Core Team",
+          "text": "QWEN nightly pass"
+        },
+        {
+          "owner": "Gemma Bench",
+          "text": "gemma browser diagnosis"
+        },
+        {
+          "owner": "Tools",
+          "text": "static docs update"
+        }
+      ]
+    },
+    "CORE": {
+      "emptyHidden": true,
+      "emptyText": "No matching runs",
+      "hiddenRuns": [
+        {
+          "owner": "Gemma Bench",
+          "text": "gemma browser diagnosis"
+        },
+        {
+          "owner": "Tools",
+          "text": "static docs update"
+        }
+      ],
+      "query": "CORE",
+      "visibleRuns": [
+        {
+          "owner": "Core Team",
+          "text": "QWEN nightly pass"
+        }
+      ]
+    },
+    "gemma": {
+      "emptyHidden": true,
+      "emptyText": "No matching runs",
+      "hiddenRuns": [
+        {
+          "owner": "Core Team",
+          "text": "QWEN nightly pass"
+        },
+        {
+          "owner": "Tools",
+          "text": "static docs update"
+        }
+      ],
+      "query": "gemma",
+      "visibleRuns": [
+        {
+          "owner": "Gemma Bench",
+          "text": "gemma browser diagnosis"
+        }
+      ]
+    },
+    "missing": {
+      "emptyHidden": false,
+      "emptyText": "No matching runs",
+      "hiddenRuns": [
+        {
+          "owner": "Core Team",
+          "text": "QWEN nightly pass"
+        },
+        {
+          "owner": "Gemma Bench",
+          "text": "gemma browser diagnosis"
+        },
+        {
+          "owner": "Tools",
+          "text": "static docs update"
+        }
+      ],
+      "query": "missing",
+      "visibleRuns": []
+    }
+  }
+}

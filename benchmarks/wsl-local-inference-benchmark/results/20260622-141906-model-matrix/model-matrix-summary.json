@@ -1,0 +1,51 @@
+{
+    "runId":  "20260622-141906-model-matrix",
+    "createdAt":  "2026-06-22T14:20:03.1909359+02:00",
+    "distro":  "Ubuntu-24.04",
+    "port":  8105,
+    "contextSize":  16384,
+    "parallel":  1,
+    "calibrationMaxTokens":  128,
+    "calibrationConcurrency":  1,
+    "agentMaxTokens":  2048,
+    "agentMaxAttempts":  2,
+    "agentTasks":  [
+                       "js-window",
+                       "browser-style"
+                   ],
+    "skipAgent":  false,
+    "resultRoot":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-141906-model-matrix",
+    "logRoot":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\logs\\20260622-141906-model-matrix",
+    "models":  [
+                   {
+                       "key":  "qwen25-coder-15b-q4",
+                       "alias":  "qwen/qwen2.5-coder-1.5b-q4",
+                       "path":  "%USERPROFILE%\\.lmstudio\\models\\bartowski\\Qwen2.5-Coder-1.5B-Instruct-GGUF\\Qwen2.5-Coder-1.5B-Instruct-Q4_K_M.gguf",
+                       "contextSize":  16384,
+                       "parallel":  1,
+                       "port":  8105,
+                       "logDir":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\logs\\20260622-141906-model-matrix\\qwen25-coder-15b-q4",
+                       "calibration":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-141906-model-matrix\\qwen25-coder-15b-q4-calibration-single.json",
+                       "agent":  {
+                                     "js-window":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-141906-model-matrix\\qwen25-coder-15b-q4-js-window\\js-window-result.json",
+                                     "browser-style":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-141906-model-matrix\\qwen25-coder-15b-q4-browser-style\\browser-style-result.json"
+                                 },
+                       "error":  null
+                   },
+                   {
+                       "key":  "qwen25-coder-15b-q8",
+                       "alias":  "qwen/qwen2.5-coder-1.5b-q8",
+                       "path":  "%USERPROFILE%\\.lmstudio\\models\\bartowski\\Qwen2.5-Coder-1.5B-Instruct-GGUF\\Qwen2.5-Coder-1.5B-Instruct-Q8_0.gguf",
+                       "contextSize":  16384,
+                       "parallel":  1,
+                       "port":  8105,
+                       "logDir":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\logs\\20260622-141906-model-matrix\\qwen25-coder-15b-q8",
+                       "calibration":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-141906-model-matrix\\qwen25-coder-15b-q8-calibration-single.json",
+                       "agent":  {
+                                     "js-window":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-141906-model-matrix\\qwen25-coder-15b-q8-js-window\\js-window-result.json",
+                                     "browser-style":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-141906-model-matrix\\qwen25-coder-15b-q8-browser-style\\browser-style-result.json"
+                                 },
+                       "error":  null
+                   }
+               ]
+}

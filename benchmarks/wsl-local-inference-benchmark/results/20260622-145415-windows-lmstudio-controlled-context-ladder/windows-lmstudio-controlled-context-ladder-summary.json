@@ -1,0 +1,147 @@
+{
+    "runId":  "20260622-145415-windows-lmstudio-controlled-context-ladder",
+    "createdAt":  "2026-06-22T14:54:15.4449102+02:00",
+    "completedAt":  "2026-06-22T14:55:32.6966959+02:00",
+    "dryRun":  false,
+    "baseUrl":  "http://127.0.0.1:1234",
+    "model":  "google/gemma-4-e4b",
+    "contexts":  [
+                     16384,
+                     32768
+                 ],
+    "evalBatchSize":  2048,
+    "physicalBatchSize":  512,
+    "parallel":  1,
+    "numExperts":  null,
+    "tasks":  [
+                  "js-window",
+                  "browser-style"
+              ],
+    "runRoot":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-145415-windows-lmstudio-controlled-context-ladder",
+    "serverStatusBefore":  {
+                               "exitCode":  0,
+                               "outputPath":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-145415-windows-lmstudio-controlled-context-ladder\\lms-server-status-before.txt",
+                               "output":  "The server is running on port 1234."
+                           },
+    "lmsPsBefore":  {
+                        "exitCode":  0,
+                        "outputPath":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-145415-windows-lmstudio-controlled-context-ladder\\lms-ps-before.txt",
+                        "output":  "No models are currently loaded.\nSystem.Management.Automation.RemoteException\nTo load a model, run:\nSystem.Management.Automation.RemoteException\n    lms load \u003cmodel path\u003e"
+                    },
+    "contextResults":  [
+                           {
+                               "contextSize":  16384,
+                               "root":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-145415-windows-lmstudio-controlled-context-ladder\\ctx-16384",
+                               "load":  {
+                                            "ok":  true,
+                                            "path":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-145415-windows-lmstudio-controlled-context-ladder\\ctx-16384\\lmstudio-load.json"
+                                        },
+                               "calibration":  {
+                                                   "exitCode":  0,
+                                                   "path":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-145415-windows-lmstudio-controlled-context-ladder\\ctx-16384\\calibration.json",
+                                                   "ok":  true,
+                                                   "firstByteMsMin":  336.7,
+                                                   "firstContentMsMin":  0,
+                                                   "decodeTokPerSecAggregateEstimate":  51.93,
+                                                   "promptTokenEstimate":  22
+                                               },
+                               "taskStatus":  [
+                                                  {
+                                                      "task":  "js-window",
+                                                      "exitCode":  0,
+                                                      "passed":  true,
+                                                      "resultPath":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-145415-windows-lmstudio-controlled-context-ladder\\ctx-16384\\js-window\\js-window-result.json",
+                                                      "firstByteMs":  782.5,
+                                                      "firstContentMs":  782.7,
+                                                      "wallMs":  2633.8,
+                                                      "promptTokens":  698,
+                                                      "completionTokens":  91,
+                                                      "verifierElapsedMs":  51,
+                                                      "verifierExitCode":  0
+                                                  },
+                                                  {
+                                                      "task":  "browser-style",
+                                                      "exitCode":  0,
+                                                      "passed":  true,
+                                                      "resultPath":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-145415-windows-lmstudio-controlled-context-ladder\\ctx-16384\\browser-style\\browser-style-result.json",
+                                                      "firstByteMs":  1473.3,
+                                                      "firstContentMs":  22644.6,
+                                                      "wallMs":  24289.7,
+                                                      "promptTokens":  1415,
+                                                      "completionTokens":  948,
+                                                      "verifierElapsedMs":  53,
+                                                      "verifierExitCode":  0
+                                                  }
+                                              ],
+                               "unload":  [
+                                              {
+                                                  "instanceId":  "google/gemma-4-e4b",
+                                                  "ok":  true,
+                                                  "error":  null
+                                              }
+                                          ],
+                               "error":  null,
+                               "passed":  true
+                           },
+                           {
+                               "contextSize":  32768,
+                               "root":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-145415-windows-lmstudio-controlled-context-ladder\\ctx-32768",
+                               "load":  {
+                                            "ok":  true,
+                                            "path":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-145415-windows-lmstudio-controlled-context-ladder\\ctx-32768\\lmstudio-load.json"
+                                        },
+                               "calibration":  {
+                                                   "exitCode":  0,
+                                                   "path":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-145415-windows-lmstudio-controlled-context-ladder\\ctx-32768\\calibration.json",
+                                                   "ok":  true,
+                                                   "firstByteMsMin":  289.4,
+                                                   "firstContentMsMin":  0,
+                                                   "decodeTokPerSecAggregateEstimate":  51.92,
+                                                   "promptTokenEstimate":  22
+                                               },
+                               "taskStatus":  [
+                                                  {
+                                                      "task":  "js-window",
+                                                      "exitCode":  0,
+                                                      "passed":  true,
+                                                      "resultPath":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-145415-windows-lmstudio-controlled-context-ladder\\ctx-32768\\js-window\\js-window-result.json",
+                                                      "firstByteMs":  750.2,
+                                                      "firstContentMs":  750.5,
+                                                      "wallMs":  2610.6,
+                                                      "promptTokens":  698,
+                                                      "completionTokens":  91,
+                                                      "verifierElapsedMs":  49,
+                                                      "verifierExitCode":  0
+                                                  },
+                                                  {
+                                                      "task":  "browser-style",
+                                                      "exitCode":  0,
+                                                      "passed":  true,
+                                                      "resultPath":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-145415-windows-lmstudio-controlled-context-ladder\\ctx-32768\\browser-style\\browser-style-result.json",
+                                                      "firstByteMs":  1477.8,
+                                                      "firstContentMs":  22779.2,
+                                                      "wallMs":  24443.4,
+                                                      "promptTokens":  1415,
+                                                      "completionTokens":  948,
+                                                      "verifierElapsedMs":  53,
+                                                      "verifierExitCode":  0
+                                                  }
+                                              ],
+                               "unload":  [
+                                              {
+                                                  "instanceId":  "google/gemma-4-e4b",
+                                                  "ok":  true,
+                                                  "error":  null
+                                              }
+                                          ],
+                               "error":  null,
+                               "passed":  true
+                           }
+                       ],
+    "lmsPsAfter":  {
+                       "exitCode":  0,
+                       "outputPath":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-145415-windows-lmstudio-controlled-context-ladder\\lms-ps-after.txt",
+                       "output":  "No models are currently loaded.\nSystem.Management.Automation.RemoteException\nTo load a model, run:\nSystem.Management.Automation.RemoteException\n    lms load \u003cmodel path\u003e"
+                   },
+    "passed":  true
+}

@@ -1,0 +1,103 @@
+{
+  "date": "2026-06-22",
+  "defaultProfile": {
+    "runtime": "WSL2 Ubuntu 24.04 + AMD ROCm/ROCDXG llama.cpp",
+    "model": "Qwen3-Coder-30B-A3B-Instruct-Q4_K_M.gguf",
+    "fallbackModel": "Qwen3-Coder-30B-A3B-Instruct-Q2_K.gguf",
+    "agent": "benchmarks/wsl-local-inference-benchmark/scripts/run-controlled-edit-agent.mjs",
+    "contextSize": 8192,
+    "parallel": 1
+  },
+  "memory": {
+    "wslConfiguredGbApprox": 65,
+    "wslVisibleGiBApprox": 60,
+    "swapGiBApprox": 16,
+    "windowsComparableRamGbApprox": 128,
+    "position": "32GB is proven enough for the current host/WSL Qwen3 Coder 30B Q4 short-context workflow and 4-way throughput. Use 48GB for extra Docker/browser/parallel headroom. Long-context and heavy-concurrency runs still need cap-specific evidence."
+  },
+  "rankings": [
+    {
+      "rank": 1,
+      "profile": "Controlled edit-agent + WSL ROCm llama.cpp + Qwen3 Coder 30B Q4",
+      "decision": "quality-default",
+      "evidence": [
+        "js-window passed",
+        "protected browser-style passed",
+        "browser verification passed",
+        "single-request decode estimate around 56-60 tok/s",
+        "4-way aggregate decode estimate 91-96 tok/s"
+      ]
+    },
+    {
+      "rank": 2,
+      "profile": "Docker-controlled edit-agent + WSL ROCm llama.cpp + Qwen3 Coder 30B Q4",
+      "decision": "containerized-benchmark-workflow",
+      "evidence": [
+        "Docker image local/controlled-edit-agent:node24 built",
+        "js-window passed inside Docker",
+        "protected browser-style passed inside Docker",
+        "Linux verifier command /usr/local/bin/node tools/test.mjs exited 0"
+      ]
+    },
+    {
+      "rank": 3,
+      "profile": "Controlled edit-agent + WSL ROCm llama.cpp + Qwen3 Coder 30B Q2",
+      "decision": "throughput-fallback",
+      "evidence": [
+        "js-window passed",
+        "protected browser-style passed",
+        "browser verification passed",
+        "70.20 tok/s single-request decode estimate"
+      ]
+    },
+    {
+      "rank": 4,
+      "profile": "WSL ROCm llama.cpp OpenAI-compatible server",
+      "decision": "runtime baseline",
+      "evidence": [
+        "70.20 tok/s single-request decode estimate",
+        "84.65 tok/s 4-way aggregate decode estimate",
+        "HIP smoke passed"
+      ]
+    },
+    {
+      "rank": 5,
+      "profile": "OpenCode + WSL ROCm llama.cpp + Qwen3 Coder 30B Q2",
+      "decision": "realism benchmark only",
+      "evidence": [
+        "8k run fixed js-window but did not terminate cleanly",
+        "later hardened run showed context overflow/tool-loop issues"
+      ]
+    },
+    {
+      "rank": 6,
+      "profile": "Pi Docker runner",
+      "decision": "build-validated, endpoint-connected, adapter-needed",
+      "evidence": [
+        "base and browser images build",
+        "mounted models.json parses after BOM-free fix",
+        "Pi reaches local WSL ROCm Q4 endpoint",
+        "Pi session logs store Qwen/llama.cpp function-tag output as assistant text",
+        "Pi custom provider docs require structured toolCall events for execution"
+      ]
+    },
+    {
+      "rank": 7,
+      "profile": "WSL Vulkan llama.cpp",
+      "decision": "rejected for now",
+      "evidence": [
+        "WSL Vulkan exposes Mesa llvmpipe CPU only"
+      ]
+    }
+  ],
+  "failureModes": [
+    "32GB WSL cap is proven only for the current short-context host/WSL Q4 workflow, not for long-context, Docker-heavy, Pi/browser, or multi-agent tests.",
+    "WSL Vulkan currently exposes CPU llvmpipe only.",
+    "OpenCode 4k context overflows with this profile.",
+    "OpenCode 8k can make correct edits but may loop or fail to terminate.",
+    "The model misunderstood DOM hidden semantics in unprotected frontend tasks.",
+    "Gemma E4B Q4 does not load in AMD llama.cpp b8407 because the GGUF architecture is gemma4.",
+    "Qwen2.5-Coder 1.5B Q4/Q8 are fast but failed js-window with syntax-invalid edits.",
+    "Pi Docker reaches the local model endpoint, but Pi does not execute Qwen/llama.cpp function-tag text as tool calls; promotion needs a structured tool-call endpoint or Pi adapter."
+  ]
+}

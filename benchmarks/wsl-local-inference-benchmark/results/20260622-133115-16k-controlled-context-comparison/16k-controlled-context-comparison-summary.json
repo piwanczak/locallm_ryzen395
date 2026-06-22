@@ -1,0 +1,108 @@
+{
+    "createdAt":  "2026-06-22T13:31:15.5163892+02:00",
+    "completedAt":  "2026-06-22T13:37:37.0473530+02:00",
+    "dryRun":  false,
+    "distro":  "Ubuntu-24.04",
+    "port":  8101,
+    "contexts":  [
+                     "8192",
+                     "16384"
+                 ],
+    "models":  [
+                   "qwen3-coder-30b-q4"
+               ],
+    "tasks":  [
+                  "js-window",
+                  "browser-style"
+              ],
+    "calibrationMaxTokens":  128,
+    "agentMaxTokens":  2048,
+    "agentMaxAttempts":  2,
+    "runRoot":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-133115-16k-controlled-context-comparison",
+    "rows":  [
+                 {
+                     "contextSize":  8192,
+                     "modelKey":  "qwen3-coder-30b-q4",
+                     "modelAlias":  "qwen/qwen3-coder-30b-q4",
+                     "startedAt":  "2026-06-22T13:31:15.5219128+02:00",
+                     "completedAt":  "2026-06-22T13:34:26.3531175+02:00",
+                     "durationSeconds":  190.831,
+                     "matrixExitCode":  0,
+                     "matrixSummaryPath":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-133115-model-matrix\\model-matrix-summary.json",
+                     "calibrationPath":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-133115-model-matrix\\qwen3-coder-30b-q4-calibration-single.json",
+                     "calibrationOk":  true,
+                     "calibrationFirstByteMsMin":  426.1,
+                     "calibrationFirstContentMsMin":  426.2,
+                     "calibrationDecodeTokPerSecAggregateEstimate":  39.54,
+                     "taskStatus":  [
+                                        {
+                                            "task":  "js-window",
+                                            "resultPath":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-133115-model-matrix\\qwen3-coder-30b-q4-js-window\\js-window-result.json",
+                                            "passed":  true,
+                                            "firstByteMs":  1117.3,
+                                            "firstContentMs":  1117.5,
+                                            "wallMs":  7069.9,
+                                            "verifierElapsedMs":  61,
+                                            "verifierExitCode":  0,
+                                            "failureClass":  "none"
+                                        },
+                                        {
+                                            "task":  "browser-style",
+                                            "resultPath":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-133115-model-matrix\\qwen3-coder-30b-q4-browser-style\\browser-style-result.json",
+                                            "passed":  true,
+                                            "firstByteMs":  2423.1,
+                                            "firstContentMs":  2423.4,
+                                            "wallMs":  4509.8,
+                                            "verifierElapsedMs":  56,
+                                            "verifierExitCode":  0,
+                                            "failureClass":  "none"
+                                        }
+                                    ],
+                     "passed":  true,
+                     "error":  null
+                 },
+                 {
+                     "contextSize":  16384,
+                     "modelKey":  "qwen3-coder-30b-q4",
+                     "modelAlias":  "qwen/qwen3-coder-30b-q4",
+                     "startedAt":  "2026-06-22T13:34:26.5574619+02:00",
+                     "completedAt":  "2026-06-22T13:37:37.0165613+02:00",
+                     "durationSeconds":  190.459,
+                     "matrixExitCode":  0,
+                     "matrixSummaryPath":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-133426-model-matrix\\model-matrix-summary.json",
+                     "calibrationPath":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-133426-model-matrix\\qwen3-coder-30b-q4-calibration-single.json",
+                     "calibrationOk":  true,
+                     "calibrationFirstByteMsMin":  433.1,
+                     "calibrationFirstContentMsMin":  433.2,
+                     "calibrationDecodeTokPerSecAggregateEstimate":  39.65,
+                     "taskStatus":  [
+                                        {
+                                            "task":  "js-window",
+                                            "resultPath":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-133426-model-matrix\\qwen3-coder-30b-q4-js-window\\js-window-result.json",
+                                            "passed":  true,
+                                            "firstByteMs":  1125.9,
+                                            "firstContentMs":  1126,
+                                            "wallMs":  7016,
+                                            "verifierElapsedMs":  52,
+                                            "verifierExitCode":  0,
+                                            "failureClass":  "none"
+                                        },
+                                        {
+                                            "task":  "browser-style",
+                                            "resultPath":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-133426-model-matrix\\qwen3-coder-30b-q4-browser-style\\browser-style-result.json",
+                                            "passed":  true,
+                                            "firstByteMs":  2394.7,
+                                            "firstContentMs":  2394.9,
+                                            "wallMs":  3922,
+                                            "verifierElapsedMs":  57,
+                                            "verifierExitCode":  0,
+                                            "failureClass":  "none"
+                                        }
+                                    ],
+                     "passed":  true,
+                     "error":  null
+                 }
+             ],
+    "passed":  true,
+    "recommendation":  "16k is viable for the controlled WSL ROCm Qwen3 Coder Q4 edit/browser lane; compare latency against 8k before promoting it as default."
+}

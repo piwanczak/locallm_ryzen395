@@ -1,0 +1,66 @@
+{
+  "createdAt": "2026-06-22T11:11:16.9871269+02:00",
+  "completedAt": "2026-06-22T11:15:47.4820005+02:00",
+  "apply": true,
+  "distro": "Ubuntu-24.04",
+  "port": 8091,
+  "contextSize": 8192,
+  "modelAlias": "qwen/qwen3-coder-30b-q4",
+  "modelPath": "%USERPROFILE%\\.lmstudio\\models\\lmstudio-community\\Qwen3-Coder-30B-A3B-Instruct-GGUF\\Qwen3-Coder-30B-A3B-Instruct-Q4_K_M.gguf",
+  "tasks": [
+    "file-create",
+    "js-edit",
+    "browser-style"
+  ],
+  "memoryCaps": [
+    "DEFAULT,51539607552,34359738368"
+  ],
+  "wslConfigPath": "%USERPROFILE%\\.wslconfig",
+  "hadExistingWslConfig": false,
+  "backupPath": "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-111116-pi-memory-cap-sweep\\wslconfig-before.txt",
+  "runRoot": "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-111116-pi-memory-cap-sweep",
+  "rows": [
+    {
+      "memoryCap": "DEFAULT,51539607552,34359738368",
+      "status": "completed",
+      "appliedConfig": "memory=DEFAULT,51539607552,34359738368; swap=16GB",
+      "memoryProbe": "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-111116-pi-memory-cap-sweep\\DEFAULT_51539607552_34359738368\\wsl-memory-probe.txt",
+      "memoryProbeExitCode": 0,
+      "workflowOutputPath": "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-111116-pi-memory-cap-sweep\\DEFAULT_51539607552_34359738368\\pi-workflow.out.txt",
+      "workflowExitPath": "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-111116-pi-memory-cap-sweep\\DEFAULT_51539607552_34359738368\\pi-workflow.exitcode.txt",
+      "workflowExitCode": 0,
+      "workflowSummaryPath": "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-111125-pi-jinja-q4-toolcall-workflow\\pi-jinja-q4-toolcall-workflow-summary.json",
+      "workflowRunRoot": "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-111125-pi-jinja-q4-toolcall-workflow",
+      "taskStatus": [
+        {
+          "task": "file-create",
+          "passed": true,
+          "piExitCode": 0,
+          "sessionLog": "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-111125-pi-jinja-q4-toolcall-workflow\\file-create\\pi-session.jsonl",
+          "sessionLogExists": true
+        },
+        {
+          "task": "js-edit",
+          "passed": true,
+          "piExitCode": 0,
+          "sessionLog": "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-111125-pi-jinja-q4-toolcall-workflow\\js-edit\\pi-session.jsonl",
+          "sessionLogExists": true
+        },
+        {
+          "task": "browser-style",
+          "passed": true,
+          "piExitCode": 0,
+          "sessionLog": "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-111125-pi-jinja-q4-toolcall-workflow\\browser-style\\pi-session.jsonl",
+          "sessionLogExists": true
+        }
+      ],
+      "error": null
+    }
+  ],
+  "restoredOriginalConfig": true,
+  "finalWslShutdown": true,
+  "passed": false,
+  "superseded": true,
+  "supersededBy": "benchmarks/wsl-local-inference-benchmark/results/20260622-111737-pi-memory-cap-sweep/pi-memory-cap-sweep-summary.json",
+  "supersededReason": "Invalid memory-cap argument parsing: DEFAULT,48GB,32GB was passed as one combined cap string before script normalization was added."
+}

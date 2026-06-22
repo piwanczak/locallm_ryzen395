@@ -1,0 +1,21 @@
+{
+    "createdAt":  "2026-06-22T00:10:31.6507798+02:00",
+    "distro":  "Ubuntu-24.04",
+    "model":  "qwen3-coder-30b-q4",
+    "apply":  true,
+    "wslConfigPath":  "%USERPROFILE%\\.wslconfig",
+    "hadExistingWslConfig":  false,
+    "backupPath":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-000529-memory-cap-sweep\\wslconfig-before.txt",
+    "memoryCaps":  [
+                       "32GB"
+                   ],
+    "rows":  [
+                 {
+                     "memoryCap":  "32GB",
+                     "status":  "completed",
+                     "agentRun":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-000540-model-matrix\\model-matrix-summary.json",
+                     "throughputRun":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-000817-model-matrix\\model-matrix-summary.json",
+                     "error":  null
+                 }
+             ]
+}

@@ -1,0 +1,137 @@
+{
+  "created": "2026-06-21T20:37:25.142Z",
+  "runner": "controlled-edit-agent",
+  "task": "js-window",
+  "model": "qwen/qwen2.5-coder-1.5b-q4",
+  "baseUrl": "http://127.0.0.1:8080/v1",
+  "fixture": "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\opencode-agent-benchmark\\fixtures\\work\\controlled-20260621-223702-qwen25-coder-15b-q4-js-window\\js-window",
+  "outputDir": "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260621-223702-model-matrix\\qwen25-coder-15b-q4-js-window",
+  "maxTokens": 2048,
+  "maxAttempts": 2,
+  "temperature": 0,
+  "attempts": [
+    {
+      "attempt": 1,
+      "promptChars": 2124,
+      "metrics": {
+        "firstByteMs": 375.5,
+        "firstContentMs": 375.8,
+        "wallMs": 1219.2,
+        "usage": {
+          "completion_tokens": 95,
+          "prompt_tokens": 586,
+          "total_tokens": 681
+        },
+        "rawChunks": 96,
+        "events": 97
+      },
+      "outputChars": 338,
+      "editJson": {
+        "replacements": [
+          {
+            "path": "src/windowCounter.mjs",
+            "find": "filter((event) => {",
+            "replace": "filter((event) => { event.timestampMs >= startMs && event.timestampMs <= endMs; }"
+          }
+        ],
+        "files": [],
+        "notes": "The `filter` function was modified to include both the start and end boundaries."
+      },
+      "applied": [
+        "src/windowCounter.mjs"
+      ],
+      "applyError": null,
+      "modifiedFiles": [
+        "src/windowCounter.mjs"
+      ],
+      "verification": {
+        "command": "%USERPROFILE%\\AppData\\Local\\pi-node\\current\\node.exe tools/test.mjs",
+        "exitCode": 1,
+        "elapsedMs": 48,
+        "stdout": "",
+        "stderr": "file:///%USERPROFILE%/Documents/locallm_ryzen395-public/benchmarks/opencode-agent-benchmark/fixtures/work/controlled-20260621-223702-qwen25-coder-15b-q4-js-window/js-window/src/windowCounter.mjs:6\r\n  return events.filter((event) => { event.timestampMs >= startMs && event.timestampMs <= endMs; }\r\n                                                                                                ^\r\n\r\nSyntaxError: missing ) after argument list\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:346:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:110:18)\r\n    at #translate (node:internal/modules/esm/loader:559:20)\r\n    at afterLoad (node:internal/modules/esm/loader:612:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:617:12)\r\n    at #createModuleJob (node:internal/modules/esm/loader:640:36)\r\n    at #getJobFromResolveResult (node:internal/modules/esm/loader:353:34)\r\n    at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:321:41)\r\n\r\nNode.js v22.23.0\r\n",
+        "timedOut": false
+      },
+      "passed": false
+    },
+    {
+      "attempt": 2,
+      "promptChars": 3859,
+      "metrics": {
+        "firstByteMs": 263.3,
+        "firstContentMs": 263.5,
+        "wallMs": 1222.9,
+        "usage": {
+          "completion_tokens": 108,
+          "prompt_tokens": 1044,
+          "total_tokens": 1152
+        },
+        "rawChunks": 108,
+        "events": 110
+      },
+      "outputChars": 435,
+      "editJson": {
+        "replacements": [
+          {
+            "path": "src/windowCounter.mjs",
+            "find": "return event.timestampMs >= startMs && event.timestampMs <= endMs;",
+            "replace": "return event.timestampMs >= startMs && event.timestampMs <= endMs; return event.timestampMs > startMs && event.timestampMs < endMs;"
+          }
+        ],
+        "files": [],
+        "notes": "The original function was missing the return statement for the second condition."
+      },
+      "applied": [],
+      "applyError": "Error: Replacement for src/windowCounter.mjs matched 0 times; expected exactly 1\n    at applyEdits (file:///%USERPROFILE%/Documents/locallm_ryzen395-public/benchmarks/wsl-local-inference-benchmark/scripts/run-controlled-edit-agent.mjs:302:15)\n    at main (file:///%USERPROFILE%/Documents/locallm_ryzen395-public/benchmarks/wsl-local-inference-benchmark/scripts/run-controlled-edit-agent.mjs:418:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)",
+      "modifiedFiles": [
+        "src/windowCounter.mjs"
+      ],
+      "verification": {
+        "command": "%USERPROFILE%\\AppData\\Local\\pi-node\\current\\node.exe tools/test.mjs",
+        "exitCode": 1,
+        "elapsedMs": 44,
+        "stdout": "",
+        "stderr": "file:///%USERPROFILE%/Documents/locallm_ryzen395-public/benchmarks/opencode-agent-benchmark/fixtures/work/controlled-20260621-223702-qwen25-coder-15b-q4-js-window/js-window/src/windowCounter.mjs:6\r\n  return events.filter((event) => { event.timestampMs >= startMs && event.timestampMs <= endMs; }\r\n                                                                                                ^\r\n\r\nSyntaxError: missing ) after argument list\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:346:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:110:18)\r\n    at #translate (node:internal/modules/esm/loader:559:20)\r\n    at afterLoad (node:internal/modules/esm/loader:612:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:617:12)\r\n    at #createModuleJob (node:internal/modules/esm/loader:640:36)\r\n    at #getJobFromResolveResult (node:internal/modules/esm/loader:353:34)\r\n    at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:321:41)\r\n\r\nNode.js v22.23.0\r\n",
+        "timedOut": false
+      },
+      "passed": false
+    }
+  ],
+  "metrics": {
+    "firstByteMs": 263.3,
+    "firstContentMs": 263.5,
+    "wallMs": 1222.9,
+    "usage": {
+      "completion_tokens": 108,
+      "prompt_tokens": 1044,
+      "total_tokens": 1152
+    },
+    "rawChunks": 108,
+    "events": 110
+  },
+  "editJson": {
+    "replacements": [
+      {
+        "path": "src/windowCounter.mjs",
+        "find": "return event.timestampMs >= startMs && event.timestampMs <= endMs;",
+        "replace": "return event.timestampMs >= startMs && event.timestampMs <= endMs; return event.timestampMs > startMs && event.timestampMs < endMs;"
+      }
+    ],
+    "files": [],
+    "notes": "The original function was missing the return statement for the second condition."
+  },
+  "applied": [],
+  "applyError": "Error: Replacement for src/windowCounter.mjs matched 0 times; expected exactly 1\n    at applyEdits (file:///%USERPROFILE%/Documents/locallm_ryzen395-public/benchmarks/wsl-local-inference-benchmark/scripts/run-controlled-edit-agent.mjs:302:15)\n    at main (file:///%USERPROFILE%/Documents/locallm_ryzen395-public/benchmarks/wsl-local-inference-benchmark/scripts/run-controlled-edit-agent.mjs:418:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)",
+  "modifiedFiles": [
+    "src/windowCounter.mjs"
+  ],
+  "verification": {
+    "command": "%USERPROFILE%\\AppData\\Local\\pi-node\\current\\node.exe tools/test.mjs",
+    "exitCode": 1,
+    "elapsedMs": 44,
+    "stdout": "",
+    "stderr": "file:///%USERPROFILE%/Documents/locallm_ryzen395-public/benchmarks/opencode-agent-benchmark/fixtures/work/controlled-20260621-223702-qwen25-coder-15b-q4-js-window/js-window/src/windowCounter.mjs:6\r\n  return events.filter((event) => { event.timestampMs >= startMs && event.timestampMs <= endMs; }\r\n                                                                                                ^\r\n\r\nSyntaxError: missing ) after argument list\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:346:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:110:18)\r\n    at #translate (node:internal/modules/esm/loader:559:20)\r\n    at afterLoad (node:internal/modules/esm/loader:612:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:617:12)\r\n    at #createModuleJob (node:internal/modules/esm/loader:640:36)\r\n    at #getJobFromResolveResult (node:internal/modules/esm/loader:353:34)\r\n    at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:321:41)\r\n\r\nNode.js v22.23.0\r\n",
+    "timedOut": false
+  },
+  "passed": false
+}

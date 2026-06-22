@@ -1,0 +1,51 @@
+x-pi-common: &pi-common
+  init: true
+  stdin_open: true
+  tty: true
+  working_dir: /workspace
+  extra_hosts:
+    - "host.docker.internal:host-gateway"
+  security_opt:
+    - no-new-privileges:true
+  environment:
+    OPENAI_API_BASE: ${OPENAI_API_BASE:-http://host.docker.internal:1234/v1}
+    OPENAI_API_KEY: ${OPENAI_API_KEY:-not-needed}
+    ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+    GEMINI_API_KEY: ${GEMINI_API_KEY:-}
+    MISTRAL_API_KEY: ${MISTRAL_API_KEY:-}
+    OPENROUTER_API_KEY: ${OPENROUTER_API_KEY:-}
+  volumes:
+    - type: bind
+      source: ${PI_WORKSPACE:?set PI_WORKSPACE}
+      target: /workspace
+    - type: bind
+      source: ${PI_MODELS_JSON:?set PI_MODELS_JSON}
+      target: /root/.pi/agent/models.json
+      read_only: true
+    - type: bind
+      source: ./agent/AGENTS.md
+      target: /root/.pi/agent/AGENTS.md
+      read_only: true
+    - type: volume
+      source: pi-agent-sessions
+      target: /root/.pi/agent/sessions
+
+services:
+  pi:
+    <<: *pi-common
+    build:
+      context: .
+      dockerfile: Dockerfile.pi
+    image: local/pi-agent:base
+
+  pi-browser:
+    <<: *pi-common
+    profiles:
+      - browser
+    build:
+      context: .
+      dockerfile: Dockerfile.pi-browser
+    image: local/pi-agent:browser
+
+volumes:
+  pi-agent-sessions:

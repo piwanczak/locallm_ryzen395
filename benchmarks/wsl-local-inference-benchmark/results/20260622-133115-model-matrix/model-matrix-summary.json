@@ -1,0 +1,36 @@
+{
+    "runId":  "20260622-133115-model-matrix",
+    "createdAt":  "2026-06-22T13:34:26.2629090+02:00",
+    "distro":  "Ubuntu-24.04",
+    "port":  8101,
+    "contextSize":  8192,
+    "parallel":  1,
+    "calibrationMaxTokens":  128,
+    "calibrationConcurrency":  1,
+    "agentMaxTokens":  2048,
+    "agentMaxAttempts":  2,
+    "agentTasks":  [
+                       "js-window",
+                       "browser-style"
+                   ],
+    "skipAgent":  false,
+    "resultRoot":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-133115-model-matrix",
+    "logRoot":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\logs\\20260622-133115-model-matrix",
+    "models":  [
+                   {
+                       "key":  "qwen3-coder-30b-q4",
+                       "alias":  "qwen/qwen3-coder-30b-q4",
+                       "path":  "%USERPROFILE%\\.lmstudio\\models\\lmstudio-community\\Qwen3-Coder-30B-A3B-Instruct-GGUF\\Qwen3-Coder-30B-A3B-Instruct-Q4_K_M.gguf",
+                       "contextSize":  8192,
+                       "parallel":  1,
+                       "port":  8101,
+                       "logDir":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\logs\\20260622-133115-model-matrix\\qwen3-coder-30b-q4",
+                       "calibration":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-133115-model-matrix\\qwen3-coder-30b-q4-calibration-single.json",
+                       "agent":  {
+                                     "js-window":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-133115-model-matrix\\qwen3-coder-30b-q4-js-window\\js-window-result.json",
+                                     "browser-style":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-133115-model-matrix\\qwen3-coder-30b-q4-browser-style\\browser-style-result.json"
+                                 },
+                       "error":  null
+                   }
+               ]
+}

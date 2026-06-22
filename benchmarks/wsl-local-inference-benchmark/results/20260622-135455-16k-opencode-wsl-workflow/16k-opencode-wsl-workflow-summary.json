@@ -1,0 +1,35 @@
+{
+    "createdAt":  "2026-06-22T13:54:55.1412319+02:00",
+    "completedAt":  "2026-06-22T13:57:52.4686355+02:00",
+    "dryRun":  false,
+    "distro":  "Ubuntu-24.04",
+    "port":  8103,
+    "contextSize":  16384,
+    "outputLimit":  2048,
+    "timeoutMinutes":  8,
+    "modelAlias":  "qwen/qwen3-coder-30b-q4",
+    "modelPath":  "%USERPROFILE%\\.lmstudio\\models\\lmstudio-community\\Qwen3-Coder-30B-A3B-Instruct-GGUF\\Qwen3-Coder-30B-A3B-Instruct-Q4_K_M.gguf",
+    "tasks":  [
+                  "js-window",
+                  "browser-style"
+              ],
+    "runRoot":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-135455-16k-opencode-wsl-workflow",
+    "logRoot":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\logs\\20260622-135455-16k-opencode-wsl-workflow",
+    "serverStart":  {
+                        "exitCode":  0,
+                        "outputPath":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-135455-16k-opencode-wsl-workflow\\llama-start.out.txt"
+                    },
+    "serverStop":  {
+                       "exitCode":  0,
+                       "outputPath":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-135455-16k-opencode-wsl-workflow\\llama-stop.out.txt"
+                   },
+    "opencode":  {
+                     "exitCode":  1,
+                     "outputPath":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-135455-16k-opencode-wsl-workflow\\opencode-wrapper.out.txt",
+                     "runInfo":  null
+                 },
+    "taskStatus":  [
+
+                   ],
+    "passed":  false
+}

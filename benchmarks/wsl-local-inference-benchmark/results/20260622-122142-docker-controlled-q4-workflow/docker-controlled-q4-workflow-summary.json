@@ -1,0 +1,88 @@
+{
+    "createdAt":  "2026-06-22T12:24:48.4604688+02:00",
+    "startedAt":  "2026-06-22T12:21:42.6813800+02:00",
+    "dryRun":  false,
+    "image":  "local/controlled-edit-agent:node24",
+    "dockerBuild":  {
+                        "attempted":  false,
+                        "exitCode":  null,
+                        "stdout":  null,
+                        "stderr":  null
+                    },
+    "distro":  "Ubuntu-24.04",
+    "port":  8092,
+    "contextSize":  8192,
+    "modelAlias":  "qwen/qwen3-coder-30b-q4",
+    "modelPath":  "%USERPROFILE%\\.lmstudio\\models\\lmstudio-community\\Qwen3-Coder-30B-A3B-Instruct-GGUF\\Qwen3-Coder-30B-A3B-Instruct-Q4_K_M.gguf",
+    "baseUrlFromContainer":  "http://host.docker.internal:8092/v1",
+    "repoRoot":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public",
+    "runnerRoot":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\docker-controlled-agent-runner",
+    "runRoot":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-122142-docker-controlled-q4-workflow",
+    "logRoot":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\logs\\20260622-122142-docker-controlled-q4-workflow",
+    "startExitCode":  0,
+    "stopExitCode":  0,
+    "startOutput":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-122142-docker-controlled-q4-workflow\\llama-start.out.txt",
+    "stopOutput":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-122142-docker-controlled-q4-workflow\\llama-stop.out.txt",
+    "serverLog":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\logs\\20260622-122142-docker-controlled-q4-workflow\\llama-server.log",
+    "tasks":  [
+                  {
+                      "task":  "js-window",
+                      "exitCode":  0,
+                      "passed":  true,
+                      "resultPath":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-122142-docker-controlled-q4-workflow\\js-window\\js-window-result.json",
+                      "outputDir":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-122142-docker-controlled-q4-workflow\\js-window",
+                      "stdout":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-122142-docker-controlled-q4-workflow\\docker-js-window.out.txt",
+                      "stderr":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-122142-docker-controlled-q4-workflow\\docker-js-window.err.txt",
+                      "metrics":  {
+                                      "firstByteMs":  1696.2,
+                                      "firstContentMs":  1696.3,
+                                      "wallMs":  7068.2,
+                                      "usage":  {
+                                                    "completion_tokens":  230,
+                                                    "prompt_tokens":  554,
+                                                    "total_tokens":  784
+                                                },
+                                      "rawChunks":  231,
+                                      "events":  232
+                                  },
+                      "verification":  {
+                                           "command":  "/usr/local/bin/node tools/test.mjs",
+                                           "exitCode":  0,
+                                           "elapsedMs":  52,
+                                           "stdout":  "js-window tests passed\n",
+                                           "stderr":  "",
+                                           "timedOut":  false
+                                       }
+                  },
+                  {
+                      "task":  "browser-style",
+                      "exitCode":  0,
+                      "passed":  true,
+                      "resultPath":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-122142-docker-controlled-q4-workflow\\browser-style\\browser-style-result.json",
+                      "outputDir":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-122142-docker-controlled-q4-workflow\\browser-style",
+                      "stdout":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-122142-docker-controlled-q4-workflow\\docker-browser-style.out.txt",
+                      "stderr":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-122142-docker-controlled-q4-workflow\\docker-browser-style.err.txt",
+                      "metrics":  {
+                                      "firstByteMs":  1873.5,
+                                      "firstContentMs":  1873.7,
+                                      "wallMs":  3419.9,
+                                      "usage":  {
+                                                    "completion_tokens":  66,
+                                                    "prompt_tokens":  1087,
+                                                    "total_tokens":  1153
+                                                },
+                                      "rawChunks":  66,
+                                      "events":  68
+                                  },
+                      "verification":  {
+                                           "command":  "/usr/local/bin/node tools/test.mjs",
+                                           "exitCode":  0,
+                                           "elapsedMs":  51,
+                                           "stdout":  "browser-style tests passed\n",
+                                           "stderr":  "",
+                                           "timedOut":  false
+                                       }
+                  }
+              ],
+    "passed":  true
+}

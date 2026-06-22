@@ -1,0 +1,10 @@
+.git
+benchmarks/wsl-local-inference-benchmark/runtimes
+benchmarks/wsl-local-inference-benchmark/logs
+benchmarks/wsl-local-inference-benchmark/results
+benchmarks/opencode-agent-benchmark/fixtures/work
+downloads
+logs
+reports
+notes
+tools

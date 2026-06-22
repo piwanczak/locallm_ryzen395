@@ -1,0 +1,25 @@
+{
+  "date": "2026-06-21",
+  "status": "command-plan-generated-runtime-blocked",
+  "dockerAvailable": false,
+  "dockerBenchmarkRan": false,
+  "containerBuilt": false,
+  "containerStarted": false,
+  "piExecutedInsideContainer": false,
+  "base": {
+    "plan": "results/20260621-230439-pi-docker-dry-run/pi-docker-plan.json",
+    "models": "results/20260621-230439-pi-docker-dry-run/models.generated.json",
+    "service": "pi",
+    "baseUrl": "http://host.docker.internal:8080/v1",
+    "model": "local/qwen3-coder-30b-q4"
+  },
+  "browser": {
+    "plan": "results/20260621-230439-pi-browser-dry-run/pi-browser-plan.json",
+    "models": "results/20260621-230439-pi-browser-dry-run/models.generated.json",
+    "service": "pi-browser",
+    "profile": "browser",
+    "baseUrl": "http://host.docker.internal:8080/v1",
+    "model": "local/qwen3-coder-30b-q4"
+  },
+  "remainingBlocker": "No Docker, Podman, or nerdctl CLI is available on PATH, so no container image was built or run."
+}

@@ -1,0 +1,24 @@
+{
+    "createdAt":  "2026-06-22T08:26:02.2172093+02:00",
+    "dryRun":  true,
+    "distro":  "Ubuntu-24.04",
+    "port":  8091,
+    "contextSize":  8192,
+    "modelAlias":  "qwen/qwen3-coder-30b-q4",
+    "modelPath":  "%USERPROFILE%\\.lmstudio\\models\\lmstudio-community\\Qwen3-Coder-30B-A3B-Instruct-GGUF\\Qwen3-Coder-30B-A3B-Instruct-Q4_K_M.gguf",
+    "useExistingServer":  false,
+    "keepServer":  false,
+    "runRoot":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-082602-pi-jinja-q4-toolcall-workflow",
+    "logRoot":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\logs\\20260622-082602-pi-jinja-q4-toolcall-workflow",
+    "tasks":  [
+                  "file-create",
+                  "js-edit",
+                  "browser-style"
+              ],
+    "rawProbes":  [
+
+                  ],
+    "taskResults":  [
+
+                    ]
+}

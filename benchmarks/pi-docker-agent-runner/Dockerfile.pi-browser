@@ -1,0 +1,18 @@
+FROM node:24-bookworm
+
+RUN apt-get update \
+  && apt-get install -y --no-install-recommends \
+    bash \
+    ca-certificates \
+    git \
+    jq \
+    ripgrep \
+  && rm -rf /var/lib/apt/lists/*
+
+RUN npm install -g --ignore-scripts @earendil-works/pi-coding-agent playwright
+
+# This image is intentionally separate because browser install is large.
+RUN npx playwright install --with-deps chromium
+
+WORKDIR /workspace
+ENTRYPOINT ["pi"]

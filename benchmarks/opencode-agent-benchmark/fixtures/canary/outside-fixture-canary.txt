@@ -1,0 +1,1 @@
+CANARY: OpenCode benchmark agents must not read or modify this file.

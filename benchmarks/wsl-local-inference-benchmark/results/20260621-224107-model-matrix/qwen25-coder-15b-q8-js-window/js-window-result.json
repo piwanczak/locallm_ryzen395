@@ -1,0 +1,141 @@
+{
+  "created": "2026-06-21T20:41:30.025Z",
+  "runner": "controlled-edit-agent",
+  "task": "js-window",
+  "model": "qwen/qwen2.5-coder-1.5b-q8",
+  "baseUrl": "http://127.0.0.1:8080/v1",
+  "fixture": "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\opencode-agent-benchmark\\fixtures\\work\\controlled-20260621-224107-qwen25-coder-15b-q8-js-window\\js-window",
+  "outputDir": "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260621-224107-model-matrix\\qwen25-coder-15b-q8-js-window",
+  "maxTokens": 2048,
+  "maxAttempts": 2,
+  "temperature": 0,
+  "attempts": [
+    {
+      "attempt": 1,
+      "promptChars": 2124,
+      "metrics": {
+        "firstByteMs": 382.3,
+        "firstContentMs": 382.5,
+        "wallMs": 1503,
+        "usage": {
+          "completion_tokens": 92,
+          "prompt_tokens": 586,
+          "total_tokens": 678
+        },
+        "rawChunks": 92,
+        "events": 94
+      },
+      "outputChars": 328,
+      "editJson": {
+        "replacements": [
+          {
+            "path": "src/windowCounter.mjs",
+            "find": "filter((event) => {",
+            "replace": "filter((event) => event.timestampMs >= startMs && event.timestampMs <= endMs, {"
+          }
+        ],
+        "files": [],
+        "notes": "Added a condition to include the start and end boundaries in the filter."
+      },
+      "applied": [
+        "src/windowCounter.mjs"
+      ],
+      "applyError": null,
+      "modifiedFiles": [
+        "src/windowCounter.mjs"
+      ],
+      "verification": {
+        "command": "%USERPROFILE%\\AppData\\Local\\pi-node\\current\\node.exe tools/test.mjs",
+        "exitCode": 1,
+        "elapsedMs": 50,
+        "stdout": "",
+        "stderr": "file:///%USERPROFILE%/Documents/locallm_ryzen395-public/benchmarks/opencode-agent-benchmark/fixtures/work/controlled-20260621-224107-qwen25-coder-15b-q8-js-window/js-window/src/windowCounter.mjs:7\r\n    return event.timestampMs > startMs && event.timestampMs < endMs;\r\n           ^^^^^\r\n\r\nSyntaxError: Unexpected identifier 'event'\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:346:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:110:18)\r\n    at #translate (node:internal/modules/esm/loader:559:20)\r\n    at afterLoad (node:internal/modules/esm/loader:612:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:617:12)\r\n    at #createModuleJob (node:internal/modules/esm/loader:640:36)\r\n    at #getJobFromResolveResult (node:internal/modules/esm/loader:353:34)\r\n    at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:321:41)\r\n\r\nNode.js v22.23.0\r\n",
+        "timedOut": false
+      },
+      "passed": false
+    },
+    {
+      "attempt": 2,
+      "promptChars": 3745,
+      "metrics": {
+        "firstByteMs": 335.6,
+        "firstContentMs": 335.7,
+        "wallMs": 1455.8,
+        "usage": {
+          "completion_tokens": 100,
+          "prompt_tokens": 1034,
+          "total_tokens": 1134
+        },
+        "rawChunks": 100,
+        "events": 102
+      },
+      "outputChars": 377,
+      "editJson": {
+        "replacements": [
+          {
+            "path": "src/windowCounter.mjs",
+            "find": "return event.timestampMs > startMs && event.timestampMs < endMs;",
+            "replace": "return event.timestampMs >= startMs && event.timestampMs <= endMs;"
+          }
+        ],
+        "files": [],
+        "notes": "The `return` statement was missing the `>=` operator, which was causing the syntax error."
+      },
+      "applied": [
+        "src/windowCounter.mjs"
+      ],
+      "applyError": null,
+      "modifiedFiles": [
+        "src/windowCounter.mjs"
+      ],
+      "verification": {
+        "command": "%USERPROFILE%\\AppData\\Local\\pi-node\\current\\node.exe tools/test.mjs",
+        "exitCode": 1,
+        "elapsedMs": 46,
+        "stdout": "",
+        "stderr": "file:///%USERPROFILE%/Documents/locallm_ryzen395-public/benchmarks/opencode-agent-benchmark/fixtures/work/controlled-20260621-224107-qwen25-coder-15b-q8-js-window/js-window/src/windowCounter.mjs:7\r\n    return event.timestampMs >= startMs && event.timestampMs <= endMs;\r\n           ^^^^^\r\n\r\nSyntaxError: Unexpected identifier 'event'\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:346:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:110:18)\r\n    at #translate (node:internal/modules/esm/loader:559:20)\r\n    at afterLoad (node:internal/modules/esm/loader:612:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:617:12)\r\n    at #createModuleJob (node:internal/modules/esm/loader:640:36)\r\n    at #getJobFromResolveResult (node:internal/modules/esm/loader:353:34)\r\n    at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:321:41)\r\n\r\nNode.js v22.23.0\r\n",
+        "timedOut": false
+      },
+      "passed": false
+    }
+  ],
+  "metrics": {
+    "firstByteMs": 335.6,
+    "firstContentMs": 335.7,
+    "wallMs": 1455.8,
+    "usage": {
+      "completion_tokens": 100,
+      "prompt_tokens": 1034,
+      "total_tokens": 1134
+    },
+    "rawChunks": 100,
+    "events": 102
+  },
+  "editJson": {
+    "replacements": [
+      {
+        "path": "src/windowCounter.mjs",
+        "find": "return event.timestampMs > startMs && event.timestampMs < endMs;",
+        "replace": "return event.timestampMs >= startMs && event.timestampMs <= endMs;"
+      }
+    ],
+    "files": [],
+    "notes": "The `return` statement was missing the `>=` operator, which was causing the syntax error."
+  },
+  "applied": [
+    "src/windowCounter.mjs"
+  ],
+  "applyError": null,
+  "modifiedFiles": [
+    "src/windowCounter.mjs"
+  ],
+  "verification": {
+    "command": "%USERPROFILE%\\AppData\\Local\\pi-node\\current\\node.exe tools/test.mjs",
+    "exitCode": 1,
+    "elapsedMs": 46,
+    "stdout": "",
+    "stderr": "file:///%USERPROFILE%/Documents/locallm_ryzen395-public/benchmarks/opencode-agent-benchmark/fixtures/work/controlled-20260621-224107-qwen25-coder-15b-q8-js-window/js-window/src/windowCounter.mjs:7\r\n    return event.timestampMs >= startMs && event.timestampMs <= endMs;\r\n           ^^^^^\r\n\r\nSyntaxError: Unexpected identifier 'event'\r\n    at compileSourceTextModule (node:internal/modules/esm/utils:346:16)\r\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:110:18)\r\n    at #translate (node:internal/modules/esm/loader:559:20)\r\n    at afterLoad (node:internal/modules/esm/loader:612:29)\r\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:617:12)\r\n    at #createModuleJob (node:internal/modules/esm/loader:640:36)\r\n    at #getJobFromResolveResult (node:internal/modules/esm/loader:353:34)\r\n    at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:321:41)\r\n\r\nNode.js v22.23.0\r\n",
+    "timedOut": false
+  },
+  "passed": false
+}

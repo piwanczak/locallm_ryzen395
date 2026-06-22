@@ -1,0 +1,22 @@
+{
+  "date": "2026-06-22",
+  "phase": "phase-15-pi-tool-call-compatibility",
+  "piVersion": "0.79.9",
+  "dockerImage": "local/pi-agent:base",
+  "priorRun": "results/20260621-233951-pi-docker-q4-agent-edit-compat/pi-docker-q4-agent-edit-summary.json",
+  "sessionVolume": "pi-docker-agent-runner_pi-agent-sessions",
+  "observations": [
+    "Pi session logs contain assistant messages with plain text Qwen/llama.cpp function tags.",
+    "The assistant content did not contain Pi toolCall blocks.",
+    "No toolResult message was recorded.",
+    "The target file was not created in the mounted workspace.",
+    "Pi custom-provider docs require provider-emitted toolcall_start/toolcall_delta/toolcall_end events with a parsed toolCall block.",
+    "Pi model compatibility flags cover request-shape differences but do not convert assistant text into executable tool calls."
+  ],
+  "decision": "Pi Docker is build-validated and endpoint-connected, but it is not a working local editing agent against the current llama.cpp OpenAI-compatible Qwen endpoint.",
+  "requiredToPromote": [
+    "Use a provider endpoint that returns structured executable tool calls accepted by Pi.",
+    "Or implement a Pi custom provider/adapter that parses Qwen/llama.cpp function-tag text and emits Pi toolCall events."
+  ],
+  "defaultWorkflow": "Use the controlled edit-agent, or the Docker-controlled edit-agent runner, for the proven local coding workflow."
+}

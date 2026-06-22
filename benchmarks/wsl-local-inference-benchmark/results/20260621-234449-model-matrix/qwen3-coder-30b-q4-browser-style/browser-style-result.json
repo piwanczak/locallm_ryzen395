@@ -1,0 +1,97 @@
+{
+  "created": "2026-06-21T21:47:10.246Z",
+  "runner": "controlled-edit-agent",
+  "task": "browser-style",
+  "model": "qwen/qwen3-coder-30b-q4",
+  "baseUrl": "http://127.0.0.1:8080/v1",
+  "fixture": "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\opencode-agent-benchmark\\fixtures\\work\\controlled-20260621-234449-qwen3-coder-30b-q4-browser-style\\browser-style",
+  "outputDir": "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260621-234449-model-matrix\\qwen3-coder-30b-q4-browser-style",
+  "maxTokens": 2048,
+  "maxAttempts": 2,
+  "temperature": 0,
+  "attempts": [
+    {
+      "attempt": 1,
+      "promptChars": 4600,
+      "metrics": {
+        "firstByteMs": 2438.2,
+        "firstContentMs": 2438.5,
+        "wallMs": 4171.9,
+        "usage": {
+          "completion_tokens": 87,
+          "prompt_tokens": 1118,
+          "total_tokens": 1205
+        },
+        "rawChunks": 87,
+        "events": 89
+      },
+      "outputChars": 388,
+      "editJson": {
+        "replacements": [
+          {
+            "path": "app.js",
+            "find": "const match = haystack.includes(query);",
+            "replace": "const match = haystack.toLowerCase().includes(query.toLowerCase());"
+          }
+        ],
+        "files": [],
+        "notes": "Made the filter case-insensitive by converting both haystack and query to lowercase before comparison, while preserving the existing empty state logic."
+      },
+      "applied": [
+        "app.js"
+      ],
+      "applyError": null,
+      "modifiedFiles": [
+        "app.js"
+      ],
+      "verification": {
+        "command": "%USERPROFILE%\\AppData\\Local\\pi-node\\current\\node.exe tools/test.mjs",
+        "exitCode": 0,
+        "elapsedMs": 48,
+        "stdout": "browser-style tests passed\n",
+        "stderr": "",
+        "timedOut": false
+      },
+      "passed": true
+    }
+  ],
+  "metrics": {
+    "firstByteMs": 2438.2,
+    "firstContentMs": 2438.5,
+    "wallMs": 4171.9,
+    "usage": {
+      "completion_tokens": 87,
+      "prompt_tokens": 1118,
+      "total_tokens": 1205
+    },
+    "rawChunks": 87,
+    "events": 89
+  },
+  "editJson": {
+    "replacements": [
+      {
+        "path": "app.js",
+        "find": "const match = haystack.includes(query);",
+        "replace": "const match = haystack.toLowerCase().includes(query.toLowerCase());"
+      }
+    ],
+    "files": [],
+    "notes": "Made the filter case-insensitive by converting both haystack and query to lowercase before comparison, while preserving the existing empty state logic."
+  },
+  "applied": [
+    "app.js"
+  ],
+  "applyError": null,
+  "modifiedFiles": [
+    "app.js"
+  ],
+  "verification": {
+    "command": "%USERPROFILE%\\AppData\\Local\\pi-node\\current\\node.exe tools/test.mjs",
+    "exitCode": 0,
+    "elapsedMs": 48,
+    "stdout": "browser-style tests passed\n",
+    "stderr": "",
+    "timedOut": false
+  },
+  "passed": true
+}

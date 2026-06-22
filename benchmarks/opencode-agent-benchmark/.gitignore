@@ -1,0 +1,7 @@
+.tmp/
+.xdg-cache/
+.xdg-config/
+.xdg-data/
+.xdg-state/
+.opencode-empty/node_modules/
+fixtures/work/

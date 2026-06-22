@@ -1,0 +1,16 @@
+{
+  "fixtureDir": "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\opencode-agent-benchmark\\fixtures\\work\\wsl-20260621-214423\\js-window",
+  "taskName": "js-window",
+  "modifiedFiles": [
+    "src/windowCounter.mjs"
+  ],
+  "verification": {
+    "command": "node tools/test.mjs",
+    "exitCode": 0,
+    "elapsedMs": 259,
+    "stdout": "js-window tests passed\n",
+    "stderr": "",
+    "timedOut": false
+  },
+  "passed": true
+}

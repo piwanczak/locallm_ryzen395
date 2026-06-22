@@ -1,0 +1,90 @@
+{
+  "created": "2026-06-21T20:56:12.618Z",
+  "baseUrl": "http://127.0.0.1:8080/v1",
+  "model": "qwen/qwen3-coder-30b-q4",
+  "promptChars": 79,
+  "promptTokenEstimate": 22,
+  "maxTokens": 128,
+  "temperature": 0,
+  "concurrency": 4,
+  "ok": true,
+  "successful": 4,
+  "failed": 0,
+  "firstByteMsMin": 373,
+  "firstContentMsMin": 373.2,
+  "decodeTokPerSecAggregateEstimate": 96.27,
+  "results": [
+    {
+      "index": 1,
+      "ok": true,
+      "firstByteMs": 373,
+      "firstContentMs": 373.2,
+      "wallMs": 5956.9,
+      "outputChars": 466,
+      "outputTokenEstimate": 128,
+      "decodeTokPerSecEstimate": 22.92,
+      "usage": {
+        "completion_tokens": 128,
+        "prompt_tokens": 39,
+        "total_tokens": 167
+      },
+      "rawChunks": 130,
+      "events": 131,
+      "outputPreview": "```javascript\nfunction slidingWindowCount(arr, windowSize) {\n    if (arr.length < windowSize) return [];\n    \n    const result = [];\n    for (let i = 0; i <= arr.length - windowSize; i++) {\n        result.push(arr.slice(i, i + windowSize).reduce((sum, val) => sum + val, 0));\n    }\n    return result;\n}\n```\n\nThis function takes an array and a window size, then returns an array of sums for each sliding window position. For example, `slidingWindowCount([1, 2, 3, 4, "
+    },
+    {
+      "index": 2,
+      "ok": true,
+      "firstByteMs": 732,
+      "firstContentMs": 732,
+      "wallMs": 5967.8,
+      "outputChars": 466,
+      "outputTokenEstimate": 128,
+      "decodeTokPerSecEstimate": 24.45,
+      "usage": {
+        "completion_tokens": 128,
+        "prompt_tokens": 39,
+        "total_tokens": 167
+      },
+      "rawChunks": 128,
+      "events": 131,
+      "outputPreview": "```javascript\nfunction slidingWindowCount(arr, windowSize) {\n    if (arr.length < windowSize) return [];\n    \n    const result = [];\n    for (let i = 0; i <= arr.length - windowSize; i++) {\n        result.push(arr.slice(i, i + windowSize).reduce((sum, val) => sum + val, 0));\n    }\n    return result;\n}\n```\n\nThis function takes an array and a window size, then returns an array of sums for each sliding window position. For example, `slidingWindowCount([1, 2, 3, 4, "
+    },
+    {
+      "index": 3,
+      "ok": true,
+      "firstByteMs": 730,
+      "firstContentMs": 730.1,
+      "wallMs": 5965.9,
+      "outputChars": 466,
+      "outputTokenEstimate": 128,
+      "decodeTokPerSecEstimate": 24.45,
+      "usage": {
+        "completion_tokens": 128,
+        "prompt_tokens": 39,
+        "total_tokens": 167
+      },
+      "rawChunks": 129,
+      "events": 131,
+      "outputPreview": "```javascript\nfunction slidingWindowCount(arr, windowSize) {\n    if (arr.length < windowSize) return [];\n    \n    const result = [];\n    for (let i = 0; i <= arr.length - windowSize; i++) {\n        result.push(arr.slice(i, i + windowSize).reduce((sum, val) => sum + val, 0));\n    }\n    return result;\n}\n```\n\nThis function takes an array and a window size, then returns an array of sums for each sliding window position. For example, `slidingWindowCount([1, 2, 3, 4, "
+    },
+    {
+      "index": 4,
+      "ok": true,
+      "firstByteMs": 732.8,
+      "firstContentMs": 732.8,
+      "wallMs": 5967.4,
+      "outputChars": 466,
+      "outputTokenEstimate": 128,
+      "decodeTokPerSecEstimate": 24.45,
+      "usage": {
+        "completion_tokens": 128,
+        "prompt_tokens": 39,
+        "total_tokens": 167
+      },
+      "rawChunks": 128,
+      "events": 131,
+      "outputPreview": "```javascript\nfunction slidingWindowCount(arr, windowSize) {\n    if (arr.length < windowSize) return [];\n    \n    const result = [];\n    for (let i = 0; i <= arr.length - windowSize; i++) {\n        result.push(arr.slice(i, i + windowSize).reduce((sum, val) => sum + val, 0));\n    }\n    return result;\n}\n```\n\nThis function takes an array and a window size, then returns an array of sums for each sliding window position. For example, `slidingWindowCount([1, 2, 3, 4, "
+    }
+  ]
+}

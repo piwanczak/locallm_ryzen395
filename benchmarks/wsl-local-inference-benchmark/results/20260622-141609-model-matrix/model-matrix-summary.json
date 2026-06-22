@@ -1,0 +1,36 @@
+{
+    "runId":  "20260622-141609-model-matrix",
+    "createdAt":  "2026-06-22T14:18:10.6694955+02:00",
+    "distro":  "Ubuntu-24.04",
+    "port":  8104,
+    "contextSize":  16384,
+    "parallel":  1,
+    "calibrationMaxTokens":  128,
+    "calibrationConcurrency":  1,
+    "agentMaxTokens":  2048,
+    "agentMaxAttempts":  2,
+    "agentTasks":  [
+                       "js-window",
+                       "browser-style"
+                   ],
+    "skipAgent":  false,
+    "resultRoot":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-141609-model-matrix",
+    "logRoot":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\logs\\20260622-141609-model-matrix",
+    "models":  [
+                   {
+                       "key":  "qwen3-coder-30b-q2",
+                       "alias":  "qwen/qwen3-coder-30b-q2",
+                       "path":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\downloads\\Qwen3-Coder-30B-A3B-Instruct-Q2_K.gguf",
+                       "contextSize":  16384,
+                       "parallel":  1,
+                       "port":  8104,
+                       "logDir":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\logs\\20260622-141609-model-matrix\\qwen3-coder-30b-q2",
+                       "calibration":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-141609-model-matrix\\qwen3-coder-30b-q2-calibration-single.json",
+                       "agent":  {
+                                     "js-window":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-141609-model-matrix\\qwen3-coder-30b-q2-js-window\\js-window-result.json",
+                                     "browser-style":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-141609-model-matrix\\qwen3-coder-30b-q2-browser-style\\browser-style-result.json"
+                                 },
+                       "error":  null
+                   }
+               ]
+}

@@ -1,0 +1,43 @@
+{
+    "createdAt":  "2026-06-22T11:10:54.0993903+02:00",
+    "completedAt":  "2026-06-22T11:10:54.1469185+02:00",
+    "apply":  false,
+    "distro":  "Ubuntu-24.04",
+    "port":  8091,
+    "contextSize":  8192,
+    "modelAlias":  "qwen/qwen3-coder-30b-q4",
+    "modelPath":  "%USERPROFILE%\\.lmstudio\\models\\lmstudio-community\\Qwen3-Coder-30B-A3B-Instruct-GGUF\\Qwen3-Coder-30B-A3B-Instruct-Q4_K_M.gguf",
+    "tasks":  [
+                  "file-create",
+                  "js-edit",
+                  "browser-style"
+              ],
+    "memoryCaps":  [
+                       "DEFAULT,51539607552,34359738368"
+                   ],
+    "wslConfigPath":  "%USERPROFILE%\\.wslconfig",
+    "hadExistingWslConfig":  false,
+    "backupPath":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-111054-pi-memory-cap-sweep\\wslconfig-before.txt",
+    "runRoot":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-111054-pi-memory-cap-sweep",
+    "rows":  [
+                 {
+                     "memoryCap":  "DEFAULT,51539607552,34359738368",
+                     "status":  "planned",
+                     "appliedConfig":  null,
+                     "memoryProbe":  null,
+                     "memoryProbeExitCode":  null,
+                     "workflowOutputPath":  null,
+                     "workflowExitPath":  null,
+                     "workflowExitCode":  null,
+                     "workflowSummaryPath":  null,
+                     "workflowRunRoot":  null,
+                     "taskStatus":  [
+
+                                    ],
+                     "error":  null
+                 }
+             ],
+    "restoredOriginalConfig":  false,
+    "finalWslShutdown":  false,
+    "passed":  false
+}

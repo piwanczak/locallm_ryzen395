@@ -1,0 +1,57 @@
+{
+    "runId":  "20260622-150244-gemma-65k-opencode-lmstudio",
+    "createdAt":  "2026-06-22T15:24:07.0755575+02:00",
+    "sourceResult":  "benchmarks/opencode-agent-benchmark/results/20260622-150244/runs.jsonl",
+    "sourceProxyEvents":  "benchmarks/opencode-agent-benchmark/results/20260622-150244/proxy-events.jsonl",
+    "model":  "google/gemma-4-e4b",
+    "profile":  "gemma-65k",
+    "contextTarget":  65536,
+    "promptSourceMode":  "thin",
+    "promptPaddingMode":  "neutral",
+    "promptTokenTarget":  51118,
+    "tasks":  [
+                  {
+                      "task":  "js-window",
+                      "passed":  false,
+                      "opencodeExitCode":  0,
+                      "timedOut":  false,
+                      "elapsedMs":  297310.6,
+                      "promptTokenEstimate":  51365,
+                      "inputTokensMax":  51629,
+                      "outputTokensTotal":  76,
+                      "stepCount":  1,
+                      "toolCallCount":  0,
+                      "modifiedFiles":  [
+
+                                        ],
+                      "verifierExitCode":  1,
+                      "canaryUnchanged":  true,
+                      "prompt":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\opencode-agent-benchmark\\prompts\\20260622-150244\\gemma-65k-js-window-prompt.md",
+                      "stdout":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\opencode-agent-benchmark\\logs\\20260622-150244\\gemma-65k-js-window-opencode.stdout.jsonl",
+                      "stderr":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\opencode-agent-benchmark\\logs\\20260622-150244\\gemma-65k-js-window-opencode.stderr.log"
+                  },
+                  {
+                      "task":  "browser-style",
+                      "passed":  true,
+                      "opencodeExitCode":  0,
+                      "timedOut":  false,
+                      "elapsedMs":  504804.9,
+                      "promptTokenEstimate":  51284,
+                      "inputTokensMax":  56635,
+                      "outputTokensTotal":  1088,
+                      "stepCount":  8,
+                      "toolCallCount":  7,
+                      "modifiedFiles":  [
+                                            "app.js"
+                                        ],
+                      "verifierExitCode":  0,
+                      "canaryUnchanged":  true,
+                      "prompt":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\opencode-agent-benchmark\\prompts\\20260622-150244\\gemma-65k-browser-style-prompt.md",
+                      "stdout":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\opencode-agent-benchmark\\logs\\20260622-150244\\gemma-65k-browser-style-opencode.stdout.jsonl",
+                      "stderr":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\opencode-agent-benchmark\\logs\\20260622-150244\\gemma-65k-browser-style-opencode.stderr.log"
+                  }
+              ],
+    "proxyRequests":  9,
+    "passed":  false,
+    "notes":  "OpenCode run used neutral-padded thin prompts around 51k estimated tokens. js-window stopped without tool calls and failed; browser-style passed after tool use."
+}

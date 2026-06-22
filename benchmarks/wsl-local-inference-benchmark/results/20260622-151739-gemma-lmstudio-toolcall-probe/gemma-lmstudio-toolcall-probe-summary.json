@@ -1,0 +1,13 @@
+{
+    "runId":  "20260622-151739-gemma-lmstudio-toolcall-probe",
+    "createdAt":  "2026-06-22T15:17:39.6214546+02:00",
+    "model":  "google/gemma-4-e4b",
+    "contextSize":  16384,
+    "nonstream":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-151739-gemma-lmstudio-toolcall-probe\\gemma-lmstudio-toolcall-nonstream.json",
+    "stream":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-151739-gemma-lmstudio-toolcall-probe\\gemma-lmstudio-toolcall-stream.json",
+    "nonstreamExitCode":  0,
+    "streamExitCode":  0,
+    "lmsPsAfter":  "",
+    "passed":  true,
+    "completedAt":  "2026-06-22T15:17:52.2037405+02:00"
+}

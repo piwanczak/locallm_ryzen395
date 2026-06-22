@@ -1,0 +1,25 @@
+{
+    "createdAt":  "2026-06-22T07:51:45.3028688+02:00",
+    "validation":  "Pi non-interactive -p edit against WSL ROCm Q4 llama.cpp endpoint with explicit Jinja structured tool-call support",
+    "exitCode":  1,
+    "model":  "qwen/qwen3-coder-30b-q4",
+    "piModelArg":  "local-openai/qwen/qwen3-coder-30b-q4",
+    "baseUrlFromContainer":  "http://host.docker.internal:8091/v1",
+    "piArgs":  [
+                   "--model",
+                   "local-openai/qwen/qwen3-coder-30b-q4",
+                   "--thinking",
+                   "off",
+                   "--tools",
+                   "write",
+                   "-p",
+                   "Create a file named pi_docker_result.txt in the current workspace containing exactly PI_DOCKER_OK and nothing else. Do not modify any other file."
+               ],
+    "workspace":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-075144-pi-docker-q4-jinja-toolcall-edit-print\\workspace",
+    "resultFile":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-075144-pi-docker-q4-jinja-toolcall-edit-print\\workspace\\pi_docker_result.txt",
+    "resultFileExists":  false,
+    "resultContent":  null,
+    "passed":  false,
+    "planPath":  null,
+    "piOutputPath":  "%USERPROFILE%\\Documents\\locallm_ryzen395-public\\benchmarks\\wsl-local-inference-benchmark\\results\\20260622-075144-pi-docker-q4-jinja-toolcall-edit-print\\pi-agent-edit.out.txt"
+}
