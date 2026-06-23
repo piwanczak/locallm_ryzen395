@@ -24,13 +24,13 @@ The clean practical Gemma E4B ceiling from this run is `65k` context in Windows 
 
 | Lane | Result | Evidence |
 | --- | --- | --- |
-| WSL ROCm AMD llama.cpp | Fail to load | `unknown model architecture: 'gemma4'` in `../results/20260622-145214-model-matrix/model-matrix-summary.json` |
-| Windows LM Studio 16k/32k | Pass | `../results/20260622-145415-windows-lmstudio-controlled-context-ladder/windows-lmstudio-controlled-context-ladder-summary.json` |
-| Windows LM Studio 48k/65k | Pass | `../results/20260622-145556-windows-lmstudio-controlled-context-ladder/windows-lmstudio-controlled-context-ladder-summary.json` |
-| Windows LM Studio 131k | Partial | `js-window` passed; `browser-style` failed in `../results/20260622-145758-windows-lmstudio-controlled-context-ladder/windows-lmstudio-controlled-context-ladder-summary.json` |
-| OpenCode 65k neutral-padded | Mixed | `browser-style` passed; `js-window` failed in `../results/20260622-150244-gemma-65k-opencode-lmstudio/gemma-65k-opencode-lmstudio-summary.json` |
-| LM Studio raw tool calls | Pass | non-stream and stream probes passed in `../results/20260622-151739-gemma-lmstudio-toolcall-probe/gemma-lmstudio-toolcall-probe-summary.json` |
-| Pi through LM Studio | Pass for file-create | real Pi `write` tool call in `../results/20260622-152232-gemma-lmstudio-pi-file-create/gemma-lmstudio-pi-file-create-summary.json` |
+| WSL ROCm AMD llama.cpp | Fail to load | `unknown model architecture: 'gemma4'` in `results/20260622-145214-model-matrix/model-matrix-summary.json` |
+| Windows LM Studio 16k/32k | Pass | `results/20260622-145415-windows-lmstudio-controlled-context-ladder/windows-lmstudio-controlled-context-ladder-summary.json` |
+| Windows LM Studio 48k/65k | Pass | `results/20260622-145556-windows-lmstudio-controlled-context-ladder/windows-lmstudio-controlled-context-ladder-summary.json` |
+| Windows LM Studio 131k | Partial | `js-window` passed; `browser-style` failed in `results/20260622-145758-windows-lmstudio-controlled-context-ladder/windows-lmstudio-controlled-context-ladder-summary.json` |
+| OpenCode 65k neutral-padded | Mixed | `browser-style` passed; `js-window` failed in `results/20260622-150244-gemma-65k-opencode-lmstudio/gemma-65k-opencode-lmstudio-summary.json` |
+| LM Studio raw tool calls | Pass | non-stream and stream probes passed in `results/20260622-151739-gemma-lmstudio-toolcall-probe/gemma-lmstudio-toolcall-probe-summary.json` |
+| Pi through LM Studio | Pass for file-create | real Pi `write` tool call in `results/20260622-152232-gemma-lmstudio-pi-file-create/gemma-lmstudio-pi-file-create-summary.json` |
 
 ## Controlled Context Ladder
 

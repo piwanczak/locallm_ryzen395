@@ -14,7 +14,7 @@ Date: 2026-06-21
 | Agent workflow | `scripts/run-controlled-edit-agent.mjs` for small edit tasks and verifier-backed simple frontend tasks |
 | One-command wrapper | `scripts/run-recommended-q4-workflow.ps1` |
 | Containerized wrapper | `scripts/run-docker-controlled-q4-workflow.ps1 -Build` |
-| Benchmark record | Keep raw JSON under `../results/`; summarize in Markdown reports and render HTML |
+| Benchmark record | Keep raw JSON under `results/`; summarize in Markdown reports and render HTML |
 
 ## Why
 

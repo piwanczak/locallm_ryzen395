@@ -6,6 +6,7 @@ import { performance } from "node:perf_hooks";
 const listenPort = Number(process.argv[2] ?? "5678");
 const targetBase = new URL(process.argv[3] ?? "http://127.0.0.1:1234");
 const resultFile = path.resolve(process.argv[4] ?? "results/proxy-events.jsonl");
+const injectedReasoningEffort = (process.env.LMSTUDIO_PROXY_REASONING_EFFORT ?? "").trim();
 
 fs.mkdirSync(path.dirname(resultFile), { recursive: true });
 
@@ -36,6 +37,7 @@ function estimatePromptChars(body) {
       stream: Boolean(json.stream),
       max_tokens: json.max_tokens ?? json.max_completion_tokens ?? null,
       temperature: json.temperature ?? null,
+      reasoning_effort: json.reasoning_effort ?? null,
       prompt_chars: messageText.length,
       prompt_token_estimate: Math.round(messageText.length / 3.7)
     };
@@ -44,8 +46,21 @@ function estimatePromptChars(body) {
   }
 }
 
+function maybeInjectReasoningEffort(body) {
+  if (!injectedReasoningEffort) return body;
+  try {
+    const json = JSON.parse(body.toString("utf8"));
+    if (!Array.isArray(json.messages)) return body;
+    if (json.reasoning_effort !== undefined) return body;
+    json.reasoning_effort = injectedReasoningEffort;
+    return Buffer.from(JSON.stringify(json), "utf8");
+  } catch {
+    return body;
+  }
+}
+
 const server = http.createServer(async (clientReq, clientRes) => {
-  const body = await collect(clientReq);
+  const body = maybeInjectReasoningEffort(await collect(clientReq));
   const started = performance.now();
   const requestMeta = estimatePromptChars(body);
   const requestId = `${Date.now()}-${Math.random().toString(16).slice(2)}`;
@@ -147,7 +162,7 @@ function elapsedSince(started) {
 }
 
 server.listen(listenPort, "127.0.0.1", () => {
-  console.log(JSON.stringify({ event: "lmstudio-proxy-listening", port: listenPort, target: targetBase.href, resultFile }));
+  console.log(JSON.stringify({ event: "lmstudio-proxy-listening", port: listenPort, target: targetBase.href, resultFile, injectedReasoningEffort: injectedReasoningEffort || null }));
 });
 
 process.on("SIGTERM", () => server.close(() => process.exit(0)));

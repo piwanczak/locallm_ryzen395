@@ -12,25 +12,31 @@ const markdownPath = path.join(reportsDir, "local-inference-dashboard.md");
 const htmlPath = path.join(reportsDir, "local-inference-dashboard.html");
 
 const projectSummary = {
-  updatedThrough: "2026-06-22",
-  headline: "Current promoted local coding stack: Qwen3 Coder 30B Q4 is viable at 16k for controlled WSL ROCm work, Pi Docker tool-call validation, Docker-controlled tasks, OpenCode thin-prompt tasks, and Windows LM Studio controlled tasks. Use controlled runners for measurement, Pi for Dockerized executable tool-call validation, and OpenCode as a slower realism benchmark.",
+  updatedThrough: "2026-06-23",
+  headline: "Current promoted local coding stack: Qwen3 Coder 30B Q4 remains the default across WSL ROCm, Pi Docker, Docker-controlled, OpenCode, and Windows LM Studio evidence. Gemma 4 12B remains an experimental Windows LM Studio high-context lane after passing controlled reliability checks with reasoning_effort=none, but it did not perform well on the corrected real-usage OpenCode matrix. The broader real-usage work now shows that Qwen can pass practical tasks in OpenCode and Pi, but reliable small coding-agent work still needs stronger task completion and write-boundary controls.",
   currentRecommendation: [
     {
       label: "Endpoint",
-      value: "WSL ROCm llama.cpp with Qwen3 Coder 30B Q4, CTX_SIZE=16384 when context is useful, PARALLEL=1, LLAMA_JINJA=1 for Pi/tool-call work. Keep 8k as the lower-overhead baseline.",
+      value: "WSL ROCm llama.cpp with Qwen3 Coder 30B Q4, CTX_SIZE=16384 when context is useful, PARALLEL=1, LLAMA_JINJA=1 for Pi/tool-call work. Keep 8k as the lower-overhead baseline. Use Windows LM Studio Gemma 4 12B for experimental high-context checks only when every request path can set reasoning_effort=none.",
       links: [
         { label: "Phase 21 16k controlled/Pi", href: "phase-21-16k-controlled-pi-context.html" },
         { label: "Phase 22 16k OpenCode/Windows", href: "phase-22-16k-opencode-windows-models.html" },
+        { label: "Phase 23 Gemma E4B", href: "phase-23-gemma4-e4b-context-comparison.html" },
+        { label: "Phase 24 Gemma 12B", href: "phase-24-gemma4-12b-context-comparison.html" },
+        { label: "Phase 25 Gemma 12B follow-up", href: "phase-25-gemma4-12b-follow-up-validation.html" },
         { label: "Phase 20 final recommendation", href: "phase-20-runner-endpoint-final-recommendation.html" },
         { label: "Phase 16 Pi recovery", href: "phase-16-pi-jinja-toolcall-recovery.html" }
       ]
     },
     {
       label: "Runner",
-      value: "Use the host/WSL controlled runner as the default benchmark harness; use Docker-controlled for Linux isolation; use Pi when validating Dockerized agentic tool execution; use OpenCode for slower full-agent realism checks.",
+      value: "Use the host/WSL controlled runner as the default benchmark harness; use Docker-controlled for Linux isolation; use guarded Pi Docker when validating Dockerized agentic tool execution; use OpenCode for slower full-agent realism checks. Use the real-usage benchmark before promoting any stack as useful for practical backend/frontend coding work. In the corrected follow-up, OpenCode produced multiple verified passes and guarded Pi Qwen passed multi-file-cart with no safety violations.",
       links: [
         { label: "Phase 03 recommendation", href: "phase-03-recommendation.html" },
-        { label: "Runner comparison summary", href: "../results/20260622-121739-runner-comparison/runner-comparison-summary.json" }
+        { label: "Runner comparison summary", href: "../results/20260622-121739-runner-comparison/runner-comparison-summary.json" },
+        { label: "Real-usage rationale", href: "../../real-usage-agent-benchmark/reports/real-usage-benchmark-rationale.html" },
+        { label: "Real-usage execution", href: "../../real-usage-agent-benchmark/reports/2026-06-22-real-usage-agent-execution.html" },
+        { label: "Real-usage follow-up", href: "../../real-usage-agent-benchmark/reports/2026-06-23-real-usage-followup-and-pi-guard.html" }
       ]
     },
     {
@@ -111,6 +117,46 @@ const projectSummary = {
         { label: "16k OpenCode summary", href: "../results/20260622-140434-16k-opencode-wsl-workflow/16k-opencode-wsl-workflow-summary.json" },
         { label: "Windows LM Studio 16k summary", href: "../results/20260622-142238-windows-lmstudio-16k-controlled/windows-lmstudio-16k-controlled-summary.json" }
       ]
+    },
+    {
+      area: "Gemma E4B context check",
+      result: "The earlier fallback Gemma 4 E4B passed Windows LM Studio controlled tasks through 65k, loaded at 131k but failed protected browser-style, failed WSL ROCm load because AMD llama.cpp build 8407 does not recognize gemma4, passed raw LM Studio tool-call probes, and passed a simple Pi file-create task through LM Studio. It is superseded by the actual 12B check.",
+      links: [
+        { label: "Phase 23 Gemma E4B", href: "phase-23-gemma4-e4b-context-comparison.html" },
+        { label: "65k controlled summary", href: "../results/20260622-145556-windows-lmstudio-controlled-context-ladder/windows-lmstudio-controlled-context-ladder-summary.json" },
+        { label: "65k OpenCode summary", href: "../results/20260622-150244-gemma-65k-opencode-lmstudio/gemma-65k-opencode-lmstudio-summary.json" },
+        { label: "Pi through LM Studio summary", href: "../results/20260622-152232-gemma-lmstudio-pi-file-create/gemma-lmstudio-pi-file-create-summary.json" }
+      ]
+    },
+    {
+      area: "Gemma 4 12B context check",
+      result: "The actual Gemma 4 12B model is installed. WSL ROCm still cannot load gemma4, but Windows LM Studio passed controlled js-window and protected browser-style through 262k when requests used reasoning_effort=none. A 3-run reliability sweep passed 18/18 task cells across 16k, 65k, and 262k. OpenCode passed real neutral-padded 65k js-window and browser-style tasks, but each took about 11.7 minutes. Raw tool calls passed, and Pi through LM Studio now passes file-create, JS edit, and protected browser-style.",
+      links: [
+        { label: "Phase 24 Gemma 12B", href: "phase-24-gemma4-12b-context-comparison.html" },
+        { label: "Phase 25 Gemma 12B follow-up", href: "phase-25-gemma4-12b-follow-up-validation.html" },
+        { label: "262k controlled summary", href: "../results/20260622-171416-windows-lmstudio-controlled-context-ladder/windows-lmstudio-controlled-context-ladder-summary.json" },
+        { label: "Reliability sweep", href: "../results/20260622-185709-gemma12-controlled-reliability-sweep/gemma12-controlled-reliability-sweep-summary.json" },
+        { label: "65k OpenCode summary", href: "../results/20260622-171740-gemma12-65k-opencode-lmstudio/gemma12-65k-opencode-lmstudio-summary.json" },
+        { label: "Tool-call summary", href: "../results/20260622-174238-gemma12-lmstudio-toolcall-probe/gemma12-lmstudio-toolcall-probe-summary.json" },
+        { label: "Pi through LM Studio file-create", href: "../results/20260622-174543-gemma12-pi-lmstudio-file-create/gemma12-pi-lmstudio-file-create-summary.json" },
+        { label: "Pi JS/browser follow-up", href: "../results/20260622-185347-gemma12-pi-lmstudio-workflow/gemma12-pi-lmstudio-workflow-summary.json" },
+        { label: "WSL recheck", href: "../results/20260622-200545-model-matrix/model-matrix-summary.json" }
+      ]
+    },
+    {
+      area: "Real-usage benchmark",
+      result: "A runner-neutral seven-task suite now exists for backend API work, multi-file bugfixes, schema validation, CLI enhancement, frontend behavior, failing-command recovery, and canary-boundary checks. The follow-up corrected OpenCode prompting and added a Pi guarded-workspace mode. Official Qwen3 Coder 30B passed multi-file-cart and frontend-filter under corrected OpenCode, and passed multi-file-cart under guarded Pi with runner exit 0, verifier success, no allowlist violations, and canary unchanged. Backend-api remains unsolved and is still the best discriminator.",
+      links: [
+        { label: "Real-usage rationale", href: "../../real-usage-agent-benchmark/reports/real-usage-benchmark-rationale.html" },
+        { label: "Real-usage execution", href: "../../real-usage-agent-benchmark/reports/2026-06-22-real-usage-agent-execution.html" },
+        { label: "Real-usage follow-up", href: "../../real-usage-agent-benchmark/reports/2026-06-23-real-usage-followup-and-pi-guard.html" },
+        { label: "Follow-up rollup", href: "../../real-usage-agent-benchmark/reports/2026-06-23-followup-rollup.html" },
+        { label: "Self-test summary", href: "../../real-usage-agent-benchmark/results/20260622-212319-self-test/real-usage-self-test-summary.json" },
+        { label: "Direct API matrix", href: "../../real-usage-agent-benchmark/results/20260622-214606-lmstudio-direct-matrix/lmstudio-direct-api-matrix-summary.json" },
+        { label: "OpenCode matrix", href: "../../real-usage-agent-benchmark/results/20260622-220530-lmstudio-opencode-matrix/lmstudio-opencode-matrix-summary.json" },
+        { label: "Corrected OpenCode matrix", href: "../../real-usage-agent-benchmark/results/20260623-075932-lmstudio-opencode-matrix/lmstudio-opencode-matrix-summary.json" },
+        { label: "Guarded Pi matrix", href: "../../real-usage-agent-benchmark/results/20260623-211617-lmstudio-pi-matrix/lmstudio-pi-matrix-summary.json" }
+      ]
     }
   ],
   canonicalArtifacts: [
@@ -123,9 +169,36 @@ const projectSummary = {
     { label: "16k controlled WSL comparison", href: "../results/20260622-133115-16k-controlled-context-comparison/16k-controlled-context-comparison-summary.json" },
     { label: "16k Pi challenge suite", href: "../results/20260622-134255-pi-challenge-suite/pi-challenge-suite-summary.json" },
     { label: "16k OpenCode workflow", href: "../results/20260622-140434-16k-opencode-wsl-workflow/16k-opencode-wsl-workflow-summary.json" },
-    { label: "16k Windows LM Studio controlled", href: "../results/20260622-142238-windows-lmstudio-16k-controlled/windows-lmstudio-16k-controlled-summary.json" }
+    { label: "16k Windows LM Studio controlled", href: "../results/20260622-142238-windows-lmstudio-16k-controlled/windows-lmstudio-16k-controlled-summary.json" },
+    { label: "Gemma E4B 65k controlled", href: "../results/20260622-145556-windows-lmstudio-controlled-context-ladder/windows-lmstudio-controlled-context-ladder-summary.json" },
+    { label: "Gemma E4B 65k OpenCode", href: "../results/20260622-150244-gemma-65k-opencode-lmstudio/gemma-65k-opencode-lmstudio-summary.json" },
+    { label: "Gemma E4B LM Studio Pi file-create", href: "../results/20260622-152232-gemma-lmstudio-pi-file-create/gemma-lmstudio-pi-file-create-summary.json" },
+    { label: "Gemma 12B 262k controlled", href: "../results/20260622-171416-windows-lmstudio-controlled-context-ladder/windows-lmstudio-controlled-context-ladder-summary.json" },
+    { label: "Gemma 12B 65k OpenCode", href: "../results/20260622-171740-gemma12-65k-opencode-lmstudio/gemma12-65k-opencode-lmstudio-summary.json" },
+    { label: "Gemma 12B LM Studio tool calls", href: "../results/20260622-174238-gemma12-lmstudio-toolcall-probe/gemma12-lmstudio-toolcall-probe-summary.json" },
+    { label: "Gemma 12B LM Studio Pi file-create", href: "../results/20260622-174543-gemma12-pi-lmstudio-file-create/gemma12-pi-lmstudio-file-create-summary.json" },
+    { label: "Gemma 12B LM Studio Pi JS/browser", href: "../results/20260622-185347-gemma12-pi-lmstudio-workflow/gemma12-pi-lmstudio-workflow-summary.json" },
+    { label: "Gemma 12B controlled reliability sweep", href: "../results/20260622-185709-gemma12-controlled-reliability-sweep/gemma12-controlled-reliability-sweep-summary.json" },
+    { label: "Gemma 12B WSL ROCm recheck", href: "../results/20260622-200545-model-matrix/model-matrix-summary.json" },
+    { label: "Real-usage execution report", href: "../../real-usage-agent-benchmark/reports/2026-06-22-real-usage-agent-execution.html" },
+    { label: "Real-usage follow-up report", href: "../../real-usage-agent-benchmark/reports/2026-06-23-real-usage-followup-and-pi-guard.html" },
+    { label: "Real-usage follow-up rollup", href: "../../real-usage-agent-benchmark/reports/2026-06-23-followup-rollup.html" },
+    { label: "Real-usage benchmark self-test", href: "../../real-usage-agent-benchmark/results/20260622-212319-self-test/real-usage-self-test-summary.json" },
+    { label: "Real-usage direct API matrix", href: "../../real-usage-agent-benchmark/results/20260622-214606-lmstudio-direct-matrix/lmstudio-direct-api-matrix-summary.json" },
+    { label: "Real-usage OpenCode matrix", href: "../../real-usage-agent-benchmark/results/20260622-220530-lmstudio-opencode-matrix/lmstudio-opencode-matrix-summary.json" },
+    { label: "Real-usage Pi matrix", href: "../../real-usage-agent-benchmark/results/20260622-231019-lmstudio-pi-matrix/lmstudio-pi-matrix-summary.json" },
+    { label: "Corrected real-usage OpenCode matrix", href: "../../real-usage-agent-benchmark/results/20260623-075932-lmstudio-opencode-matrix/lmstudio-opencode-matrix-summary.json" },
+    { label: "Guarded real-usage Pi matrix", href: "../../real-usage-agent-benchmark/results/20260623-211617-lmstudio-pi-matrix/lmstudio-pi-matrix-summary.json" }
   ],
   openLimits: [
+    "Gemma 4 12B cannot currently use the promoted WSL ROCm llama.cpp lane because the AMD build does not recognize gemma4.",
+    "Gemma 4 12B requires reasoning_effort=none on LM Studio/OpenAI-compatible request paths; default reasoning exhausted output tokens with no visible content.",
+    "Gemma 4 12B is proven at 262k only for small controlled prompts; the real filled-prompt OpenCode proof is 65k.",
+    "Gemma 4 12B filled 131k OpenCode is deferred as an overnight-only run; 65k already took about 11.7 minutes per task.",
+    "Gemma 4 12B Pi through LM Studio is proven for file-create, JS edit, and protected browser-style, but failed all three real-usage Pi tasks by timeout.",
+    "Corrected OpenCode real-usage still leaves backend-api unsolved, and several rows reach verifier-passing state only to keep running until the host cap.",
+    "Pi Docker has one guarded real-usage pass for a no-generated-output task; generated-output tasks still need an explicit writable generated-output mount policy.",
+    "A true MCP/tool-mediated local lane is still pending.",
     "Large frontend applications and larger multi-file product work remain untested under Pi and OpenCode.",
     "The 16k lanes have not been repeated as a 10-run reliability soak.",
     "The 16k lanes have not been repeated under the 32GB WSL memory cap.",
@@ -170,6 +243,16 @@ function escapeHtml(text) {
 
 function detectKind(file, json) {
   const name = path.basename(file);
+  if (name.includes("gemma12-controlled-reliability-sweep")) return "reliability-gemma12";
+  if (name.includes("gemma12-pi-lmstudio-workflow")) return "pi-lmstudio-gemma12-workflow";
+  if (name.includes("gemma12-65k-opencode")) return "opencode-gemma12";
+  if (name.includes("gemma12-lmstudio-toolcall")) return "toolcall-probe-gemma12";
+  if (name.includes("gemma12-pi-lmstudio")) return "pi-lmstudio-gemma12";
+  if (name.includes("gemma12-thinking-control")) return "reasoning-control-gemma12";
+  if (name.includes("gemma-65k-opencode")) return "opencode-gemma";
+  if (name.includes("gemma-lmstudio-toolcall")) return "toolcall-probe";
+  if (name.includes("gemma-lmstudio-pi-file-create")) return "pi-lmstudio";
+  if (name.includes("windows-lmstudio-controlled-context-ladder")) return "lmstudio-context-ladder";
   if (name.includes("pi-challenge-suite")) return "pi-challenge-suite";
   if (name.includes("runner-comparison")) return "runner-comparison";
   if (name.includes("pi-endpoint-comparison")) return "endpoint-comparison";

@@ -23,6 +23,10 @@ x-pi-common: &pi-common
       target: /root/.pi/agent/models.json
       read_only: true
     - type: bind
+      source: ${PI_PROMPT_FILE:?set PI_PROMPT_FILE}
+      target: /root/.pi/agent/prompt.md
+      read_only: true
+    - type: bind
       source: ./agent/AGENTS.md
       target: /root/.pi/agent/AGENTS.md
       read_only: true

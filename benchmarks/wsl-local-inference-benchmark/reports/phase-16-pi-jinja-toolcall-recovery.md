@@ -51,7 +51,7 @@ The new wrapper `scripts/run-pi-jinja-q4-toolcall-workflow.ps1` runs:
 
 Canonical run:
 
-- `../results/20260622-102758-pi-jinja-q4-toolcall-workflow`
+- `results/20260622-102758-pi-jinja-q4-toolcall-workflow`
 
 Raw probe results:
 
@@ -74,7 +74,7 @@ Interpretation: with `--jinja`, this llama.cpp/Qwen3 Coder endpoint can emit str
 
 Workflow summary:
 
-- `../results/20260622-102758-pi-jinja-q4-toolcall-workflow/pi-jinja-q4-toolcall-workflow-summary.json`
+- `results/20260622-102758-pi-jinja-q4-toolcall-workflow/pi-jinja-q4-toolcall-workflow-summary.json`
 - summary size: 9573 bytes
 - `passed=true`
 - llama.cpp start exit: `0`
@@ -124,7 +124,7 @@ No Pi adapter is currently required for the tested small tasks.
 Start an existing server manually:
 
 ```powershell
-wsl.exe --distribution Ubuntu-24.04 --user root -- bash -lc "cd /mnt/c/Users/<you>/Documents/locallm_ryzen395-public/benchmarks/wsl-local-inference-benchmark && MODEL_PATH=/mnt/c/Users/<you>/.lmstudio/models/lmstudio-community/Qwen3-Coder-30B-A3B-Instruct-GGUF/Qwen3-Coder-30B-A3B-Instruct-Q4_K_M.gguf MODEL_ALIAS=qwen/qwen3-coder-30b-q4 PORT=8091 CTX_SIZE=8192 PARALLEL=1 LLAMA_JINJA=1 bash scripts/start-wsl-llama-server-amd.sh"
+wsl.exe --distribution Ubuntu-24.04 --user root -- bash -lc "cd /mnt/c/Users/<you>/Documents/'LocalInference - dzienniczek'/benchmarks/wsl-local-inference-benchmark && MODEL_PATH=/mnt/c/Users/<you>/.lmstudio/models/lmstudio-community/Qwen3-Coder-30B-A3B-Instruct-GGUF/Qwen3-Coder-30B-A3B-Instruct-Q4_K_M.gguf MODEL_ALIAS=qwen/qwen3-coder-30b-q4 PORT=8091 CTX_SIZE=8192 PARALLEL=1 LLAMA_JINJA=1 bash scripts/start-wsl-llama-server-amd.sh"
 ```
 
 Run the full Pi validation against it:

@@ -21,15 +21,36 @@ Setup and run sequencing is in:
 
 - `setup-runbook.md`
 
-Phase reports are kept as Markdown source under `reports/`. Start with:
+Phase reports are kept as Markdown source plus rendered HTML:
 
-- `reports/local-inference-dashboard.md`
-- `reports/phase-20-runner-endpoint-final-recommendation.md`
-- `reports/phase-21-16k-controlled-pi-context.md`
-- `reports/phase-22-16k-opencode-windows-models.md`
-- `reports/phase-23-gemma4-e4b-context-comparison.md`
+- `reports/phase-00-preflight.md` / `reports/phase-00-preflight.html`
+- `reports/phase-01-wsl-rocm-runtime.md` / `reports/phase-01-wsl-rocm-runtime.html`
+- `reports/phase-02-agent-benchmarks.md` / `reports/phase-02-agent-benchmarks.html`
+- `reports/phase-03-recommendation.md` / `reports/phase-03-recommendation.html`
+- `reports/phase-04-browser-verification.md` / `reports/phase-04-browser-verification.html`
+- `reports/phase-05-research-candidates.md` / `reports/phase-05-research-candidates.html`
+- `reports/phase-06-docker-pi-runner.md` / `reports/phase-06-docker-pi-runner.html`
+- `reports/phase-07-rankings-failure-modes.md` / `reports/phase-07-rankings-failure-modes.html`
+- `reports/phase-08-multi-model-matrix.md` / `reports/phase-08-multi-model-matrix.html`
+- `reports/phase-09-completion-audit.md` / `reports/phase-09-completion-audit.html`
+- `reports/phase-10-pi-docker-dry-run.md` / `reports/phase-10-pi-docker-dry-run.html`
+- `reports/phase-11-docker-pi-validation.md` / `reports/phase-11-docker-pi-validation.html`
+- `reports/phase-12-recommended-q4-workflow.md` / `reports/phase-12-recommended-q4-workflow.html`
+- `reports/phase-13-docker-controlled-agent.md` / `reports/phase-13-docker-controlled-agent.html`
+- `reports/phase-14-memory-cap-32gb.md` / `reports/phase-14-memory-cap-32gb.html`
+- `reports/phase-15-pi-tool-call-compatibility.md` / `reports/phase-15-pi-tool-call-compatibility.html`
+- `reports/phase-16-pi-jinja-toolcall-recovery.md` / `reports/phase-16-pi-jinja-toolcall-recovery.html`
+- `reports/phase-17-pi-soak-challenge-dashboard.md` / `reports/phase-17-pi-soak-challenge-dashboard.html`
+- `reports/phase-18-pi-memory-cap-sweep.md` / `reports/phase-18-pi-memory-cap-sweep.html`
+- `reports/phase-19-pi-10-run-soak.md` / `reports/phase-19-pi-10-run-soak.html`
+- `reports/phase-20-runner-endpoint-final-recommendation.md` / `reports/phase-20-runner-endpoint-final-recommendation.html`
+- `reports/phase-21-16k-controlled-pi-context.md` / `reports/phase-21-16k-controlled-pi-context.html`
+- `reports/phase-22-16k-opencode-windows-models.md` / `reports/phase-22-16k-opencode-windows-models.html`
+- `reports/phase-23-gemma4-e4b-context-comparison.md` / `reports/phase-23-gemma4-e4b-context-comparison.html`
+- `reports/phase-24-gemma4-12b-context-comparison.md` / `reports/phase-24-gemma4-12b-context-comparison.html`
+- `reports/phase-25-gemma4-12b-follow-up-validation.md` / `reports/phase-25-gemma4-12b-follow-up-validation.html`
+- `reports/local-inference-dashboard.md` / `reports/local-inference-dashboard.html`
 
-Earlier phase files remain as chronological evidence.
 ## Current Finding
 
 As of `2026-06-21 22:02 Europe/Warsaw`, Ubuntu 24.04 is installed as a WSL2 distro, ROCm/ROCDXG works, and AMD's validated ROCm llama.cpp binary can serve the local Qwen3 Coder GGUF through an OpenAI-compatible endpoint.
@@ -59,7 +80,8 @@ Current status:
 - Endpoint comparison: Qwen3 Coder 30B Q4 at 8k, Q4 at 4k, and Q2 at 8k all passed the Pi file/edit/browser workflow; Q4 at 8k remains the promoted endpoint because it has the strongest accumulated reliability evidence
 - 16k context: Qwen3 Coder 30B Q4 passed controlled WSL ROCm `8192` vs `16384` comparison, Pi Jinja file/edit/browser, Pi five-task challenge suite, Docker-controlled, and OpenCode thin-prompt `js-window` plus `browser-style`; Windows LM Studio also passed the controlled `16k` comparison and was faster on first-content timings
 - Smaller-model 16k check: Qwen2.5 Coder 1.5B Q4/Q8 were very fast but failed both controlled verifier-backed tasks; do not promote them as coding-agent defaults
-- Gemma 4 E4B check: true Gemma 4 12B is not installed locally. The installed `google/gemma-4-e4b` passed Windows LM Studio controlled tasks through `65k`, loaded at `131k` but failed protected `browser-style`, failed WSL ROCm load because AMD llama.cpp build `8407` does not recognize `gemma4`, passed LM Studio raw tool-call probes, and passed a simple Pi file-create task through LM Studio. Keep it experimental; do not replace the Qwen3 Coder 30B Q4 default.
+- Gemma 4 E4B check: the earlier fallback `google/gemma-4-e4b` passed Windows LM Studio controlled tasks through `65k`, loaded at `131k` but failed protected `browser-style`, failed WSL ROCm load because AMD llama.cpp build `8407` does not recognize `gemma4`, passed LM Studio raw tool-call probes, and passed a simple Pi file-create task through LM Studio. This lane is superseded by the actual 12B check.
+- Gemma 4 12B check: `google/gemma-4-12b` is installed. WSL ROCm still fails to load `gemma4` on AMD llama.cpp build `8407`, but Windows LM Studio passes controlled verifier-backed `js-window` and protected `browser-style` through the advertised `262k` context when requests include `reasoning_effort=none`. A three-run controlled reliability sweep passed `18/18` task cells across `16k`, `65k`, and `262k`. OpenCode passed a real neutral-padded `65k` lane for `js-window` and `browser-style`, but each task took about 11.7 minutes. Raw LM Studio tool calls passed. Pi through LM Studio now passes file-create, JS edit, and protected browser-style. Keep Qwen3 Coder 30B Q4 as default; use Gemma 4 12B as an experimental Windows LM Studio high-context lane.
 
 Memory caveat: with no `.wslconfig`, WSL reports about `60 GiB` inside Linux on this machine. Guarded `32GB` cap sweeps passed the current Qwen3 Coder 30B Q4 short-context controlled workflow and Pi file/edit/browser workflow, so `65GB` is not required for those measured lanes. The `16k` runs were not repeated under `32GB`; long-context, larger frontend, simultaneous-agent, and long-soak-at-32GB runs still need separate cap-specific evidence.
 
@@ -167,6 +189,6 @@ node .\scripts\render-markdown-reports.mjs
 For the current ROCm launcher, start and stop from Windows with:
 
 ```powershell
-wsl.exe --distribution Ubuntu-24.04 --user root -- bash -lc "cd /mnt/c/Users/<you>/Documents/locallm_ryzen395-public && PORT=8080 CTX_SIZE=8192 PARALLEL=1 bash benchmarks/wsl-local-inference-benchmark/scripts/start-wsl-llama-server-amd.sh"
-wsl.exe --distribution Ubuntu-24.04 --user root -- bash -lc "cd /mnt/c/Users/<you>/Documents/locallm_ryzen395-public && bash benchmarks/wsl-local-inference-benchmark/scripts/stop-wsl-llama-server-amd.sh"
+wsl.exe --distribution Ubuntu-24.04 --user root -- bash -lc "cd /mnt/c/Users/<you>/Documents/'LocalInference - dzienniczek' && PORT=8080 CTX_SIZE=8192 PARALLEL=1 bash benchmarks/wsl-local-inference-benchmark/scripts/start-wsl-llama-server-amd.sh"
+wsl.exe --distribution Ubuntu-24.04 --user root -- bash -lc "cd /mnt/c/Users/<you>/Documents/'LocalInference - dzienniczek' && bash benchmarks/wsl-local-inference-benchmark/scripts/stop-wsl-llama-server-amd.sh"
 ```

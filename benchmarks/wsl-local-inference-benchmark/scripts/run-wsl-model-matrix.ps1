@@ -60,6 +60,10 @@ $modelCatalog = [ordered]@{
     Alias = "google/gemma-4-e4b-it-q4"
     Path = Join-Path $env:USERPROFILE ".lmstudio\models\lmstudio-community\gemma-4-E4B-it-GGUF\gemma-4-E4B-it-Q4_K_M.gguf"
   }
+  "gemma-4-12b-q4" = [ordered]@{
+    Alias = "google/gemma-4-12b"
+    Path = Join-Path $env:USERPROFILE ".lmstudio\models\lmstudio-community\gemma-4-12B-it-GGUF\gemma-4-12B-it-Q4_K_M.gguf"
+  }
   "qwen25-coder-15b-q4" = [ordered]@{
     Alias = "qwen/qwen2.5-coder-1.5b-q4"
     Path = Join-Path $env:USERPROFILE ".lmstudio\models\bartowski\Qwen2.5-Coder-1.5B-Instruct-GGUF\Qwen2.5-Coder-1.5B-Instruct-Q4_K_M.gguf"

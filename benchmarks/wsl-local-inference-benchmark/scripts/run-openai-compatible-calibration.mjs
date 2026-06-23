@@ -11,6 +11,7 @@ function parseArgs(argv) {
     promptFile: "",
     maxTokens: 256,
     temperature: 0,
+    reasoningEffort: "",
     concurrency: 1,
     timeoutMs: 300000,
     output: "",
@@ -29,6 +30,7 @@ function parseArgs(argv) {
     else if (arg === "--prompt-file") args.promptFile = next();
     else if (arg === "--max-tokens") args.maxTokens = Number(next());
     else if (arg === "--temperature") args.temperature = Number(next());
+    else if (arg === "--reasoning-effort") args.reasoningEffort = next();
     else if (arg === "--concurrency") args.concurrency = Number(next());
     else if (arg === "--timeout-ms") args.timeoutMs = Number(next());
     else if (arg === "--output") args.output = next();
@@ -40,6 +42,7 @@ Options:
   --prompt-file PATH
   --max-tokens N
   --temperature N
+  --reasoning-effort VALUE
   --concurrency N
   --timeout-ms N
   --output PATH`);
@@ -59,7 +62,7 @@ function estimateTokens(text) {
   return Math.max(1, Math.ceil(Buffer.byteLength(text, "utf8") / 3.7));
 }
 
-async function runOne({ baseUrl, model, prompt, maxTokens, temperature, timeoutMs, index }) {
+async function runOne({ baseUrl, model, prompt, maxTokens, temperature, reasoningEffort, timeoutMs, index }) {
   const body = {
     model,
     temperature,
@@ -71,6 +74,9 @@ async function runOne({ baseUrl, model, prompt, maxTokens, temperature, timeoutM
       { role: "user", content: prompt },
     ],
   };
+  if (reasoningEffort) {
+    body.reasoning_effort = reasoningEffort;
+  }
 
   const startedAt = performance.now();
   let firstByteMs = null;
@@ -178,6 +184,7 @@ async function main() {
     promptTokenEstimate: estimateTokens(prompt),
     maxTokens: args.maxTokens,
     temperature: args.temperature,
+    reasoningEffort: args.reasoningEffort || null,
     concurrency: args.concurrency,
     ok: successful.length === results.length,
     successful: successful.length,

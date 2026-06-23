@@ -25,22 +25,22 @@ New repeatable wrapper:
 
 - `scripts/run-wsl-model-matrix.ps1`
 
-The wrapper starts one WSL llama.cpp server per model, runs OpenAI-compatible calibration, optionally runs one or more controlled edit-agent tasks, stops the server, and writes summaries under `../results/`.
+The wrapper starts one WSL llama.cpp server per model, runs OpenAI-compatible calibration, optionally runs one or more controlled edit-agent tasks, stops the server, and writes summaries under `results/`.
 
-One early wrapper run failed before benchmarking because a Bash `cd` command missed `&&`; that failed run is preserved at `../results/20260621-223616-model-matrix/model-matrix-summary.json` as harness-debug evidence.
+One early wrapper run failed before benchmarking because a Bash `cd` command missed `&&`; that failed run is preserved at `results/20260621-223616-model-matrix/model-matrix-summary.json` as harness-debug evidence.
 
 ## Results
 
 | Model | Task | Runtime Result | Agent Result | Browser Result | Key Artifact |
 | --- | --- | ---: | --- | --- | --- |
-| Qwen3 Coder 30B Q4 | calibration | `57.56 tok/s`, first content `356.7 ms` | n/a | n/a | `../results/20260621-223758-model-matrix/qwen3-coder-30b-q4-calibration-single.json` |
-| Qwen3 Coder 30B Q4 | 4-way calibration | `96.27 tok/s` aggregate, first content min `373.2 ms` | n/a | n/a | `../results/20260621-225403-model-matrix/qwen3-coder-30b-q4-calibration-4way.json` |
-| Qwen3 Coder 30B Q4 | `js-window` | same server | PASS, first content `1555.9 ms`, wall `5791.2 ms` | n/a | `../results/20260621-223758-model-matrix/qwen3-coder-30b-q4-js-window/js-window-result.json` |
-| Qwen3 Coder 30B Q4 | `browser-style` | `56.57 tok/s`, first content `687.6 ms` | PASS, first content `1909.8 ms`, wall `3555.6 ms` | PASS | `../results/20260621-224242-model-matrix/qwen3-coder-30b-q4-browser-style/browser-style-result.json` |
-| Qwen3 Coder 30B Q2 | `js-window` | `70.20 tok/s`, first content `752.9 ms` | PASS, first content `1137.9 ms`, wall `5825 ms` | n/a | `../results/20260621-221417-controlled-js-window-lineendings/js-window-result.json` |
-| Qwen3 Coder 30B Q2 | `browser-style` | same server | PASS, first content `2125.2 ms`, wall `3730.1 ms` | PASS | `../results/20260621-222232-controlled-browser-style-protected/browser-style-result.json` |
-| Qwen2.5-Coder 1.5B Q4 | `js-window` | `116.07 tok/s`, first content `118.6 ms` | FAIL, syntax-invalid edit after two attempts | n/a | `../results/20260621-223702-model-matrix/qwen25-coder-15b-q4-js-window/js-window-result.json` |
-| Qwen2.5-Coder 1.5B Q8 | `js-window` | `76.99 tok/s`, first content `213.5 ms` | FAIL, syntax-invalid edit after two attempts | n/a | `../results/20260621-224107-model-matrix/qwen25-coder-15b-q8-js-window/js-window-result.json` |
+| Qwen3 Coder 30B Q4 | calibration | `57.56 tok/s`, first content `356.7 ms` | n/a | n/a | `results/20260621-223758-model-matrix/qwen3-coder-30b-q4-calibration-single.json` |
+| Qwen3 Coder 30B Q4 | 4-way calibration | `96.27 tok/s` aggregate, first content min `373.2 ms` | n/a | n/a | `results/20260621-225403-model-matrix/qwen3-coder-30b-q4-calibration-4way.json` |
+| Qwen3 Coder 30B Q4 | `js-window` | same server | PASS, first content `1555.9 ms`, wall `5791.2 ms` | n/a | `results/20260621-223758-model-matrix/qwen3-coder-30b-q4-js-window/js-window-result.json` |
+| Qwen3 Coder 30B Q4 | `browser-style` | `56.57 tok/s`, first content `687.6 ms` | PASS, first content `1909.8 ms`, wall `3555.6 ms` | PASS | `results/20260621-224242-model-matrix/qwen3-coder-30b-q4-browser-style/browser-style-result.json` |
+| Qwen3 Coder 30B Q2 | `js-window` | `70.20 tok/s`, first content `752.9 ms` | PASS, first content `1137.9 ms`, wall `5825 ms` | n/a | `results/20260621-221417-controlled-js-window-lineendings/js-window-result.json` |
+| Qwen3 Coder 30B Q2 | `browser-style` | same server | PASS, first content `2125.2 ms`, wall `3730.1 ms` | PASS | `results/20260621-222232-controlled-browser-style-protected/browser-style-result.json` |
+| Qwen2.5-Coder 1.5B Q4 | `js-window` | `116.07 tok/s`, first content `118.6 ms` | FAIL, syntax-invalid edit after two attempts | n/a | `results/20260621-223702-model-matrix/qwen25-coder-15b-q4-js-window/js-window-result.json` |
+| Qwen2.5-Coder 1.5B Q8 | `js-window` | `76.99 tok/s`, first content `213.5 ms` | FAIL, syntax-invalid edit after two attempts | n/a | `results/20260621-224107-model-matrix/qwen25-coder-15b-q8-js-window/js-window-result.json` |
 | Gemma 4 E4B IT Q4 | load | FAIL | n/a | n/a | `logs/20260621-223702-model-matrix/gemma-4-e4b-q4/llama-server.log` |
 
 ## GPU Memory Evidence

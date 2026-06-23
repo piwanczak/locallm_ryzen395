@@ -69,7 +69,7 @@ only a raw artifact index:
 - Generated Markdown:
   `benchmarks/wsl-local-inference-benchmark/reports/local-inference-dashboard.md`
 - Generated HTML:
-  `benchmarks/wsl-local-inference-benchmark/reports/local-inference-dashboard.md`
+  `benchmarks/wsl-local-inference-benchmark/reports/local-inference-dashboard.html`
 - Generated data:
   `benchmarks/wsl-local-inference-benchmark/reports/local-inference-dashboard-data.json`
 
@@ -90,6 +90,65 @@ For dashboard links, use paths relative to
 `benchmarks/wsl-local-inference-benchmark/reports/`. Root-level reports should
 normally be linked as `../../../reports/<name>.html`; benchmark-local result
 summaries should normally be linked as `../results/<run>/<summary>.json`.
+
+## Real-Usage Benchmark Maintenance
+
+The real-usage benchmark is the canonical next-step eval for small practical
+coding work beyond controlled single-edit tasks:
+
+- Project:
+  `benchmarks/real-usage-agent-benchmark/`
+- Task manifest:
+  `benchmarks/real-usage-agent-benchmark/tasks.json`
+- Main runner:
+  `benchmarks/real-usage-agent-benchmark/scripts/real-usage-suite.mjs`
+- LM Studio direct API wrapper:
+  `benchmarks/real-usage-agent-benchmark/scripts/run-lmstudio-real-usage-api.ps1`
+- OpenCode wrapper:
+  `benchmarks/real-usage-agent-benchmark/scripts/run-opencode-real-usage.ps1`
+- Pi wrapper:
+  `benchmarks/real-usage-agent-benchmark/scripts/run-pi-real-usage.ps1`
+- Rationale report:
+  `benchmarks/real-usage-agent-benchmark/reports/real-usage-benchmark-rationale.md`
+- Result rollup helper:
+  `benchmarks/real-usage-agent-benchmark/scripts/summarize-real-usage-results.mjs`
+
+After changing task definitions, templates, reference solutions, runner
+metrics, or benchmark conclusions, run:
+
+```powershell
+node .\benchmarks\real-usage-agent-benchmark\scripts\real-usage-suite.mjs self-test
+node .\benchmarks\real-usage-agent-benchmark\scripts\render-reports.mjs
+```
+
+For Pi Docker runs, keep timeout cleanup explicit. A timed-out host PowerShell
+wrapper can leave a Docker Compose child container alive; the Pi runner should
+track newly-created `pi-docker-agent-runner-pi*` containers and stop only those
+on timeout. Always finish benchmark goals with a cleanup audit: no loaded LM
+Studio model, no running Pi Docker container, no WSL `llama-server` or
+`llama-bench`, and no unintended `.wslconfig`.
+
+Use the Pi-specific agent prompt path for Pi runs. Do not feed Pi the direct API
+JSON-edit prompt; generate an agent prompt with `real-usage-suite.mjs
+agent-prompt` or through `run-pi-real-usage.ps1`.
+
+For promoted Pi evidence, prefer guarded workspace mode: bind the whole task
+workspace read-only and bind only editable files back as writable. This is the
+default for tasks with no allowed generated files. If a task needs generated
+outputs, add an explicit generated-output mount policy before treating that Pi
+run as strong safety evidence.
+
+After meaningful real-usage runs, create a rollup report with
+`summarize-real-usage-results.mjs` and render Markdown reports to HTML:
+
+```powershell
+node .\benchmarks\real-usage-agent-benchmark\scripts\summarize-real-usage-results.mjs --inputs <matrix-jsons> --out-json .\benchmarks\real-usage-agent-benchmark\reports\<name>.json --out-md .\benchmarks\real-usage-agent-benchmark\reports\<name>.md
+node .\benchmarks\real-usage-agent-benchmark\scripts\render-reports.mjs
+```
+
+If the suite changes promoted runner/model guidance, also update the WSL/local
+inference dashboard generator and regenerate the dashboard with the standard
+dashboard commands above.
 
 ## Local-Only Artifacts
 

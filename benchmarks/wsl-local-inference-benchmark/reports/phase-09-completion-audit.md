@@ -16,13 +16,13 @@ This audit checks the active goal against current evidence. It identifies what i
 | Use Vicki Boykis article and saved HTML reading list as inputs | PROVEN | `phase-05-research-candidates.md` |
 | Extract candidate models/runtimes/agents/browser options | PROVEN | `phase-05-research-candidates.md`, `phase-08-multi-model-matrix.md` |
 | Keep Markdown notes for minor steps | PROVEN | `notes/` entries through `2026-06-21_22-49-00_multi-model-matrix.md` |
-| Produce Markdown per major phase | PROVEN through current phase | `reports/phase-00` through `phase-15` captured as Markdown source; generated HTML is omitted from this public tree |
+| Produce Markdown and HTML per major phase | PROVEN through current phase | `reports/phase-00` through `phase-15` rendered as `.md` and `.html` |
 | Create preflight notes and machine constraints | PROVEN | `phase-00-preflight.md`, `matrix.md`, `setup-runbook.md` |
 | Create WSL2/Docker/GPU setup instructions | PROVEN | `setup-runbook.md`; `phase-11-docker-pi-validation.md`; `phase-13-docker-controlled-agent.md` |
 | Create Docker-based benchmark runner | PROVEN | `benchmarks/docker-controlled-agent-runner` plus `scripts/run-docker-controlled-q4-workflow.ps1`; `js-window` and protected `browser-style` pass inside Docker |
 | Create Pi/container-compatible runner variant | PROVEN as container runner; NOT PROMOTED as editing agent | `benchmarks/pi-docker-agent-runner` exists, builds, mounts model config, and reaches WSL llama.cpp; `phase-15-pi-tool-call-compatibility.md` explains why local tool execution needs an adapter or structured endpoint |
 | Create scripts for startup, benchmark execution, logging, result capture | PROVEN | `start-wsl-llama-server-amd.sh`, `stop-wsl-llama-server-amd.sh`, `run-openai-compatible-calibration.mjs`, `run-controlled-edit-agent.mjs`, `run-wsl-model-matrix.ps1`, `run-docker-controlled-q4-workflow.ps1` |
-| Capture raw benchmark outputs | PROVEN | `../results/` contains calibration, agent, browser, and model-matrix JSON artifacts |
+| Capture raw benchmark outputs | PROVEN | `results/` contains calibration, agent, browser, and model-matrix JSON artifacts |
 | Summarize rankings and failure modes | PROVEN | `phase-07-rankings-failure-modes.md`, `summary-rankings.json`, `model-matrix-comparison.json` |
 | Recommend default model/runtime/agent workflow | PROVEN for non-container local workflow | `phase-03-recommendation.md`: WSL ROCm llama.cpp + Qwen3 Coder 30B Q4 + controlled edit-agent |
 | Run repeatable benchmarks against comparable local models | PROVEN for available GGUFs | Qwen3 Coder Q4/Q2, Qwen2.5-Coder Q4/Q8, Gemma load failure captured |
@@ -34,7 +34,7 @@ This audit checks the active goal against current evidence. It identifies what i
 | Cover GPU/VRAM/RAM use | PROVEN for current short-context workflow | WSL RAM and ROCm visible memory captured; Q4 server log captures projected device/model/KV memory; `32GB` cap sweep passed for current host/WSL Q4 workflow |
 | Cover reliability and qualitative failure modes | PROVEN | OpenCode loop/context overflow, frontend hidden semantics, small-model syntax failures, Gemma architecture failure |
 | Final working local coding-agent workflow | PROVEN for controlled local workflow | Qwen3 Coder Q4 controlled `js-window` and `browser-style` passed with browser verification |
-| Final Docker-controlled agent workflow | PROVEN | `../results/20260621-235639-docker-controlled-q4-workflow/docker-controlled-q4-workflow-summary.json` |
+| Final Docker-controlled agent workflow | PROVEN | `results/20260621-235639-docker-controlled-q4-workflow/docker-controlled-q4-workflow-summary.json` |
 | Final Pi agent workflow | NOT PROMOTED | Container runtime works, but Pi did not execute local llama.cpp tool-call-shaped output; session logs show plain assistant text rather than Pi `toolCall` blocks |
 
 ## Current Recommended Workflow

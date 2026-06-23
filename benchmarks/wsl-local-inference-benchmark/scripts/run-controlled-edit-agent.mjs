@@ -37,6 +37,7 @@ function parseArgs(argv) {
     maxTokens: 2048,
     maxAttempts: 2,
     temperature: 0,
+    reasoningEffort: "",
     timeoutMs: 300000,
     runId: `controlled-${timestamp()}`,
     outputDir: "",
@@ -55,6 +56,7 @@ function parseArgs(argv) {
     else if (arg === "--max-tokens") args.maxTokens = Number(next());
     else if (arg === "--max-attempts") args.maxAttempts = Number(next());
     else if (arg === "--temperature") args.temperature = Number(next());
+    else if (arg === "--reasoning-effort") args.reasoningEffort = next();
     else if (arg === "--timeout-ms") args.timeoutMs = Number(next());
     else if (arg === "--run-id") args.runId = next();
     else if (arg === "--output-dir") args.outputDir = next();
@@ -66,6 +68,7 @@ Options:
   --max-tokens N
   --max-attempts N
   --temperature N
+  --reasoning-effort VALUE
   --timeout-ms N
   --run-id ID
   --output-dir PATH`);
@@ -179,7 +182,7 @@ ${editableState}
 Return a corrected JSON object using the same schema.`;
 }
 
-async function streamChat({ baseUrl, model, prompt, maxTokens, temperature, timeoutMs }) {
+async function streamChat({ baseUrl, model, prompt, maxTokens, temperature, reasoningEffort, timeoutMs }) {
   const startedAt = performance.now();
   let firstByteMs = null;
   let firstContentMs = null;
@@ -188,20 +191,25 @@ async function streamChat({ baseUrl, model, prompt, maxTokens, temperature, time
   let rawChunks = 0;
   let events = 0;
 
+  const body = {
+    model,
+    temperature,
+    max_tokens: maxTokens,
+    stream: true,
+    stream_options: { include_usage: true },
+    messages: [
+      { role: "system", content: "You produce only machine-parseable JSON for safe file edits." },
+      { role: "user", content: prompt },
+    ],
+  };
+  if (reasoningEffort) {
+    body.reasoning_effort = reasoningEffort;
+  }
+
   const response = await fetch(`${baseUrl.replace(/\/+$/, "")}/chat/completions`, {
     method: "POST",
     headers: { "content-type": "application/json", authorization: "Bearer local" },
-    body: JSON.stringify({
-      model,
-      temperature,
-      max_tokens: maxTokens,
-      stream: true,
-      stream_options: { include_usage: true },
-      messages: [
-        { role: "system", content: "You produce only machine-parseable JSON for safe file edits." },
-        { role: "user", content: prompt },
-      ],
-    }),
+    body: JSON.stringify(body),
     signal: AbortSignal.timeout(timeoutMs),
   });
 
@@ -406,6 +414,7 @@ async function main() {
       prompt,
       maxTokens: args.maxTokens,
       temperature: args.temperature,
+      reasoningEffort: args.reasoningEffort,
       timeoutMs: args.timeoutMs,
     });
     fs.writeFileSync(path.join(outputDir, `${attemptLabel}-model-output.txt`), output, "utf8");
@@ -455,6 +464,7 @@ async function main() {
     maxTokens: args.maxTokens,
     maxAttempts: args.maxAttempts,
     temperature: args.temperature,
+    reasoningEffort: args.reasoningEffort || null,
     attempts,
     metrics: final?.metrics ?? null,
     editJson: final?.editJson ?? null,

@@ -21,7 +21,7 @@ This phase adds and validates a Docker-native benchmark runner for the already-p
 
 | Artifact | Result |
 | --- | --- |
-| `../results/20260621-235639-docker-controlled-q4-workflow/docker-controlled-q4-workflow-summary.json` | Completed with `passed=true` |
+| `results/20260621-235639-docker-controlled-q4-workflow/docker-controlled-q4-workflow-summary.json` | Completed with `passed=true` |
 
 ## Results
 

@@ -15,9 +15,9 @@ This phase extends the `16k` question beyond the controlled WSL and Pi lanes:
 
 Canonical corrected result:
 
-- `../results/20260622-140434-16k-opencode-wsl-workflow/16k-opencode-wsl-workflow-summary.json`
-- underlying OpenCode JSONL: `../results/20260622-140721-opencode/runs.jsonl`
-- proxy events: `../results/20260622-140721-opencode/proxy-events.jsonl`
+- `results/20260622-140434-16k-opencode-wsl-workflow/16k-opencode-wsl-workflow-summary.json`
+- underlying OpenCode JSONL: `results/20260622-140721-opencode/runs.jsonl`
+- proxy events: `results/20260622-140721-opencode/proxy-events.jsonl`
 
 Command:
 
@@ -46,8 +46,8 @@ Interpretation:
 
 Superseded OpenCode attempts:
 
-- `../results/20260622-135455-16k-opencode-wsl-workflow` failed due task-list argument handling.
-- `../results/20260622-135835-16k-opencode-wsl-workflow` produced a valid `js-window` pass, but the second task was mis-bound as `ProviderName`.
+- `results/20260622-135455-16k-opencode-wsl-workflow` failed due task-list argument handling.
+- `results/20260622-135835-16k-opencode-wsl-workflow` produced a valid `js-window` pass, but the second task was mis-bound as `ProviderName`.
 - Fixes:
   - `run-opencode-wsl-compatible-benchmark.ps1` now normalizes comma-separated task lists.
   - `run-16k-opencode-wsl-workflow.ps1` passes task lists as one comma-normalized argument.
@@ -56,7 +56,7 @@ Superseded OpenCode attempts:
 
 Canonical result:
 
-- `../results/20260622-141608-16k-controlled-context-comparison/16k-controlled-context-comparison-summary.json`
+- `results/20260622-141608-16k-controlled-context-comparison/16k-controlled-context-comparison-summary.json`
 
 Result:
 
@@ -75,7 +75,7 @@ Interpretation:
 
 Canonical result:
 
-- `../results/20260622-141906-16k-controlled-context-comparison/16k-controlled-context-comparison-summary.json`
+- `results/20260622-141906-16k-controlled-context-comparison/16k-controlled-context-comparison-summary.json`
 
 Result:
 
@@ -93,7 +93,7 @@ Interpretation:
 
 Canonical result:
 
-- `../results/20260622-142238-windows-lmstudio-16k-controlled/windows-lmstudio-16k-controlled-summary.json`
+- `results/20260622-142238-windows-lmstudio-16k-controlled/windows-lmstudio-16k-controlled-summary.json`
 
 Command:
 

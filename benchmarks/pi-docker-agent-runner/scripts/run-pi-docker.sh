@@ -49,6 +49,7 @@ workspace="$(cd -- "$workspace" && pwd)"
 runtime_dir="$runner_root/.runtime"
 mkdir -p "$runtime_dir"
 models_path="$runtime_dir/models.generated.json"
+prompt_path="$runtime_dir/prompt.generated.md"
 
 cat > "$models_path" <<JSON
 {
@@ -82,9 +83,11 @@ cat > "$models_path" <<JSON
   }
 }
 JSON
+: > "$prompt_path"
 
 export PI_WORKSPACE="$workspace"
 export PI_MODELS_JSON="$models_path"
+export PI_PROMPT_FILE="$prompt_path"
 export OPENAI_API_BASE="$base_url"
 export OPENAI_API_KEY="${OPENAI_API_KEY:-not-needed}"
 
@@ -106,6 +109,7 @@ if [[ "$dry_run" == "1" ]]; then
   printf 'runnerRoot=%s\n' "$runner_root"
   printf 'workspace=%s\n' "$workspace"
   printf 'modelsPath=%s\n' "$models_path"
+  printf 'promptPath=%s\n' "$prompt_path"
   printf 'baseUrl=%s\n' "$base_url"
   printf 'model=%s\n' "$model"
   printf 'service=%s\n' "$service"

@@ -16,16 +16,16 @@ The wrapper starts WSL ROCm llama.cpp for Qwen3 Coder 30B Q4, runs single-reques
 
 | Artifact | Result |
 | --- | --- |
-| `../results/20260621-234449-recommended-q4-workflow/recommended-q4-workflow-summary.json` | Completed, `dryRun=false` |
+| `results/20260621-234449-recommended-q4-workflow/recommended-q4-workflow-summary.json` | Completed, `dryRun=false` |
 
 Linked artifacts:
 
-- Agent matrix: `../results/20260621-234449-model-matrix/model-matrix-summary.json`
-- Throughput matrix: `../results/20260621-234713-model-matrix/model-matrix-summary.json`
-- Single calibration: `../results/20260621-234449-model-matrix/qwen3-coder-30b-q4-calibration-single.json`
-- `js-window`: `../results/20260621-234449-model-matrix/qwen3-coder-30b-q4-js-window/js-window-result.json`
-- `browser-style`: `../results/20260621-234449-model-matrix/qwen3-coder-30b-q4-browser-style/browser-style-result.json`
-- 4-way calibration: `../results/20260621-234713-model-matrix/qwen3-coder-30b-q4-calibration-4way.json`
+- Agent matrix: `results/20260621-234449-model-matrix/model-matrix-summary.json`
+- Throughput matrix: `results/20260621-234713-model-matrix/model-matrix-summary.json`
+- Single calibration: `results/20260621-234449-model-matrix/qwen3-coder-30b-q4-calibration-single.json`
+- `js-window`: `results/20260621-234449-model-matrix/qwen3-coder-30b-q4-js-window/js-window-result.json`
+- `browser-style`: `results/20260621-234449-model-matrix/qwen3-coder-30b-q4-browser-style/browser-style-result.json`
+- 4-way calibration: `results/20260621-234713-model-matrix/qwen3-coder-30b-q4-calibration-4way.json`
 
 ## Results
 
