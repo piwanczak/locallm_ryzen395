@@ -31,10 +31,10 @@ Later related evidence: `phase-13-docker-controlled-agent.md` validates a separa
 
 | Artifact | Result |
 | --- | --- |
-| `../results/20260621-232549-pi-docker-base-validation/pi-docker-base-validation-summary.json` | Base image built; `docker compose run --rm pi --help` exited `0` |
-| `../results/20260621-232722-pi-docker-model-config-validation/pi-docker-model-config-summary.json` | Pi parsed mounted `models.json` and listed `local-openai  local/qwen3-coder-30b-q4` |
-| `../results/20260621-234235-pi-docker-browser-validation/pi-docker-browser-validation-summary.json` | Browser-capable image built; `docker compose --profile browser run --rm pi-browser --help` exited `0` |
-| `../results/20260621-233951-pi-docker-q4-agent-edit-compat/pi-docker-q4-agent-edit-summary.json` | Pi reached WSL ROCm Q4 endpoint, but the edit task did not create the target file |
+| `results/20260621-232549-pi-docker-base-validation/pi-docker-base-validation-summary.json` | Base image built; `docker compose run --rm pi --help` exited `0` |
+| `results/20260621-232722-pi-docker-model-config-validation/pi-docker-model-config-summary.json` | Pi parsed mounted `models.json` and listed `local-openai  local/qwen3-coder-30b-q4` |
+| `results/20260621-234235-pi-docker-browser-validation/pi-docker-browser-validation-summary.json` | Browser-capable image built; `docker compose --profile browser run --rm pi-browser --help` exited `0` |
+| `results/20260621-233951-pi-docker-q4-agent-edit-compat/pi-docker-q4-agent-edit-summary.json` | Pi reached WSL ROCm Q4 endpoint, but the edit task did not create the target file |
 
 ## Real Pi Edit Attempt
 
@@ -45,7 +45,7 @@ The edit attempt used:
 - WSL endpoint: ROCm llama.cpp on `127.0.0.1:8080`
 - Model: `qwen/qwen3-coder-30b-q4`
 - Pi model selector: `local-openai/qwen/qwen3-coder-30b-q4`
-- Disposable workspace: `../results/20260621-233951-pi-docker-q4-agent-edit-compat/workspace`
+- Disposable workspace: `results/20260621-233951-pi-docker-q4-agent-edit-compat/workspace`
 
 The server accepted the request and generated a response. Pi exited `0`, but no `pi_docker_result.txt` was written. The model output contained text like a `write` tool call, and Pi printed it as assistant text instead of executing it.
 

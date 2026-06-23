@@ -26,8 +26,8 @@ LD_LIBRARY_PATH="$runtime_dir:${LD_LIBRARY_PATH:-}"
 
 Artifacts:
 
-- `../results/20260621-212450-calibration-qwen3-coder-30b-q2-wsl-rocm-single.json`
-- `../results/20260621-212503-calibration-qwen3-coder-30b-q2-wsl-rocm-4way.json`
+- `results/20260621-212450-calibration-qwen3-coder-30b-q2-wsl-rocm-single.json`
+- `results/20260621-212503-calibration-qwen3-coder-30b-q2-wsl-rocm-4way.json`
 
 | Shape | Context | Result |
 | --- | ---: | ---: |

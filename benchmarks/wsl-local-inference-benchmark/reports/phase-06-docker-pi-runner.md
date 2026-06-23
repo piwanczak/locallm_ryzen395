@@ -46,8 +46,8 @@ The runner is aligned with the article and Pi docs pattern:
 
 Dry-run artifacts:
 
-- `../results/20260621-230439-pi-docker-dry-run/pi-docker-plan.json`
-- `../results/20260621-230439-pi-browser-dry-run/pi-browser-plan.json`
+- `results/20260621-230439-pi-docker-dry-run/pi-docker-plan.json`
+- `results/20260621-230439-pi-browser-dry-run/pi-browser-plan.json`
 
 These artifacts are command plans, not benchmark outputs. They do not prove that Docker, Pi, or the browser image can run on this machine.
 

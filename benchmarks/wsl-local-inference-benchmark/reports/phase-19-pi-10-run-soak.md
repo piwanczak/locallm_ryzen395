@@ -19,7 +19,7 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File `
 
 Canonical artifact:
 
-- `../results/20260622-113256-pi-reliability-soak/pi-reliability-soak-summary.json`
+- `results/20260622-113256-pi-reliability-soak/pi-reliability-soak-summary.json`
 
 Summary:
 

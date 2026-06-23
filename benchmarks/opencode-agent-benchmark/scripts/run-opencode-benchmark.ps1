@@ -13,6 +13,7 @@ param(
   [int]$EvalBatchSize = 2048,
   [int]$PhysicalBatchSize = 512,
   [string]$KvCacheType = "",
+  [string]$ReasoningEffort = "",
   [ValidateSet("snake", "camel")]
   [string]$AdvancedKeyStyle = "snake",
   [switch]$SpeculativeDraftMtp,
@@ -59,6 +60,7 @@ $env:TMP = $TmpDir
 $env:NO_COLOR = "1"
 $env:OPENCODE_DISABLE_AUTOUPDATE = "1"
 $env:OPENCODE_DISABLE_TELEMETRY = "1"
+$env:LMSTUDIO_PROXY_REASONING_EFFORT = $ReasoningEffort
 
 $SelectedProfiles = @($Profiles | ForEach-Object { $_ -split "," } | ForEach-Object { $_.Trim() } | Where-Object { $_ })
 $SelectedTasks = @($Tasks | ForEach-Object { $_ -split "," } | ForEach-Object { $_.Trim() } | Where-Object { $_ })
@@ -170,12 +172,17 @@ function Get-ProfileInfo {
     "32k" = 32768
     "48k" = 49152
     "65k" = 65536
+    "131k" = 131072
+    "262k" = 262144
   }
 
-  if ($Profile -match "^(qwen|gemma)-(8k|16k|24k|32k|48k|65k)$") {
+  if ($Profile -match "^(qwen|gemma|gemma12)-(8k|16k|24k|32k|48k|65k|131k|262k)$") {
     $family = $Matches[1]
     $ctx = $Matches[2]
-    $modelName = if ($family -eq "qwen") { "qwen/qwen3-coder-30b" } else { "google/gemma-4-e4b" }
+    if ($family -ne "gemma12" -and @("131k", "262k") -contains $ctx) {
+      throw "Profile $Profile is not configured for the $ctx context"
+    }
+    $modelName = if ($family -eq "qwen") { "qwen/qwen3-coder-30b" } elseif ($family -eq "gemma12") { "google/gemma-4-12b" } else { "google/gemma-4-e4b" }
     $contextTarget = [int]$contexts[$ctx]
     return [pscustomobject]@{
       Profile = $Profile
@@ -284,6 +291,7 @@ Add-JsonLine -Path $SummaryJsonl -Value ([pscustomobject]@{
   evalBatchSize = $EvalBatchSize
   physicalBatchSize = $PhysicalBatchSize
   kvCacheType = if ([string]::IsNullOrWhiteSpace($KvCacheType)) { $null } else { $KvCacheType }
+  reasoningEffort = if ([string]::IsNullOrWhiteSpace($ReasoningEffort)) { $null } else { $ReasoningEffort }
   advancedKeyStyle = $AdvancedKeyStyle
   speculativeDraftMtp = [bool]$SpeculativeDraftMtp
   draftModel = if ([string]::IsNullOrWhiteSpace($DraftModel)) { $null } else { $DraftModel }

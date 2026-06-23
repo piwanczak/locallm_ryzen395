@@ -33,7 +33,7 @@ The script:
 
 Canonical result:
 
-- `../results/20260622-111737-pi-memory-cap-sweep/pi-memory-cap-sweep-summary.json`
+- `results/20260622-111737-pi-memory-cap-sweep/pi-memory-cap-sweep-summary.json`
 
 Final state:
 
@@ -48,9 +48,9 @@ Final state:
 
 | Cap | Linux-visible RAM | MemTotal | Workflow result | Workflow summary |
 | --- | ---: | ---: | --- | --- |
-| `DEFAULT` | about `60GiB` | `63594160 kB` | pass | `../results/20260622-111746-pi-jinja-q4-toolcall-workflow/pi-jinja-q4-toolcall-workflow-summary.json` |
-| `48GB` | about `47GiB` | `49325756 kB` | pass | `../results/20260622-112130-pi-jinja-q4-toolcall-workflow/pi-jinja-q4-toolcall-workflow-summary.json` |
-| `32GB` | about `31GiB` | `32861904 kB` | pass | `../results/20260622-112516-pi-jinja-q4-toolcall-workflow/pi-jinja-q4-toolcall-workflow-summary.json` |
+| `DEFAULT` | about `60GiB` | `63594160 kB` | pass | `results/20260622-111746-pi-jinja-q4-toolcall-workflow/pi-jinja-q4-toolcall-workflow-summary.json` |
+| `48GB` | about `47GiB` | `49325756 kB` | pass | `results/20260622-112130-pi-jinja-q4-toolcall-workflow/pi-jinja-q4-toolcall-workflow-summary.json` |
+| `32GB` | about `31GiB` | `32861904 kB` | pass | `results/20260622-112516-pi-jinja-q4-toolcall-workflow/pi-jinja-q4-toolcall-workflow-summary.json` |
 
 Each workflow ran:
 
@@ -72,7 +72,7 @@ All three caps had:
 
 ## Superseded Run
 
-Run `../results/20260622-111116-pi-memory-cap-sweep` is superseded.
+Run `results/20260622-111116-pi-memory-cap-sweep` is superseded.
 
 Cause:
 

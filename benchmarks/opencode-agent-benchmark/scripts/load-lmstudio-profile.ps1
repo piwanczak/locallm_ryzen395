@@ -1,5 +1,5 @@
 param(
-  [Parameter(Mandatory = $true)][ValidateSet("qwen-8k", "qwen-16k", "qwen-24k", "qwen-32k", "qwen-48k", "qwen-65k", "gemma-8k", "gemma-16k", "gemma-24k", "gemma-32k", "gemma-48k", "gemma-65k", "restore-initial")]
+  [Parameter(Mandatory = $true)][ValidateSet("qwen-8k", "qwen-16k", "qwen-24k", "qwen-32k", "qwen-48k", "qwen-65k", "gemma-8k", "gemma-16k", "gemma-24k", "gemma-32k", "gemma-48k", "gemma-65k", "gemma12-8k", "gemma12-16k", "gemma12-24k", "gemma12-32k", "gemma12-48k", "gemma12-65k", "gemma12-131k", "gemma12-262k", "restore-initial")]
   [string]$Profile,
   [string]$BaseUrl = "http://127.0.0.1:1234",
   [string]$InitialStateJson = "",
@@ -113,13 +113,18 @@ function Get-BenchmarkProfile {
     "32k" = 32768
     "48k" = 49152
     "65k" = 65536
+    "131k" = 131072
+    "262k" = 262144
   }
 
-  if ($Name -match "^(qwen|gemma)-(8k|16k|24k|32k|48k|65k)$") {
+  if ($Name -match "^(qwen|gemma|gemma12)-(8k|16k|24k|32k|48k|65k|131k|262k)$") {
     $family = $Matches[1]
     $ctx = $Matches[2]
+    if ($family -ne "gemma12" -and @("131k", "262k") -contains $ctx) {
+      throw "Profile $Name is not configured for the $ctx context"
+    }
     return [pscustomobject]@{
-      Model = if ($family -eq "qwen") { "qwen/qwen3-coder-30b" } else { "google/gemma-4-e4b" }
+      Model = if ($family -eq "qwen") { "qwen/qwen3-coder-30b" } elseif ($family -eq "gemma12") { "google/gemma-4-12b" } else { "google/gemma-4-e4b" }
       ContextLength = [int]$contexts[$ctx]
       Parallel = 1
     }

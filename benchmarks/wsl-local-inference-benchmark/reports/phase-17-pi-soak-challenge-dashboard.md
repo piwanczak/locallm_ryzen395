@@ -18,7 +18,7 @@ Dashboard outputs:
 
 - `reports/local-inference-dashboard-data.json`
 - `reports/local-inference-dashboard.md`
-- `reports/local-inference-dashboard.md`
+- `reports/local-inference-dashboard.html`
 
 The dashboard currently indexes 55 result summaries and 36 report files.
 
@@ -26,7 +26,7 @@ The dashboard currently indexes 55 result summaries and 36 report files.
 
 Corrected soak run:
 
-- `../results/20260622-110028-pi-reliability-soak/pi-reliability-soak-summary.json`
+- `results/20260622-110028-pi-reliability-soak/pi-reliability-soak-summary.json`
 
 Command:
 
@@ -47,8 +47,8 @@ Result:
 
 The soak wrapper exports or links the underlying workflow summaries. The corrected run points to:
 
-- `../results/20260622-110029-pi-jinja-q4-toolcall-workflow/pi-jinja-q4-toolcall-workflow-summary.json`
-- `../results/20260622-110117-pi-jinja-q4-toolcall-workflow/pi-jinja-q4-toolcall-workflow-summary.json`
+- `results/20260622-110029-pi-jinja-q4-toolcall-workflow/pi-jinja-q4-toolcall-workflow-summary.json`
+- `results/20260622-110117-pi-jinja-q4-toolcall-workflow/pi-jinja-q4-toolcall-workflow-summary.json`
 
 Each underlying workflow includes raw endpoint probes, verifier outputs, and exported Pi session logs.
 
@@ -68,7 +68,7 @@ This makes the soak summary stricter: a partial workflow can no longer be counte
 
 Challenge run:
 
-- `../results/20260622-110232-pi-challenge-suite/pi-challenge-suite-summary.json`
+- `results/20260622-110232-pi-challenge-suite/pi-challenge-suite-summary.json`
 
 Command:
 

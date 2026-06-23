@@ -13,7 +13,7 @@ This phase closes the Pi-specific ambiguity left after Docker was installed and 
 | Evidence | Result |
 | --- | --- |
 | Pi package version in `local/pi-agent:base` | `0.79.9` |
-| Prior real Pi edit attempt | `../results/20260621-233951-pi-docker-q4-agent-edit-compat/pi-docker-q4-agent-edit-summary.json` |
+| Prior real Pi edit attempt | `results/20260621-233951-pi-docker-q4-agent-edit-compat/pi-docker-q4-agent-edit-summary.json` |
 | Pi Docker session volume | `pi-docker-agent-runner_pi-agent-sessions` |
 | Session files inspected | Three failed edit attempts, each with five JSONL events |
 | Pi custom provider docs | Tool calls must be emitted as provider stream events and parsed `toolCall` blocks |
