@@ -13,6 +13,9 @@ dumps, or private machine paths.
 Qwen3 Coder 30B Q4 remains the best default local coding stack tested here.
 The later batches did not displace it; they mostly sharpened the boundaries:
 
+- Draft-model speculative decoding has a narrow useful Windows/Vulkan lane:
+  Qwen2.5-Coder 7B/0.5B reached 2.24x, and Qwen3-8B/0.6B reached
+  1.26-1.29x without automated quality loss; Qwen3 Coder 30B did not benefit.
 - Gemma 4 12B is a strong Windows LM Studio high-context experiment when
   `reasoning_effort=none` is forced, but it is not the broad default.
 - Windows and WSL Ollama can run useful Qwen lanes, but wake/clock state and
@@ -51,9 +54,10 @@ The later batches did not displace it; they mostly sharpened the boundaries:
    Flash base plus public MTP sidecar can load and execute speculative decode
    on Windows ROCm with 96 GB VGM, but the measured tiny MTP run was slower
    than base and is not a practical recommendation yet.
-10. **Many fast models failed correctness:** smaller Qwen, Ornith, Qwen3.6,
-    GLM-5.1, and several Gemma/Ollama mappings produced useful diagnostics but
-    did not beat the default on verifier-backed practical work.
+10. **Draft-model speculation has a useful narrow lane:** stock llama.cpp
+    `draft-simple` reached 2.24x on Qwen2.5-Coder 7B/0.5B and 1.26-1.29x
+    on Qwen3-8B/0.6B, while Qwen3 Coder 30B and n-gram speculation did not
+    improve.
 
 ## Where To Start
 
@@ -61,6 +65,8 @@ The later batches did not displace it; they mostly sharpened the boundaries:
   for the main dashboard through the WSL/Ollama/Gemma 12B batch.
 - `reports/2026-07-03_ds4-windows-native-mtp-redo.md` for the newest
   Windows-native DS4/MTP result.
+- `reports/2026-07-03_speculative-decoding-windows-vulkan.md` for the Windows
+  Vulkan draft-model speculative decoding batch.
 - `reports/2026-06-26_deepseek-v4-flash-180b-local-run.md` and
   `reports/2026-06-26_antirez-ds4-q2-retry.md` for DeepSeek V4 Flash local
   viability and limits.
@@ -100,13 +106,15 @@ The most useful current reading order is:
    `reports/2026-07-01_ds4-mtp-windows-rocm.md`,
    `reports/2026-07-01_ds4-rocm-mtp-oom-analysis.md`,
    `reports/2026-07-03_ds4-windows-native-mtp-redo.md`
-7. Challenger model reports:
+7. Speculative decoding reports:
+   `reports/2026-07-03_speculative-decoding-windows-vulkan.md`
+8. Challenger model reports:
    `reports/2026-06-26_bios307-full-local-model-benchmarks.md`,
    `reports/2026-06-27_ornith-1-0-9b-q4km-local-benchmark.md`,
    `reports/2026-06-27_ornith-1-0-9b-tuning-followup.md`,
    `reports/2026-06-29_qwen36-glm51-local-benchmark.md`,
    `reports/2026-06-30_glm51-iq2xxs-local-benchmark.md`
-8. Visual benchmark reports:
+9. Visual benchmark reports:
    `benchmarks/kebab-benchmark/reports/2026-06-25-kebab-benchmark-research-and-harness.md`,
    `benchmarks/kebab-benchmark/reports/2026-06-25-kebab-benchmark-full-run-rollup.md`
 

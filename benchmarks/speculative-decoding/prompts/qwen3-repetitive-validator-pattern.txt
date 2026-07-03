@@ -1,0 +1,13 @@
+Continue the TypeScript validator object with exactly the same concise line format. Output only code lines for the remaining fields.
+
+const validators = {
+  email: (v) => typeof v === "string" && v.includes("@"),
+  age: (v) => Number.isInteger(v) && v >= 0 && v <= 150,
+  role: (v) => typeof v === "string" && ["admin", "user", "guest"].includes(v),
+  status: (v) => typeof v === "string" && ["active", "disabled"].includes(v),
+  displayName: (v) => typeof v === "string" && v.length >= 2 && v.length <= 80,
+  phone: (v) => typeof v === "string" && v.length >= 7 && v.length <= 20,
+  city: (v) => typeof v === "string" && v.length >= 2 && v.length <= 80,
+  country: (v) => typeof v === "string" && v.length >= 2 && v.length <= 80,
+
+Remaining fields: postalCode, timezone, language, department, title, managerId, employeeId, costCenter, region, notes, createdBy, updatedBy, externalId, avatarUrl, website, github, linkedin, slack, teams, pagerDuty.

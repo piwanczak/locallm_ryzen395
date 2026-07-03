@@ -1,0 +1,1 @@
+Write a JavaScript function named add that returns a plus b, then show one example call.
