@@ -12,8 +12,8 @@ Primary sources checked on 2026-06-21:
 
 - Microsoft WSL install docs: https://learn.microsoft.com/en-us/windows/wsl/install
 - Microsoft WSL GPU acceleration docs: https://learn.microsoft.com/en-us/windows/ai/directml/gpu-cuda-in-wsl
-- AMD ROCm on Ryzen WSL guide: https://rocm.docs.amd.com/projects/radeon-ryzen/en/latest/docs/install/installryz/wsl/howto_wsl.html
-- AMD Ryzen llama.cpp prebuilt-binaries guide: https://rocm.docs.amd.com/projects/radeon-ryzen/en/latest/docs/advanced/advancedryz/linux/llm/llamacpp.html
+- AMD ROCm on Ryzen WSL guide: https://rocm.docs.amd.com/projects/radeon-ryzen/en/latest/docs/install/installryz/wsl/howto_wsl.md
+- AMD Ryzen llama.cpp prebuilt-binaries guide: https://rocm.docs.amd.com/projects/radeon-ryzen/en/latest/docs/advanced/advancedryz/linux/llm/llamacpp.md
 - AMD ROCDXG repository and compatibility matrix: https://github.com/ROCm/librocdxg/
 
 Key implications for this machine:
