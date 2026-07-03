@@ -68,9 +68,9 @@ only a raw artifact index:
   `benchmarks/wsl-local-inference-benchmark/scripts/generate-local-inference-dashboard.mjs`
 - Generated Markdown:
   `benchmarks/wsl-local-inference-benchmark/reports/local-inference-dashboard.md`
-- Generated HTML:
+- Generated HTML (local generated artifact, normally not committed here):
   `benchmarks/wsl-local-inference-benchmark/reports/local-inference-dashboard.html`
-- Generated data:
+- Generated data (local generated artifact, normally not committed here):
   `benchmarks/wsl-local-inference-benchmark/reports/local-inference-dashboard-data.json`
 
 When a future run changes the promoted stack, major benchmark conclusions,
@@ -86,10 +86,10 @@ node .\benchmarks\wsl-local-inference-benchmark\scripts\render-markdown-reports.
 node .\benchmarks\wsl-local-inference-benchmark\scripts\generate-local-inference-dashboard.mjs
 ```
 
-For dashboard links, use paths relative to
+For dashboard links in this public slice, use paths relative to
 `benchmarks/wsl-local-inference-benchmark/reports/`. Root-level reports should
-normally be linked as `../../../reports/<name>.html`; benchmark-local result
-summaries should normally be linked as `../results/<run>/<summary>.json`.
+normally be linked as `../../../reports/<name>.md`; omitted local result
+summaries should normally point to `../../../public-results/results-summary.md`.
 
 ## Real-Usage Benchmark Maintenance
 

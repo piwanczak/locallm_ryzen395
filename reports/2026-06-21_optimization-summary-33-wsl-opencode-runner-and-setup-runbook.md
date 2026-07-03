@@ -57,8 +57,8 @@ Links:
 
 - https://learn.microsoft.com/en-us/windows/wsl/install
 - https://learn.microsoft.com/en-us/windows/ai/directml/gpu-cuda-in-wsl
-- https://rocm.docs.amd.com/projects/radeon-ryzen/en/latest/docs/install/installryz/wsl/howto_wsl.md
-- https://rocm.docs.amd.com/projects/radeon-ryzen/en/latest/docs/advanced/advancedryz/linux/llm/llamacpp.md
+- https://rocm.docs.amd.com/projects/radeon-ryzen/en/latest/docs/install/installryz/wsl/howto_wsl.html
+- https://rocm.docs.amd.com/projects/radeon-ryzen/en/latest/docs/advanced/advancedryz/linux/llm/llamacpp.html
 - https://github.com/ROCm/librocdxg/
 
 ## Recommended Next Sequence

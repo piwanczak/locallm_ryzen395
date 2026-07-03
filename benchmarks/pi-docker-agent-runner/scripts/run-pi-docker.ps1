@@ -9,6 +9,7 @@ param(
   [switch]$ReadOnlyWorkspace,
   [string[]]$WritablePaths = @(),
   [string]$PlanOutput = "",
+  [string]$PromptFile = "",
   [string]$Prompt = "",
   [Parameter(ValueFromRemainingArguments = $true)]
   [string[]]$PiArgs
@@ -45,6 +46,9 @@ function ConvertTo-ContainerRelativePath {
 
 $modelsPath = Join-Path $runtimeDir "models.generated.json"
 $promptPath = Join-Path $runtimeDir "prompt.generated.md"
+if (-not [string]::IsNullOrWhiteSpace($PromptFile)) {
+  $Prompt = Get-Content -Raw -LiteralPath $PromptFile
+}
 $modelConfig = [ordered]@{
   providers = [ordered]@{
     "local-openai" = [ordered]@{

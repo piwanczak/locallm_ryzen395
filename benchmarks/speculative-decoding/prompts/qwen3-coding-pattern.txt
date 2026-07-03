@@ -1,0 +1,1 @@
+Create a JavaScript module that exports five small validator functions for user records. Use the same concise style for each function. Include validators for email, age, role, status, and displayName.

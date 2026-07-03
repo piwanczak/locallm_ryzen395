@@ -1,0 +1,14 @@
+You are reviewing a small TypeScript API client. Write a concise refactor plan, then provide the improved code. Keep the code self-contained and avoid external dependencies.
+
+Input:
+async function fetchUser(id) {
+  const response = await fetch("/api/users/" + id);
+  if (!response.ok) throw new Error("failed");
+  const data = await response.json();
+  return {
+    id: data.id,
+    name: data.name,
+    email: data.email,
+    active: data.active === true
+  };
+}

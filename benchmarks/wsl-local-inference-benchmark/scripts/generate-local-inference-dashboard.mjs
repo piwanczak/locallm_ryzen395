@@ -12,12 +12,12 @@ const markdownPath = path.join(reportsDir, "local-inference-dashboard.md");
 const htmlPath = path.join(reportsDir, "local-inference-dashboard.html");
 
 const projectSummary = {
-  updatedThrough: "2026-06-23",
-  headline: "Current promoted local coding stack: Qwen3 Coder 30B Q4 remains the default across WSL ROCm, Pi Docker, Docker-controlled, OpenCode, and Windows LM Studio evidence. Gemma 4 12B remains an experimental Windows LM Studio high-context lane after passing controlled reliability checks with reasoning_effort=none, but it did not perform well on the corrected real-usage OpenCode matrix. The broader real-usage work now shows that Qwen can pass practical tasks in OpenCode and Pi, but reliable small coding-agent work still needs stronger task completion and write-boundary controls.",
+  updatedThrough: "2026-06-24",
+  headline: "Current promoted local coding stack: Qwen3 Coder 30B Q4 remains the default across WSL ROCm, Pi Docker, Docker-controlled, OpenCode, Windows LM Studio, and Ollama evidence. WSL Ollama is now GPU-fixed and performance-comparable to Windows Ollama after a real platform wake from the Modern Standby/iGPU clock-cap state: qwen3-coder:30b loads at 100% GPU, direct API throughput is within the 30% gate, OpenCode reaches the corrected Windows pass count of 3/4, and guarded Pi passes when the local Qwen/Ollama tool-call reminder is embedded in the prompt file. Windows Ollama remains the simpler endpoint; verified WSL ROCm llama.cpp remains the more controlled Linux GPU comparison lane. The nearest Ollama Gemma mappings can generate direct text, but Ollama rejects tool-use requests for those Gemma tags, so they are not currently viable for OpenCode/Pi agentic tool lanes. Gemma 4 12B remains an experimental Windows LM Studio high-context lane after controlled checks with reasoning_effort=none. Reliable small coding-agent work still needs stronger task completion and write-boundary controls.",
   currentRecommendation: [
     {
       label: "Endpoint",
-      value: "WSL ROCm llama.cpp with Qwen3 Coder 30B Q4, CTX_SIZE=16384 when context is useful, PARALLEL=1, LLAMA_JINJA=1 for Pi/tool-call work. Keep 8k as the lower-overhead baseline. Use Windows LM Studio Gemma 4 12B for experimental high-context checks only when every request path can set reasoning_effort=none.",
+      value: "Default to Qwen3 Coder 30B Q4. For WSL ROCm llama.cpp use CTX_SIZE=16384 when context is useful, PARALLEL=1, and LLAMA_JINJA=1 for Pi/tool-call work. Windows Ollama is a viable OpenAI-compatible Qwen endpoint for direct API, OpenCode, and guarded Pi. WSL Ollama is also viable after the ROCm/ROCDXG fix and a verified platform wake: use OLLAMA_IGPU_ENABLE=1, OLLAMA_LLM_LIBRARY=rocm_v7_2, HSA_ENABLE_DXG_DETECTION=1, LD_PRELOAD for Ollama's libhsa-runtime64, 262k context when needed, flash attention, and the prompt-file Qwen/Ollama tool-call reminder for Pi. Keep verified WSL ROCm llama.cpp as the more controlled Linux GPU comparison. Keep Windows LM Studio Gemma 4 12B for experimental high-context checks only when every request path can set reasoning_effort=none.",
       links: [
         { label: "Phase 21 16k controlled/Pi", href: "phase-21-16k-controlled-pi-context.html" },
         { label: "Phase 22 16k OpenCode/Windows", href: "phase-22-16k-opencode-windows-models.html" },
@@ -25,18 +25,28 @@ const projectSummary = {
         { label: "Phase 24 Gemma 12B", href: "phase-24-gemma4-12b-context-comparison.html" },
         { label: "Phase 25 Gemma 12B follow-up", href: "phase-25-gemma4-12b-follow-up-validation.html" },
         { label: "Phase 20 final recommendation", href: "phase-20-runner-endpoint-final-recommendation.html" },
-        { label: "Phase 16 Pi recovery", href: "phase-16-pi-jinja-toolcall-recovery.html" }
+        { label: "Phase 16 Pi recovery", href: "phase-16-pi-jinja-toolcall-recovery.html" },
+        { label: "Ollama comparison", href: "../../real-usage-agent-benchmark/reports/2026-06-23-ollama-inference-server-comparison.html" },
+        { label: "Ollama WSL ROCm correction", href: "../../real-usage-agent-benchmark/reports/2026-06-24-ollama-wsl-rocm-fair-correction.html" },
+        { label: "WSL Ollama GPU fix", href: "../../real-usage-agent-benchmark/reports/2026-06-24-ollama-wsl-ollama-gpu-fix-benchmark.html" },
+        { label: "WSL Ollama clock-cap diagnosis", href: "../../real-usage-agent-benchmark/reports/2026-06-24-wsl-ollama-optimization-clock-cap.html" },
+        { label: "WSL Ollama optimized and Pi fixed", href: "../../real-usage-agent-benchmark/reports/2026-06-24-wsl-ollama-optimized-and-pi-fixed.html" }
       ]
     },
     {
       label: "Runner",
-      value: "Use the host/WSL controlled runner as the default benchmark harness; use Docker-controlled for Linux isolation; use guarded Pi Docker when validating Dockerized agentic tool execution; use OpenCode for slower full-agent realism checks. Use the real-usage benchmark before promoting any stack as useful for practical backend/frontend coding work. In the corrected follow-up, OpenCode produced multiple verified passes and guarded Pi Qwen passed multi-file-cart with no safety violations.",
+      value: "Use the host/WSL controlled runner as the default benchmark harness; use Docker-controlled for Linux isolation; use guarded Pi Docker when validating Dockerized agentic tool execution; use OpenCode for slower full-agent realism checks. Use the real-usage benchmark before promoting any stack as useful for practical backend/frontend coding work. In the corrected Ollama fairness pass, Qwen reached 3/4 OpenCode and 1/1 Pi on Windows Ollama, verified WSL ROCm llama.cpp, and now optimized WSL Ollama with the prompt-file tool-call reminder; backend-api remains unsolved.",
       links: [
         { label: "Phase 03 recommendation", href: "phase-03-recommendation.html" },
         { label: "Runner comparison summary", href: "../results/20260622-121739-runner-comparison/runner-comparison-summary.json" },
         { label: "Real-usage rationale", href: "../../real-usage-agent-benchmark/reports/real-usage-benchmark-rationale.html" },
         { label: "Real-usage execution", href: "../../real-usage-agent-benchmark/reports/2026-06-22-real-usage-agent-execution.html" },
-        { label: "Real-usage follow-up", href: "../../real-usage-agent-benchmark/reports/2026-06-23-real-usage-followup-and-pi-guard.html" }
+        { label: "Real-usage follow-up", href: "../../real-usage-agent-benchmark/reports/2026-06-23-real-usage-followup-and-pi-guard.html" },
+        { label: "Ollama real-usage comparison", href: "../../real-usage-agent-benchmark/reports/2026-06-23-ollama-inference-server-comparison.html" },
+        { label: "Ollama WSL ROCm correction", href: "../../real-usage-agent-benchmark/reports/2026-06-24-ollama-wsl-rocm-fair-correction.html" },
+        { label: "WSL Ollama GPU fix", href: "../../real-usage-agent-benchmark/reports/2026-06-24-ollama-wsl-ollama-gpu-fix-benchmark.html" },
+        { label: "WSL Ollama clock-cap diagnosis", href: "../../real-usage-agent-benchmark/reports/2026-06-24-wsl-ollama-optimization-clock-cap.html" },
+        { label: "WSL Ollama optimized and Pi fixed", href: "../../real-usage-agent-benchmark/reports/2026-06-24-wsl-ollama-optimized-and-pi-fixed.html" }
       ]
     },
     {
@@ -157,6 +167,31 @@ const projectSummary = {
         { label: "Corrected OpenCode matrix", href: "../../real-usage-agent-benchmark/results/20260623-075932-lmstudio-opencode-matrix/lmstudio-opencode-matrix-summary.json" },
         { label: "Guarded Pi matrix", href: "../../real-usage-agent-benchmark/results/20260623-211617-lmstudio-pi-matrix/lmstudio-pi-matrix-summary.json" }
       ]
+    },
+    {
+      area: "Ollama inference server",
+      result: "Ollama 0.30.10 is installed on both Windows and WSL. Windows serves on 127.0.0.1:11434 and works as a Qwen endpoint for direct API, OpenCode, and guarded Pi. WSL Ollama serves localhost-only on 127.0.0.1:11435 and now loads Qwen on ROCm/GPU after forcing ROCDXG discovery and preloading Ollama's HSA runtime. The slow WSL Ollama pass was traced to Windows Modern Standby / iGPU clock cap, not Ollama alone: low-level llama-bench was about 11.37 tok/s while ADL showed GFXCLK around 609 MHz and 14 W. After a platform wake, low-level WSL ROCm generation recovered to 59.41 tok/s, and WSL Ollama direct API matched Windows within about 1-5% on task output TPS. WSL Ollama OpenCode reached 3/4 passes, matching corrected Windows pass behavior, with backend-api still failing. Baseline WSL Pi still failed on Qwen XML tool-call parsing, but the prompt-file local Qwen/Ollama tool-call reminder fixed it: WSL Pi passed in 215.4 s and Windows Pi with the same note passed in 235.1 s. Ollama Gemma mappings passed no agentic tool rows because the endpoint rejected tool-use requests for gemma3n:e4b and gemma3:12b.",
+      links: [
+        { label: "Ollama comparison", href: "../../real-usage-agent-benchmark/reports/2026-06-23-ollama-inference-server-comparison.html" },
+        { label: "Ollama WSL ROCm correction", href: "../../real-usage-agent-benchmark/reports/2026-06-24-ollama-wsl-rocm-fair-correction.html" },
+        { label: "Corrected Ollama fairness rollup", href: "../../real-usage-agent-benchmark/reports/2026-06-24-ollama-fair-wsl-rocm-correction-rollup.html" },
+        { label: "WSL Ollama GPU fix", href: "../../real-usage-agent-benchmark/reports/2026-06-24-ollama-wsl-ollama-gpu-fix-benchmark.html" },
+        { label: "WSL Ollama GPU rollup", href: "../../real-usage-agent-benchmark/reports/2026-06-24-ollama-wsl-gpu-fixed-rollup.html" },
+        { label: "WSL Ollama clock-cap diagnosis", href: "../../real-usage-agent-benchmark/reports/2026-06-24-wsl-ollama-optimization-clock-cap.html" },
+        { label: "WSL Ollama optimized and Pi fixed", href: "../../real-usage-agent-benchmark/reports/2026-06-24-wsl-ollama-optimized-and-pi-fixed.html" },
+        { label: "Ollama rollup", href: "../../real-usage-agent-benchmark/reports/2026-06-23-ollama-rollup.html" },
+        { label: "Windows direct matrix", href: "../../real-usage-agent-benchmark/results/20260623-222016-ollama-windows-direct-matrix/ollama-direct-api-matrix-summary.json" },
+        { label: "WSL direct matrix", href: "../../real-usage-agent-benchmark/results/20260623-224125-ollama-wsl-direct-matrix/ollama-direct-api-matrix-summary.json" },
+        { label: "OpenCode matrix", href: "../../real-usage-agent-benchmark/results/20260623-230219-ollama-windows-opencode-matrix/ollama-opencode-matrix-summary.json" },
+        { label: "Windows Pi matrix", href: "../../real-usage-agent-benchmark/results/20260623-232051-ollama-windows-pi-matrix/ollama-pi-matrix-summary.json" },
+        { label: "WSL Pi matrix", href: "../../real-usage-agent-benchmark/results/20260623-232857-ollama-wsl-pi-matrix/ollama-pi-matrix-summary.json" },
+        { label: "Corrected Windows OpenCode", href: "../../real-usage-agent-benchmark/results/20260624-003717-ollama-windows-fair-opencode-matrix/ollama-opencode-matrix-summary.json" },
+        { label: "Corrected WSL ROCm OpenCode", href: "../../real-usage-agent-benchmark/results/20260624-001746-ollama-wsl-rocm-fair-262k-opencode-matrix/ollama-opencode-matrix-summary.json" },
+        { label: "Optimized WSL Ollama direct matrix", href: "../../real-usage-agent-benchmark/results/20260624-121520-ollama-wsl-post-wake-262k-direct-matrix/ollama-direct-api-matrix-summary.json" },
+        { label: "Optimized WSL Ollama OpenCode", href: "../../real-usage-agent-benchmark/results/20260624-121759-ollama-wsl-post-wake-262k-opencode-matrix/ollama-opencode-matrix-summary.json" },
+        { label: "Optimized WSL Ollama Pi", href: "../../real-usage-agent-benchmark/results/20260624-160457-ollama-wsl-post-wake-262k-tool-reminder-pi-matrix/ollama-pi-matrix-summary.json" },
+        { label: "Windows Pi same reminder", href: "../../real-usage-agent-benchmark/results/20260624-160932-ollama-windows-post-wake-262k-tool-reminder-pi-matrix/ollama-pi-matrix-summary.json" }
+      ]
     }
   ],
   canonicalArtifacts: [
@@ -188,9 +223,25 @@ const projectSummary = {
     { label: "Real-usage OpenCode matrix", href: "../../real-usage-agent-benchmark/results/20260622-220530-lmstudio-opencode-matrix/lmstudio-opencode-matrix-summary.json" },
     { label: "Real-usage Pi matrix", href: "../../real-usage-agent-benchmark/results/20260622-231019-lmstudio-pi-matrix/lmstudio-pi-matrix-summary.json" },
     { label: "Corrected real-usage OpenCode matrix", href: "../../real-usage-agent-benchmark/results/20260623-075932-lmstudio-opencode-matrix/lmstudio-opencode-matrix-summary.json" },
-    { label: "Guarded real-usage Pi matrix", href: "../../real-usage-agent-benchmark/results/20260623-211617-lmstudio-pi-matrix/lmstudio-pi-matrix-summary.json" }
+    { label: "Guarded real-usage Pi matrix", href: "../../real-usage-agent-benchmark/results/20260623-211617-lmstudio-pi-matrix/lmstudio-pi-matrix-summary.json" },
+    { label: "Ollama comparison report", href: "../../real-usage-agent-benchmark/reports/2026-06-23-ollama-inference-server-comparison.html" },
+    { label: "Ollama rollup", href: "../../real-usage-agent-benchmark/reports/2026-06-23-ollama-rollup.html" },
+    { label: "Ollama WSL ROCm correction", href: "../../real-usage-agent-benchmark/reports/2026-06-24-ollama-wsl-rocm-fair-correction.html" },
+    { label: "Corrected Ollama fairness rollup", href: "../../real-usage-agent-benchmark/reports/2026-06-24-ollama-fair-wsl-rocm-correction-rollup.html" },
+    { label: "WSL Ollama GPU fix report", href: "../../real-usage-agent-benchmark/reports/2026-06-24-ollama-wsl-ollama-gpu-fix-benchmark.html" },
+    { label: "WSL Ollama GPU fixed rollup", href: "../../real-usage-agent-benchmark/reports/2026-06-24-ollama-wsl-gpu-fixed-rollup.html" },
+    { label: "WSL Ollama clock-cap diagnosis", href: "../../real-usage-agent-benchmark/reports/2026-06-24-wsl-ollama-optimization-clock-cap.html" },
+    { label: "WSL Ollama optimized and Pi fixed", href: "../../real-usage-agent-benchmark/reports/2026-06-24-wsl-ollama-optimized-and-pi-fixed.html" },
+    { label: "Ollama Windows direct matrix", href: "../../real-usage-agent-benchmark/results/20260623-222016-ollama-windows-direct-matrix/ollama-direct-api-matrix-summary.json" },
+    { label: "Ollama WSL direct matrix", href: "../../real-usage-agent-benchmark/results/20260623-224125-ollama-wsl-direct-matrix/ollama-direct-api-matrix-summary.json" },
+    { label: "Ollama OpenCode matrix", href: "../../real-usage-agent-benchmark/results/20260623-230219-ollama-windows-opencode-matrix/ollama-opencode-matrix-summary.json" },
+    { label: "Ollama Windows Pi matrix", href: "../../real-usage-agent-benchmark/results/20260623-232051-ollama-windows-pi-matrix/ollama-pi-matrix-summary.json" },
+    { label: "Ollama WSL Pi matrix", href: "../../real-usage-agent-benchmark/results/20260623-232857-ollama-wsl-pi-matrix/ollama-pi-matrix-summary.json" }
   ],
   openLimits: [
+    "Ollama Gemma tags gemma3n:e4b and gemma3:12b rejected OpenAI tool-use requests in OpenCode and Pi, so they are not currently viable for agentic tool lanes without a different model/tag/import or endpoint behavior.",
+    "WSL Ollama now discovers and loads Qwen on ROCm/GPU and is performance-comparable after a verified platform wake, but Modern Standby / iGPU clock caps can silently invalidate runs. Rerun WSL Ollama benchmarks only after wake validation or an ADL/throughput sanity check.",
+    "WSL Ollama Pi requires the prompt-file local Qwen/Ollama tool-call reminder; without it, the model can reason correctly but the endpoint/tool parser may end the stream before an edit/write tool call lands.",
     "Gemma 4 12B cannot currently use the promoted WSL ROCm llama.cpp lane because the AMD build does not recognize gemma4.",
     "Gemma 4 12B requires reasoning_effort=none on LM Studio/OpenAI-compatible request paths; default reasoning exhausted output tokens with no visible content.",
     "Gemma 4 12B is proven at 262k only for small controlled prompts; the real filled-prompt OpenCode proof is 65k.",

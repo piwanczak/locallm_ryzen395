@@ -9,7 +9,7 @@ Date: 2026-06-21
 | Vicki Boykis, `Running local models is good now`, 2026-06-15, https://vickiboykis.com/2026/06/15/running-local-models-is-good-now/ | Practical local-agent pattern: Pi harness, LM Studio endpoint, Docker isolation, Gemma/GPT-OSS/Qwen model candidates |
 | Pi docs, containerization, https://pi.dev/docs/latest/containerization | Docker isolation patterns for running Pi inside a container |
 | Pi docs, custom models, https://pi.dev/docs/latest/models | OpenAI-compatible provider and `baseUrl` model config shape |
-| AMD ROCm Ryzen WSL guide, https://rocm.docs.amd.com/projects/radeon-ryzen/en/latest/docs/install/installryz/wsl/howto_wsl.md | WSL ROCm/ROCDXG as the supported Linux-on-Windows compute path for this machine |
+| AMD ROCm Ryzen WSL guide, https://rocm.docs.amd.com/projects/radeon-ryzen/en/latest/docs/install/installryz/wsl/howto_wsl.html | WSL ROCm/ROCDXG as the supported Linux-on-Windows compute path for this machine |
 | Microsoft WSL install docs, https://learn.microsoft.com/en-us/windows/wsl/install | WSL2 install and distro selection baseline |
 | Saved reading list, `%USERPROFILE%\Downloads\local_llm_recommended_reading.html` | Local inference topics: memory bandwidth, GGUF quantization, KV cache, batching, vLLM/PagedAttention, llama.cpp, ROCm, Vulkan, Strix Halo |
 
