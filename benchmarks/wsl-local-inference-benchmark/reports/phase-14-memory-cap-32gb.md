@@ -20,8 +20,8 @@ The wrapper restored the previous state afterward. The previous state had no `%U
 
 | Artifact | Result |
 | --- | --- |
-| `../results/20260622-001155-memory-cap-sweep/memory-cap-sweep-summary.json` | Completed at `32GB` |
-| `../results/20260622-001155-memory-cap-sweep/32GB-wsl-memory-probe.txt` | Confirmed active cap: about `31GiB` visible RAM and `16GiB` swap |
+| `results/20260622-001155-memory-cap-sweep/memory-cap-sweep-summary.json` | Completed at `32GB` |
+| `results/20260622-001155-memory-cap-sweep/32GB-wsl-memory-probe.txt` | Confirmed active cap: about `31GiB` visible RAM and `16GiB` swap |
 
 After restoration, `%USERPROFILE%\.wslconfig` was absent again.
 

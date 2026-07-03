@@ -90,7 +90,7 @@ After approval, install or select a WSL2 distro, then run:
 Inside the distro, run:
 
 ```bash
-bash /mnt/c/Users/<you>/Documents/locallm_ryzen395-public/benchmarks/wsl-local-inference-benchmark/scripts/wsl-preflight.sh
+bash /mnt/c/Users/<you>/Documents/LocalInference\ -\ dzienniczek/benchmarks/wsl-local-inference-benchmark/scripts/wsl-preflight.sh
 ```
 
 Then start one WSL runtime at a time and measure it with:

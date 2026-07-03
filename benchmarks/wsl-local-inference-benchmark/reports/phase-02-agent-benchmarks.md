@@ -15,8 +15,8 @@ Date: 2026-06-21
 
 Artifacts:
 
-- `../results/20260621-214423-opencode/js-window-grade.json`
-- `../results/20260621-220659-opencode/runs.jsonl`
+- `results/20260621-214423-opencode/js-window-grade.json`
+- `results/20260621-220659-opencode/runs.jsonl`
 
 Findings:
 
@@ -29,11 +29,11 @@ Findings:
 
 Artifacts:
 
-- `../results/20260621-221417-controlled-js-window-lineendings/js-window-result.json`
-- `../results/20260621-221442-controlled-browser-style/browser-style-result.json`
-- `../results/20260621-221537-controlled-browser-style-hinted/browser-style-result.json`
-- `../results/20260621-222232-controlled-browser-style-protected/browser-style-result.json`
-- `../results/20260621-222232-controlled-browser-style-protected/browser-verification.json`
+- `results/20260621-221417-controlled-js-window-lineendings/js-window-result.json`
+- `results/20260621-221442-controlled-browser-style/browser-style-result.json`
+- `results/20260621-221537-controlled-browser-style-hinted/browser-style-result.json`
+- `results/20260621-222232-controlled-browser-style-protected/browser-style-result.json`
+- `results/20260621-222232-controlled-browser-style-protected/browser-verification.json`
 
 | Task | Result | First Content | Wall Time | Notes |
 | --- | --- | ---: | ---: | --- |

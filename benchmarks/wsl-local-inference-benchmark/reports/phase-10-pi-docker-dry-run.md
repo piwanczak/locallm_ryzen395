@@ -21,10 +21,10 @@ Later update: Docker Desktop is now installed and WSL-enabled. Real container bu
 
 | Artifact | Result |
 | --- | --- |
-| `../results/20260621-230439-pi-docker-dry-run/pi-docker-plan.json` | GENERATED: base `pi` service command plan only |
-| `../results/20260621-230439-pi-docker-dry-run/models.generated.json` | PARSED: generated Pi model config only |
-| `../results/20260621-230439-pi-browser-dry-run/pi-browser-plan.json` | GENERATED: `pi-browser` service command plan only, with `--profile browser` |
-| `../results/20260621-230439-pi-browser-dry-run/models.generated.json` | PARSED: generated browser-run model config only |
+| `results/20260621-230439-pi-docker-dry-run/pi-docker-plan.json` | GENERATED: base `pi` service command plan only |
+| `results/20260621-230439-pi-docker-dry-run/models.generated.json` | PARSED: generated Pi model config only |
+| `results/20260621-230439-pi-browser-dry-run/pi-browser-plan.json` | GENERATED: `pi-browser` service command plan only, with `--profile browser` |
+| `results/20260621-230439-pi-browser-dry-run/models.generated.json` | PARSED: generated browser-run model config only |
 
 ## Benchmark Status
 

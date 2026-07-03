@@ -1,0 +1,9 @@
+{
+  "type": "module",
+  "scripts": {
+    "test": "node tools/test.mjs"
+  },
+  "bin": {
+    "usage-report": "bin/usage-report.mjs"
+  }
+}

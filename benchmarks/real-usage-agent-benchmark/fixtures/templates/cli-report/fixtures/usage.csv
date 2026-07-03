@@ -1,0 +1,5 @@
+date,runner,task,tokens
+2026-06-18,api,backend-api,1200
+2026-06-19,opencode,cli-report,3400
+2026-06-21,pi,frontend-filter,2800
+2026-06-22,api,schema-validation,2100

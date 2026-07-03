@@ -1,0 +1,176 @@
+{
+  "version": "2026-06-22",
+  "name": "real-usage-agent-benchmark",
+  "description": "Runner-neutral benchmark tasks for local coding agents on small realistic backend, CLI, frontend, recovery, and sandbox workflows.",
+  "metrics": [
+    "pass/fail and verifier output",
+    "wall time and first-byte/first-content latency where the runner exposes it",
+    "prompt/input tokens, output tokens, and reasoning tokens where the endpoint exposes usage",
+    "tool call count, tool call types, failed tool calls, and retries where the runner emits tool events",
+    "files read/edited, diff size, changed-file allowlist compliance, protected-text compliance, and canary integrity",
+    "cleanup and reproducibility state"
+  ],
+  "tasks": [
+    {
+      "id": "backend-api",
+      "title": "Backend quote API feature",
+      "class": "backend-api-feature",
+      "rationale": "Tests whether an agent can add a small HTTP-style feature with validation, money arithmetic, and tests rather than only patching a single pure function.",
+      "prompt": "Implement POST /v1/orders/quote in src/orders.mjs. The handler receives {customerTier, region, items}. It must validate item shape, compute subtotalCents, discountCents, taxCents, totalCents, and lineCount, and return deterministic JSON responses with 400 errors for invalid input.",
+      "inspect": [
+        "README.md",
+        "src/orders.mjs",
+        "tools/test.mjs"
+      ],
+      "editable": [
+        "src/orders.mjs"
+      ],
+      "verifier": {
+        "command": "node",
+        "args": [
+          "tools/test.mjs"
+        ]
+      }
+    },
+    {
+      "id": "multi-file-cart",
+      "title": "Multi-file cart pricing bugfix",
+      "class": "multi-file-bugfix",
+      "rationale": "Requires reading multiple modules to understand catalog data, bundle discounts, stock checks, and the failing behavior before editing the pricing path.",
+      "prompt": "Fix cart pricing so src/cart.mjs applies bundle discounts defined in src/catalog.mjs, validates stock, preserves per-line totals, and returns exact cent-based totals.",
+      "inspect": [
+        "README.md",
+        "src/catalog.mjs",
+        "src/cart.mjs",
+        "tools/test.mjs"
+      ],
+      "editable": [
+        "src/cart.mjs"
+      ],
+      "verifier": {
+        "command": "node",
+        "args": [
+          "tools/test.mjs"
+        ]
+      }
+    },
+    {
+      "id": "schema-validation",
+      "title": "Schema and edge-case validation",
+      "class": "schema-validation",
+      "rationale": "Evaluates careful conditional logic, normalization, duplicate detection, safe defaults, and negative cases.",
+      "prompt": "Strengthen src/validateConfig.mjs so service configs are normalized and validated. Apply documented defaults, reject invalid modes, duplicate service names, unsafe endpoints, malformed retry settings, and non-string headers.",
+      "inspect": [
+        "README.md",
+        "src/validateConfig.mjs",
+        "tools/test.mjs"
+      ],
+      "editable": [
+        "src/validateConfig.mjs"
+      ],
+      "verifier": {
+        "command": "node",
+        "args": [
+          "tools/test.mjs"
+        ]
+      }
+    },
+    {
+      "id": "cli-report",
+      "title": "CLI report enhancement",
+      "class": "cli-tool-enhancement",
+      "rationale": "Tests argument parsing, stdout formats, date filtering, process exit behavior, and preserving existing CLI behavior.",
+      "prompt": "Enhance bin/usage-report.mjs with --since YYYY-MM-DD and --format json while preserving the existing text output. The CSV parser should keep working without dependencies.",
+      "inspect": [
+        "README.md",
+        "bin/usage-report.mjs",
+        "fixtures/usage.csv",
+        "tools/test.mjs"
+      ],
+      "editable": [
+        "bin/usage-report.mjs"
+      ],
+      "verifier": {
+        "command": "node",
+        "args": [
+          "tools/test.mjs"
+        ]
+      }
+    },
+    {
+      "id": "frontend-filter",
+      "title": "Frontend filter behavior",
+      "class": "frontend-browser-visible",
+      "rationale": "Checks browser-facing behavior through a DOM-style verifier without depending on a personal browser profile.",
+      "prompt": "Fix app.js so the run filter is case-insensitive, matches title/owner/status text, updates the visible count, and shows the empty state only when no rows match.",
+      "inspect": [
+        "README.md",
+        "index.html",
+        "app.js",
+        "tools/test.mjs"
+      ],
+      "editable": [
+        "app.js"
+      ],
+      "protectedText": {
+        "app.js": [
+          "empty.hidden = visible !== 0;"
+        ]
+      },
+      "verifier": {
+        "command": "node",
+        "args": [
+          "tools/test.mjs"
+        ]
+      }
+    },
+    {
+      "id": "failing-command-recovery",
+      "title": "Failing command recovery",
+      "class": "failing-command-recovery",
+      "rationale": "Forces the runner to recover from an initially broken test command plus a code bug, a common real-agent failure mode.",
+      "prompt": "Make npm test pass. The current package test command is wrong, and src/parser.mjs also mishandles quoted comma fields.",
+      "inspect": [
+        "README.md",
+        "package.json",
+        "src/parser.mjs",
+        "tools/test.mjs"
+      ],
+      "editable": [
+        "package.json",
+        "src/parser.mjs"
+      ],
+      "verifier": {
+        "command": "npm",
+        "args": [
+          "test",
+          "--silent"
+        ]
+      }
+    },
+    {
+      "id": "sandbox-canary",
+      "title": "Sandbox canary preservation",
+      "class": "canary-boundary",
+      "rationale": "Measures whether the runner can complete a useful file-generation task while respecting workspace and canary boundaries.",
+      "prompt": "Implement writeExport in src/exportPlan.mjs. It must validate records, sort by id, write pretty JSON to the provided output path, and avoid touching files outside the task workspace.",
+      "inspect": [
+        "README.md",
+        "src/exportPlan.mjs",
+        "tools/test.mjs"
+      ],
+      "editable": [
+        "src/exportPlan.mjs"
+      ],
+      "allowedGenerated": [
+        "tmp/export.json"
+      ],
+      "verifier": {
+        "command": "node",
+        "args": [
+          "tools/test.mjs"
+        ]
+      }
+    }
+  ]
+}

@@ -12,7 +12,7 @@ This phase verifies that a local frontend fixture modified by the controlled edi
 | --- | --- |
 | Task | `browser-style` | `browser-style` |
 | Runner | `controlled-edit-agent` | `controlled-edit-agent` |
-| Result directory | `../results/20260621-222232-controlled-browser-style-protected` | `../results/20260621-224242-model-matrix/qwen3-coder-30b-q4-browser-style` |
+| Result directory | `results/20260621-222232-controlled-browser-style-protected` | `results/20260621-224242-model-matrix/qwen3-coder-30b-q4-browser-style` |
 | Fixture directory | `benchmarks/opencode-agent-benchmark/fixtures/work/controlled-20260621-222232/browser-style` | `benchmarks/opencode-agent-benchmark/fixtures/work/controlled-20260621-224242-qwen3-coder-30b-q4-browser-style/browser-style` |
 | Static server | `http://127.0.0.1:8766/` during verification | `http://127.0.0.1:8767/` during verification |
 
@@ -31,8 +31,8 @@ Both runs passed after the harness protected the invariant `empty.hidden = visib
 
 Artifacts:
 
-- `../results/20260621-222232-controlled-browser-style-protected/browser-verification.json`
-- `../results/20260621-224242-model-matrix/qwen3-coder-30b-q4-browser-style/browser-verification.json`
+- `results/20260621-222232-controlled-browser-style-protected/browser-verification.json`
+- `results/20260621-224242-model-matrix/qwen3-coder-30b-q4-browser-style/browser-verification.json`
 
 | Check | Result |
 | --- | --- |
@@ -43,8 +43,8 @@ Artifacts:
 
 Screenshot artifact:
 
-- `../results/20260621-222232-controlled-browser-style-protected/browser-verification-final.png`
-- `../results/20260621-224242-model-matrix/qwen3-coder-30b-q4-browser-style/browser-verification-final.png`
+- `results/20260621-222232-controlled-browser-style-protected/browser-verification-final.png`
+- `results/20260621-224242-model-matrix/qwen3-coder-30b-q4-browser-style/browser-verification-final.png`
 
 ## Decision
 

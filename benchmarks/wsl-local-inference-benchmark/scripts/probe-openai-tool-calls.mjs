@@ -11,6 +11,7 @@ function parseArgs(argv) {
     prompt: "Create a file named pi_probe.txt containing exactly PI_TOOL_OK.",
     temperature: 0,
     maxTokens: 512,
+    reasoningEffort: "",
     stream: false
   };
   for (let i = 0; i < argv.length; i += 1) {
@@ -22,6 +23,7 @@ function parseArgs(argv) {
     else if (arg === "--prompt") out.prompt = next, i += 1;
     else if (arg === "--temperature") out.temperature = Number(next), i += 1;
     else if (arg === "--max-tokens") out.maxTokens = Number(next), i += 1;
+    else if (arg === "--reasoning-effort") out.reasoningEffort = next, i += 1;
     else if (arg === "--stream") out.stream = true;
     else throw new Error(`Unknown argument: ${arg}`);
   }
@@ -93,6 +95,9 @@ const requestBody = {
   max_tokens: args.maxTokens,
   stream: args.stream
 };
+if (args.reasoningEffort) {
+  requestBody.reasoning_effort = args.reasoningEffort;
+}
 
 const started = performance.now();
 const [models, props] = await Promise.all([

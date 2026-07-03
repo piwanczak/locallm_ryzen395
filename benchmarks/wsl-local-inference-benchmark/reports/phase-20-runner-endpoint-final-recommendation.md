@@ -19,10 +19,10 @@ It builds on Phase 16, where Pi tool calling was recovered by serving Qwen3 Code
 
 | Area | Canonical artifact | Result |
 | --- | --- | --- |
-| Pi Jinja recovery | `../results/20260622-102758-pi-jinja-q4-toolcall-workflow/pi-jinja-q4-toolcall-workflow-summary.json` | pass |
-| Challenge suite | `../results/20260622-110232-pi-challenge-suite/pi-challenge-suite-summary.json` | 5 of 5 pass |
-| Memory cap sweep | `../results/20260622-111737-pi-memory-cap-sweep/pi-memory-cap-sweep-summary.json` | `DEFAULT`, `48GB`, `32GB` pass |
-| 10-run soak | `../results/20260622-113256-pi-reliability-soak/pi-reliability-soak-summary.json` | 10 of 10 pass |
+| Pi Jinja recovery | `results/20260622-102758-pi-jinja-q4-toolcall-workflow/pi-jinja-q4-toolcall-workflow-summary.json` | pass |
+| Challenge suite | `results/20260622-110232-pi-challenge-suite/pi-challenge-suite-summary.json` | 5 of 5 pass |
+| Memory cap sweep | `results/20260622-111737-pi-memory-cap-sweep/pi-memory-cap-sweep-summary.json` | `DEFAULT`, `48GB`, `32GB` pass |
+| 10-run soak | `results/20260622-113256-pi-reliability-soak/pi-reliability-soak-summary.json` | 10 of 10 pass |
 
 The 10-run soak produced:
 
@@ -57,7 +57,7 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File `
 
 Canonical result:
 
-- `../results/20260622-121739-runner-comparison/runner-comparison-summary.json`
+- `results/20260622-121739-runner-comparison/runner-comparison-summary.json`
 
 Result:
 
@@ -88,7 +88,7 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File `
 
 Canonical result:
 
-- `../results/20260622-120346-pi-endpoint-comparison/pi-endpoint-comparison-summary.json`
+- `results/20260622-120346-pi-endpoint-comparison/pi-endpoint-comparison-summary.json`
 
 Result:
 
@@ -124,7 +124,7 @@ Dashboard source and output:
 
 - `reports/local-inference-dashboard-data.json`
 - `reports/local-inference-dashboard.md`
-- `reports/local-inference-dashboard.md`
+- `reports/local-inference-dashboard.html`
 
 The dashboard generator now recognizes:
 

@@ -17,7 +17,7 @@ It covers:
 
 Canonical result:
 
-- `../results/20260622-133115-16k-controlled-context-comparison/16k-controlled-context-comparison-summary.json`
+- `results/20260622-133115-16k-controlled-context-comparison/16k-controlled-context-comparison-summary.json`
 
 Command:
 
@@ -46,7 +46,7 @@ Interpretation:
 
 Canonical result:
 
-- `../results/20260622-133820-pi-jinja-q4-toolcall-workflow/pi-jinja-q4-toolcall-workflow-summary.json`
+- `results/20260622-133820-pi-jinja-q4-toolcall-workflow/pi-jinja-q4-toolcall-workflow-summary.json`
 
 Command:
 
@@ -84,7 +84,7 @@ Interpretation:
 
 Canonical result:
 
-- `../results/20260622-134255-pi-challenge-suite/pi-challenge-suite-summary.json`
+- `results/20260622-134255-pi-challenge-suite/pi-challenge-suite-summary.json`
 
 Command:
 
@@ -114,7 +114,7 @@ Interpretation:
 
 Canonical result:
 
-- `../results/20260622-134859-docker-controlled-q4-workflow/docker-controlled-q4-workflow-summary.json`
+- `results/20260622-134859-docker-controlled-q4-workflow/docker-controlled-q4-workflow-summary.json`
 
 Command:
 

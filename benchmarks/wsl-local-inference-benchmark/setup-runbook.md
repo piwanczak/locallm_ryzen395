@@ -4,7 +4,7 @@ Created: 2026-06-21
 
 This runbook is intentionally split into approval gates. The benchmark goal allows read-only inventory now, but distro/package/runtime installation needs explicit approval.
 
-All durable benchmark outputs should be written under this Windows workspace. WSL commands run from `/mnt/c/Users/<you>/Documents/locallm_ryzen395-public`, so reports, notes, logs, and results migrate directly into the shared Windows folder instead of staying inside the Linux filesystem.
+All durable benchmark outputs should be written under this Windows workspace. WSL commands run from `/mnt/c/path/to/locallm_ryzen395`, so reports, notes, logs, and results migrate directly into the shared Windows folder instead of staying inside the Linux filesystem.
 
 ## Source Checks
 
@@ -79,7 +79,7 @@ wsl.exe --distribution Ubuntu-24.04 -- uname -a
 Run this before installing ROCm, Vulkan tools, llama.cpp, Ollama, or anything else:
 
 ```powershell
-wsl.exe --distribution Ubuntu-24.04 -- bash -lc "cd /mnt/c/Users/<you>/Documents/locallm_ryzen395-public && bash benchmarks/wsl-local-inference-benchmark/scripts/wsl-preflight.sh benchmarks/wsl-local-inference-benchmark/results/wsl-linux-preflight"
+wsl.exe --distribution Ubuntu-24.04 -- bash -lc "cd /mnt/c/Users/<you>/Documents/'LocalInference - dzienniczek' && bash benchmarks/wsl-local-inference-benchmark/scripts/wsl-preflight.sh benchmarks/wsl-local-inference-benchmark/results/wsl-linux-preflight"
 ```
 
 For an uninitialized `--no-launch` distro, run the preflight as root first:
@@ -105,7 +105,7 @@ Choose one path at a time. Do not mix ROCm, Vulkan, Ollama, and source builds in
 Before runtime-specific installs, install only baseline Linux tools:
 
 ```powershell
-wsl.exe --distribution Ubuntu-24.04 --user root -- bash -lc "cd /mnt/c/Users/<you>/Documents/locallm_ryzen395-public && CONFIRM_WSL_BASE_TOOLS_INSTALL=1 bash benchmarks/wsl-local-inference-benchmark/scripts/setup-wsl-base-tools.sh"
+wsl.exe --distribution Ubuntu-24.04 --user root -- bash -lc "cd /mnt/c/Users/<you>/Documents/'LocalInference - dzienniczek' && CONFIRM_WSL_BASE_TOOLS_INSTALL=1 bash benchmarks/wsl-local-inference-benchmark/scripts/setup-wsl-base-tools.sh"
 ```
 
 Recommended order:
@@ -122,7 +122,7 @@ For ROCm, the install path likely needs ROCDXG and ROCm user-space packages. Fol
 Use the prebuilt ROCDXG release asset before falling back to a source build. The guarded script registers AMD's ROCm `7.2.4` Ubuntu Noble repository, installs ROCm userspace and `rocdxg-roct_1.2.0_amd64.deb`, and deliberately does not install `amdgpu-dkms` on WSL:
 
 ```powershell
-wsl.exe --distribution Ubuntu-24.04 --user root -- bash -lc "cd /mnt/c/Users/<you>/Documents/locallm_ryzen395-public && CONFIRM_WSL_ROCDXG_INSTALL=1 bash benchmarks/wsl-local-inference-benchmark/scripts/setup-wsl-rocdxg.sh"
+wsl.exe --distribution Ubuntu-24.04 --user root -- bash -lc "cd /mnt/c/Users/<you>/Documents/'LocalInference - dzienniczek' && CONFIRM_WSL_ROCDXG_INSTALL=1 bash benchmarks/wsl-local-inference-benchmark/scripts/setup-wsl-rocdxg.sh"
 ```
 
 For llama.cpp, prefer a binary or build that exposes:
@@ -142,19 +142,19 @@ For llama.cpp, prefer a binary or build that exposes:
 AMD's validated Ubuntu 24.04 ROCm llama.cpp package for `gfx110X`, `gfx115X`, and `gfx120X` can be installed with:
 
 ```powershell
-wsl.exe --distribution Ubuntu-24.04 --user root -- bash -lc "cd /mnt/c/Users/<you>/Documents/locallm_ryzen395-public && CONFIRM_WSL_LLAMA_DOWNLOAD=1 bash benchmarks/wsl-local-inference-benchmark/scripts/setup-wsl-llamacpp-amd.sh"
+wsl.exe --distribution Ubuntu-24.04 --user root -- bash -lc "cd /mnt/c/Users/<you>/Documents/'LocalInference - dzienniczek' && CONFIRM_WSL_LLAMA_DOWNLOAD=1 bash benchmarks/wsl-local-inference-benchmark/scripts/setup-wsl-llamacpp-amd.sh"
 ```
 
 The downloaded AMD package needs its extracted directory on `LD_LIBRARY_PATH`; use the checked-in launcher instead of invoking `llama-server` directly:
 
 ```powershell
-wsl.exe --distribution Ubuntu-24.04 --user root -- bash -lc "cd /mnt/c/Users/<you>/Documents/locallm_ryzen395-public && PORT=8080 CTX_SIZE=8192 PARALLEL=1 bash benchmarks/wsl-local-inference-benchmark/scripts/start-wsl-llama-server-amd.sh"
+wsl.exe --distribution Ubuntu-24.04 --user root -- bash -lc "cd /mnt/c/Users/<you>/Documents/'LocalInference - dzienniczek' && PORT=8080 CTX_SIZE=8192 PARALLEL=1 bash benchmarks/wsl-local-inference-benchmark/scripts/start-wsl-llama-server-amd.sh"
 ```
 
 Stop it with:
 
 ```powershell
-wsl.exe --distribution Ubuntu-24.04 --user root -- bash -lc "cd /mnt/c/Users/<you>/Documents/locallm_ryzen395-public && bash benchmarks/wsl-local-inference-benchmark/scripts/stop-wsl-llama-server-amd.sh"
+wsl.exe --distribution Ubuntu-24.04 --user root -- bash -lc "cd /mnt/c/Users/<you>/Documents/'LocalInference - dzienniczek' && bash benchmarks/wsl-local-inference-benchmark/scripts/stop-wsl-llama-server-amd.sh"
 ```
 
 ## Runtime Smoke Command Shape
@@ -381,7 +381,7 @@ Build and probe the browser-capable container:
 For a real Pi tool-call validation, start the WSL llama.cpp endpoint with Qwen3 Coder Q4 and `LLAMA_JINJA=1`, then run the Pi workflow wrapper:
 
 ```powershell
-wsl.exe --distribution Ubuntu-24.04 --user root -- bash -lc "cd /mnt/c/Users/<you>/Documents/locallm_ryzen395-public/benchmarks/wsl-local-inference-benchmark && MODEL_PATH=/mnt/c/Users/<you>/.lmstudio/models/lmstudio-community/Qwen3-Coder-30B-A3B-Instruct-GGUF/Qwen3-Coder-30B-A3B-Instruct-Q4_K_M.gguf MODEL_ALIAS=qwen/qwen3-coder-30b-q4 PORT=8091 CTX_SIZE=8192 PARALLEL=1 LLAMA_JINJA=1 bash scripts/start-wsl-llama-server-amd.sh"
+wsl.exe --distribution Ubuntu-24.04 --user root -- bash -lc "cd /mnt/c/Users/<you>/Documents/'LocalInference - dzienniczek'/benchmarks/wsl-local-inference-benchmark && MODEL_PATH=/mnt/c/Users/<you>/.lmstudio/models/lmstudio-community/Qwen3-Coder-30B-A3B-Instruct-GGUF/Qwen3-Coder-30B-A3B-Instruct-Q4_K_M.gguf MODEL_ALIAS=qwen/qwen3-coder-30b-q4 PORT=8091 CTX_SIZE=8192 PARALLEL=1 LLAMA_JINJA=1 bash scripts/start-wsl-llama-server-amd.sh"
 ```
 
 ```powershell
@@ -525,6 +525,114 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File `
   -Profile restore-initial `
   -InitialStateJson <captured-initial-lms-state.json>
 ```
+
+## Gemma 4 12B Windows LM Studio Shape
+
+Gemma 4 12B is installed as `google/gemma-4-12b` with GGUF architecture `gemma4` and advertised context `262144`.
+
+Important: for coding-agent harnesses, use `reasoning_effort=none`. Without it, LM Studio returned mostly hidden reasoning and no parseable content for the protected browser task.
+
+WSL ROCm gate:
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File `
+  .\benchmarks\wsl-local-inference-benchmark\scripts\run-wsl-model-matrix.ps1 `
+  -Models gemma-4-12b-q4 `
+  -ContextSize 16384 `
+  -AgentTasks js-window,browser-style `
+  -Port 8112
+```
+
+Observed on 2026-06-22: AMD llama.cpp build `8407` fails before serving with `unknown model architecture: 'gemma4'`.
+
+Windows LM Studio controlled ladder:
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File `
+  .\benchmarks\wsl-local-inference-benchmark\scripts\run-windows-lmstudio-controlled-context-ladder.ps1 `
+  -Model google/gemma-4-12b `
+  -Contexts 16384,32768,49152,65536 `
+  -Tasks js-window,browser-style `
+  -ReasoningEffort none `
+  -StopOnFailure
+```
+
+High-context load/control gate:
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File `
+  .\benchmarks\wsl-local-inference-benchmark\scripts\run-windows-lmstudio-controlled-context-ladder.ps1 `
+  -Model google/gemma-4-12b `
+  -Contexts 131072,262144 `
+  -Tasks js-window,browser-style `
+  -ReasoningEffort none `
+  -StopOnFailure
+```
+
+Observed on 2026-06-22: both tasks passed through `262k` with small controlled prompts. This proves load plus task behavior, not filled `262k` prompt reasoning. A follow-up three-run sweep across `16k`, `65k`, and `262k` passed `18/18` task cells when `reasoning_effort=none` was injected.
+
+OpenCode 65k filled-prompt probe:
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File `
+  .\benchmarks\opencode-agent-benchmark\scripts\run-opencode-benchmark.ps1 `
+  -Profiles gemma12-65k `
+  -Tasks js-window,browser-style `
+  -TimeoutMinutes 25 `
+  -PromptSourceMode thin `
+  -PromptPaddingMode neutral `
+  -ReasoningEffort none
+```
+
+Observed on 2026-06-22: both tasks passed with roughly `51k` estimated prompt tokens, but each task took about `11.7` minutes because the first filled-prompt request took about `656` seconds.
+
+Filled `131k` should be treated as an overnight run, not an interactive check:
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File `
+  .\benchmarks\opencode-agent-benchmark\scripts\run-opencode-benchmark.ps1 `
+  -Profiles gemma12-131k `
+  -Tasks js-window,browser-style `
+  -TimeoutMinutes 90 `
+  -PromptSourceMode thin `
+  -PromptPaddingMode neutral `
+  -ReasoningEffort none
+```
+
+Raw LM Studio tool-call probe:
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File `
+  .\benchmarks\opencode-agent-benchmark\scripts\load-lmstudio-profile.ps1 `
+  -Profile gemma12-16k
+
+node .\benchmarks\wsl-local-inference-benchmark\scripts\probe-openai-tool-calls.mjs `
+  --base-url http://127.0.0.1:1234/v1 `
+  --model google/gemma-4-12b `
+  --reasoning-effort none `
+  --output .\benchmarks\wsl-local-inference-benchmark\results\gemma12-toolcall-nonstream.json
+
+node .\benchmarks\wsl-local-inference-benchmark\scripts\probe-openai-tool-calls.mjs `
+  --base-url http://127.0.0.1:1234/v1 `
+  --model google/gemma-4-12b `
+  --reasoning-effort none `
+  --stream `
+  --output .\benchmarks\wsl-local-inference-benchmark\results\gemma12-toolcall-stream.json
+```
+
+For Pi through LM Studio, use the timing proxy with `LMSTUDIO_PROXY_REASONING_EFFORT=none` and send Pi to `http://host.docker.internal:<proxy-port>/v1`.
+
+Run the Gemma 12B Pi-through-LM-Studio workflow:
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File `
+  .\benchmarks\wsl-local-inference-benchmark\scripts\run-pi-lmstudio-gemma12-workflow.ps1 `
+  -Tasks js-edit,browser-style `
+  -ReasoningEffort none `
+  -TaskTimeoutSeconds 900
+```
+
+Observed on 2026-06-22: file-create, JS edit, and protected browser-style passed through LM Studio. The Pi challenge suite and soak runs have not been repeated for Gemma 12B.
 
 ## Promotion Rules
 

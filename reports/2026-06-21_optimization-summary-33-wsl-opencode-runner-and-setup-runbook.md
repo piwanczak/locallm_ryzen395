@@ -57,8 +57,8 @@ Links:
 
 - https://learn.microsoft.com/en-us/windows/wsl/install
 - https://learn.microsoft.com/en-us/windows/ai/directml/gpu-cuda-in-wsl
-- https://rocm.docs.amd.com/projects/radeon-ryzen/en/latest/docs/install/installryz/wsl/howto_wsl.md
-- https://rocm.docs.amd.com/projects/radeon-ryzen/en/latest/docs/advanced/advancedryz/linux/llm/llamacpp.md
+- https://rocm.docs.amd.com/projects/radeon-ryzen/en/latest/docs/install/installryz/wsl/howto_wsl.html
+- https://rocm.docs.amd.com/projects/radeon-ryzen/en/latest/docs/advanced/advancedryz/linux/llm/llamacpp.html
 - https://github.com/ROCm/librocdxg/
 
 ## Recommended Next Sequence
@@ -80,7 +80,7 @@ wsl.exe -l -v
 3. Run the no-install Linux preflight:
 
 ```powershell
-wsl.exe --distribution Ubuntu-24.04 -- bash -lc "cd /mnt/c/Users/<you>/Documents/locallm_ryzen395-public && bash benchmarks/wsl-local-inference-benchmark/scripts/wsl-preflight.sh benchmarks/wsl-local-inference-benchmark/results/wsl-linux-preflight"
+wsl.exe --distribution Ubuntu-24.04 -- bash -lc "cd /mnt/c/Users/<you>/Documents/'LocalInference - dzienniczek' && bash benchmarks/wsl-local-inference-benchmark/scripts/wsl-preflight.sh benchmarks/wsl-local-inference-benchmark/results/wsl-linux-preflight"
 ```
 
 4. Install one runtime path at a time, starting with AMD's validated ROCm/llama.cpp path if approved.

@@ -10,6 +10,7 @@ param(
   [int]$CalibrationMaxTokens = 128,
   [int]$AgentMaxTokens = 2048,
   [int]$AgentMaxAttempts = 2,
+  [string]$ReasoningEffort = "",
   [int]$CalibrationTimeoutMs = 300000,
   [int]$AgentTimeoutMs = 300000,
   [switch]$StopOnFailure,
@@ -156,6 +157,7 @@ $summary = [ordered]@{
   parallel = $Parallel
   numExperts = if ($NumExperts -gt 0) { $NumExperts } else { $null }
   tasks = $selectedTasks
+  reasoningEffort = if ([string]::IsNullOrWhiteSpace($ReasoningEffort)) { $null } else { $ReasoningEffort }
   runRoot = $runRoot
   serverStatusBefore = $null
   lmsPsBefore = $null
@@ -204,13 +206,19 @@ foreach ($contextSize in $selectedContexts) {
     Write-Utf8NoBom -Path $loadOutPath -Value (($loadResponse | ConvertTo-Json -Depth 14) + "`n")
     $row.load = [pscustomobject]@{ ok = $true; path = $loadOutPath }
 
-    & node $calibrationScript `
-      --base-url "$($BaseUrl.TrimEnd('/'))/v1" `
-      --model $Model `
-      --max-tokens $CalibrationMaxTokens `
-      --concurrency 1 `
-      --timeout-ms $CalibrationTimeoutMs `
-      --output $calibrationPath
+    $calibrationArgs = @(
+      $calibrationScript,
+      "--base-url", "$($BaseUrl.TrimEnd('/'))/v1",
+      "--model", $Model,
+      "--max-tokens", "$CalibrationMaxTokens",
+      "--concurrency", "1",
+      "--timeout-ms", "$CalibrationTimeoutMs",
+      "--output", $calibrationPath
+    )
+    if (-not [string]::IsNullOrWhiteSpace($ReasoningEffort)) {
+      $calibrationArgs += @("--reasoning-effort", $ReasoningEffort)
+    }
+    & node @calibrationArgs
     $calibrationExit = $LASTEXITCODE
     $calibrationJson = Read-JsonOrNull -Path $calibrationPath
     $row.calibration = [pscustomobject]@{
@@ -230,15 +238,21 @@ foreach ($contextSize in $selectedContexts) {
     foreach ($task in $selectedTasks) {
       $taskDir = Join-Path $contextRoot $task
       New-Item -ItemType Directory -Force -Path $taskDir | Out-Null
-      & node $agentScript `
-        --base-url "$($BaseUrl.TrimEnd('/'))/v1" `
-        --model $Model `
-        --task $task `
-        --max-tokens $AgentMaxTokens `
-        --max-attempts $AgentMaxAttempts `
-        --timeout-ms $AgentTimeoutMs `
-        --run-id "windows-lmstudio-ladder-$timestamp-ctx$contextSize-$task" `
-        --output-dir $taskDir
+      $agentArgs = @(
+        $agentScript,
+        "--base-url", "$($BaseUrl.TrimEnd('/'))/v1",
+        "--model", $Model,
+        "--task", $task,
+        "--max-tokens", "$AgentMaxTokens",
+        "--max-attempts", "$AgentMaxAttempts",
+        "--timeout-ms", "$AgentTimeoutMs",
+        "--run-id", "windows-lmstudio-ladder-$timestamp-ctx$contextSize-$task",
+        "--output-dir", $taskDir
+      )
+      if (-not [string]::IsNullOrWhiteSpace($ReasoningEffort)) {
+        $agentArgs += @("--reasoning-effort", $ReasoningEffort)
+      }
+      & node @agentArgs
       $agentExit = $LASTEXITCODE
       $resultPath = Join-Path $taskDir "$task-result.json"
       $resultJson = Read-JsonOrNull -Path $resultPath

@@ -22,7 +22,6 @@ tools/*.exe
 
 # Benchmark local state and raw outputs
 benchmarks/**/logs/
-benchmarks/**/prompts/
 benchmarks/**/results/
 benchmarks/**/runtimes/
 benchmarks/**/.tmp/
@@ -37,13 +36,6 @@ benchmarks/**/.xdg-data/
 benchmarks/**/.xdg-state/
 benchmarks/**/node_modules/
 benchmarks/**/reports/*.html
-
-# Selected public WSL evidence artifacts
-!benchmarks/wsl-local-inference-benchmark/results/
-!benchmarks/wsl-local-inference-benchmark/results/**/
-!benchmarks/wsl-local-inference-benchmark/results/**/*.json
-!benchmarks/wsl-local-inference-benchmark/results/**/*.jsonl
-!benchmarks/wsl-local-inference-benchmark/results/**/*.md
 
 # Language/tool caches
 __pycache__/
